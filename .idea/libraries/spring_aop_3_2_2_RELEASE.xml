@@ -1,0 +1,27 @@
+<component name="libraryTable">
+  <library name="spring-aop-3.2.2.RELEASE">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/spring-framework/spring-aop-3.2.2.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/spring-framework/spring-aspects-3.2.2.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/spring-framework/spring-beans-3.2.2.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/spring-framework/spring-context-3.2.2.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/spring-framework/spring-context-support-3.2.2.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/spring-framework/spring-core-3.2.2.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/spring-framework/spring-expression-3.2.2.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/spring-framework/spring-instrument-3.2.2.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/spring-framework/spring-instrument-tomcat-3.2.2.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/spring-framework/spring-jdbc-3.2.2.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/spring-framework/spring-jms-3.2.2.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/spring-framework/spring-orm-3.2.2.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/spring-framework/spring-oxm-3.2.2.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/spring-framework/spring-struts-3.2.2.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/spring-framework/spring-test-3.2.2.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/spring-framework/spring-tx-3.2.2.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/spring-framework/spring-web-3.2.2.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/spring-framework/spring-webmvc-3.2.2.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/spring-framework/spring-webmvc-portlet-3.2.2.RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

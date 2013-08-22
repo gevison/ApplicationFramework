@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact build-on-make="true" name="Test Multi:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Test_Multi_jar</output-path>
+    <root id="root">
+      <element id="archive" name="TestMulti.jar">
+        <element id="module-output" name="Test Multi" />
+      </element>
+      <element id="library" level="project" name="commons-io-2.4" />
+      <element id="library" level="project" name="log4j" />
+      <element id="library" level="project" name="jide" />
+      <element id="library" level="project" name="commons-logging" />
+      <element id="library" level="project" name="spring-aop-3.2.2.RELEASE" />
+      <element id="library" level="project" name="Utils" />
+      <element id="library" level="project" name="commons-lang3-3.1" />
+      <element id="library" level="project" name="jdom-2.0.4" />
+      <element id="library" level="project" name="tools" />
+      <element id="artifact" artifact-name="Application Framework:jar" />
+    </root>
+  </artifact>
+</component>

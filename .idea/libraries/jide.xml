@@ -1,0 +1,28 @@
+<component name="libraryTable">
+  <library name="jide">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/JIDE/jide-action.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/JIDE/jide-beaninfo.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/JIDE/jide-charts.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/JIDE/jide-common.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/JIDE/jide-components.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/JIDE/jide-dashboard.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/JIDE/jide-data.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/JIDE/jide-designer.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/JIDE/jide-dialogs.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/JIDE/jide-diff.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/JIDE/jide-dock.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/JIDE/jide-editor.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/JIDE/jide-gantt.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/JIDE/jide-grids.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/JIDE/jide-pivot.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/JIDE/jide-plaf-jdk7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/JIDE/jide-plaf.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/JIDE/jide-rss.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/JIDE/jide-shortcut.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Utils/lib/JIDE/jide-treemap.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
