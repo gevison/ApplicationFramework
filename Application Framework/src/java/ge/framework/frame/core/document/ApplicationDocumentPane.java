@@ -1,7 +1,8 @@
 package ge.framework.frame.core.document;
 
 import com.jidesoft.document.DocumentPane;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
 /**
@@ -12,7 +13,7 @@ import org.apache.log4j.Logger;
  */
 public class ApplicationDocumentPane extends DocumentPane
 {
-    private Logger logger = Logger.getLogger( ApplicationDocumentPane.class );
+    private Logger logger = LogManager.getLogger( ApplicationDocumentPane.class );
 
     public ApplicationDocumentPane()
     {

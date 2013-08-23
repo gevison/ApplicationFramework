@@ -18,7 +18,8 @@ import ge.framework.frame.multi.objects.FrameDefinition;
 import ge.framework.frame.multi.objects.FrameInstanceDetailsObject;
 import ge.utils.properties.PropertiesDialogPage;
 import org.apache.commons.lang3.reflect.ConstructorUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.util.Assert;
 
 import java.awt.event.WindowAdapter;
@@ -37,7 +38,7 @@ import java.util.Set;
  */
 public abstract class MultiApplication extends Application
 {
-    private static Logger logger = Logger.getLogger( MultiApplication.class );
+    private static Logger logger = LogManager.getLogger( MultiApplication.class );
 
     private List<FrameDefinition> frameDefinitions;
 

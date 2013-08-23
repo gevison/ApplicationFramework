@@ -4,6 +4,7 @@ import com.jidesoft.dialog.ButtonPanel;
 import com.jidesoft.swing.PartialEtchedBorder;
 import com.jidesoft.swing.PartialLineBorder;
 import com.jidesoft.swing.PartialSide;
+import ge.framework.application.core.dialog.ApplicationStandardDialog;
 import ge.framework.application.multi.MultiApplication;
 import ge.framework.application.multi.dialog.panel.RecentPanel;
 import ge.framework.frame.core.ApplicationFrame;

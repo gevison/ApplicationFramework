@@ -19,7 +19,8 @@ import ge.framework.frame.core.status.ApplicationStatusBar;
 import ge.framework.frame.core.status.enums.StatusBarConstraint;
 import ge.utils.controls.breadcrumb.BreadcrumbBar;
 import ge.utils.os.OS;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,7 +31,7 @@ import java.util.List;
 
 public abstract class ApplicationFrame extends JFrame
 {
-    private static Logger logger = Logger.getLogger( ApplicationFrame.class );
+    private static Logger logger = LogManager.getLogger( ApplicationFrame.class );
 
     private ApplicationFrameWindowAdapter applicationFrameWindowAdapter;
 

@@ -1,4 +1,4 @@
-package ge.framework.application.multi.dialog;
+package ge.framework.application.core.dialog;
 
 import com.jidesoft.dialog.StandardDialog;
 import ge.framework.application.core.Application;

@@ -11,7 +11,8 @@ import ge.framework.frame.core.ApplicationFrame;
 import ge.framework.frame.core.dockable.ApplicationDockableFrame;
 import ge.framework.frame.core.document.ApplicationDocumentComponent;
 import ge.framework.frame.core.document.ApplicationDocumentPane;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.swing.*;
 import java.awt.*;
@@ -26,7 +27,7 @@ import java.util.List;
  */
 public class ApplicationDockingManager extends DefaultDockingManager
 {
-    private static final Logger logger = Logger.getLogger( ApplicationDockingManager.class );
+    private static final Logger logger = LogManager.getLogger( ApplicationDockingManager.class );
 
     private final ApplicationDocumentPane documentPane;
 

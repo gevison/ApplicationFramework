@@ -19,7 +19,6 @@
   </component>
   <component name="DebuggerManager">
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
-    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -56,6 +55,7 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -64,7 +64,118 @@
     <favorites_list name="Application Framework" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="ApplicationStandardDialog.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application Framework/src/java/ge/framework/application/core/dialog/ApplicationStandardDialog.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="22" selection-start="593" selection-end="593" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="867">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ApplicationBannerPanel.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application Framework/src/java/ge/framework/application/core/dialog/panel/ApplicationBannerPanel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="13" selection-start="335" selection-end="335" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="850">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ApplicationProblemBannerPanel.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application Framework/src/java/ge/framework/application/core/dialog/panel/ApplicationProblemBannerPanel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="12" selection-start="466" selection-end="466" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="867">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ApplicationFramework.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application Framework/src/java/ge/framework/application/ApplicationFramework.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="43" column="73" selection-start="1228" selection-end="1228" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="1343">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="XmlBeanDefinitionReader.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/../Utils/lib/spring-framework/spring-beans-3.2.2.RELEASE.jar!/org/springframework/beans/factory/xml/XmlBeanDefinitionReader.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="26" column="3" selection-start="1592" selection-end="1592" vertical-scroll-proportion="1.36" vertical-offset="459" max-vertical-offset="1411">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LogEvent.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/../Utils/lib/apache-log4j/log4j-core-2.0-beta8.jar!/org/apache/logging/log4j/core/LogEvent.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="24" selection-start="327" selection-end="327" vertical-scroll-proportion="-6.8" vertical-offset="0" max-vertical-offset="697">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Logger.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/../Utils/lib/apache-log4j/log4j-api-2.0-beta8.jar!/org/apache/logging/log4j/Logger.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="17" selection-start="171" selection-end="171" vertical-scroll-proportion="-3.4" vertical-offset="0" max-vertical-offset="4403">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LogManager.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/../Utils/lib/apache-log4j/log4j-api-2.0-beta8.jar!/org/apache/logging/log4j/LogManager.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="13" selection-start="167" selection-end="167" vertical-scroll-proportion="-3.4" vertical-offset="0" max-vertical-offset="986">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Jdk14Logger.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/../Utils/lib/commons-logging/commons-logging-api.jar!/org/apache/commons/logging/impl/Jdk14Logger.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="13" selection-start="174" selection-end="174" vertical-scroll-proportion="-3.4" vertical-offset="0" max-vertical-offset="969">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LogFactoryImpl.class" pinned="false" current="true" current-in-tab="true">
+        <entry file="jar://$PROJECT_DIR$/../Utils/lib/commons-logging/commons-logging-api.jar!/org/apache/commons/logging/impl/LogFactoryImpl.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="13" selection-start="174" selection-end="174" vertical-scroll-proportion="-0.4299611" vertical-offset="306" max-vertical-offset="1853">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ApplicationFrame.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application Framework/src/java/ge/framework/frame/core/ApplicationFrame.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="104" column="43" selection-start="3390" selection-end="3390" vertical-scroll-proportion="0.0" vertical-offset="1751" max-vertical-offset="7599">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MultiApplicationFrame.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application Framework/src/java/ge/framework/frame/multi/MultiApplicationFrame.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="55" column="19" selection-start="2142" selection-end="2169" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6766">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -74,11 +185,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/Application Framework/src/java/ge/framework/application/multi/MultiApplication.java" />
-        <option value="$PROJECT_DIR$/Application Framework/src/java/ge/framework/application/ApplicationFramework.java" />
-        <option value="$PROJECT_DIR$/Test Multi/src/java/ge/framework/test/frame/multi/TestMultiApplicationFrame.java" />
-        <option value="$PROJECT_DIR$/Test Single/src/java/ge/framework/test/frame/multi/TestSingleApplicationFrame.java" />
-        <option value="$PROJECT_DIR$/Application Framework/src/resources/ge/framework/application/core/resources.properties" />
         <option value="$PROJECT_DIR$/Application Framework/src/java/ge/framework/application/core/menu/RestartApplicationMenuItem.java" />
         <option value="$PROJECT_DIR$/Test Single/src/java/ge/framework/test/frame/single/TestSingleApplicationFrame.java" />
         <option value="$PROJECT_DIR$/Test Single/src/resources/application.xml" />
@@ -90,6 +196,11 @@
         <option value="$PROJECT_DIR$/Application Framework/src/java/ge/framework/frame/multi/menu/file/MultiFileMenu.java" />
         <option value="$PROJECT_DIR$/Application Framework/src/java/ge/framework/frame/core/menu/window/WindowMenu.java" />
         <option value="$PROJECT_DIR$/Application Framework/src/java/ge/framework/frame/core/document/ApplicationDocumentPane.java" />
+        <option value="$PROJECT_DIR$/Application Framework/src/java/ge/framework/application/core/dialog/ApplicationStandardDialog.java" />
+        <option value="$PROJECT_DIR$/Application Framework/src/java/ge/framework/application/multi/dialog/panel/ApplicationProblemBannerPanel.java" />
+        <option value="$PROJECT_DIR$/Application Framework/src/java/ge/framework/application/core/dialog/panel/ApplicationProblemBannerPanel.java" />
+        <option value="$PROJECT_DIR$/Application Framework/src/java/ge/framework/frame/multi/MultiApplicationFrame.java" />
+        <option value="$PROJECT_DIR$/Application Framework/src/java/ge/framework/application/ApplicationFramework.java" />
       </list>
     </option>
   </component>
@@ -189,8 +300,259 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Application Framework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Application Framework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="log4j" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Application Framework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="log4j" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="log4j-api-2.0-beta8.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="org" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="apache" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="logging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="log4j" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Application Framework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="log4j" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="log4j-api-2.0-beta8.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Application Framework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons-logging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons-logging-api.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="org" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="apache" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="logging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Application Framework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons-logging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons-logging-api.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="org" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="apache" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="logging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="impl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Application Framework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons-logging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons-logging-api.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="META-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Application Framework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons-logging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons-logging-adapters.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Application Framework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons-logging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons-logging-adapters.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="META-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Application Framework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons-logging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons-logging.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Application Framework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons-logging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons-logging.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="META-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="Application Framework" />
@@ -199,20 +561,19 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="options.lastSelected" value="appearance" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Test Single/src/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Utils/lib/apache-log4j/log4j-core-2.0-beta8.jar!/" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
@@ -381,24 +742,25 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1036" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35187286" sideWeight="0.7115269" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35414302" sideWeight="0.70379436" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2860386" sideWeight="0.70379436" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33387357" sideWeight="0.53846157" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34392735" sideWeight="0.7790698" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23838262" sideWeight="0.32236096" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28847316" sideWeight="0.67650396" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2860386" sideWeight="0.93421847" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33387357" sideWeight="0.53846157" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34052214" sideWeight="0.8370549" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22093023" sideWeight="0.67650396" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34052214" sideWeight="0.7790698" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35414302" sideWeight="0.7115269" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -488,82 +850,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Utils/src/java/ge/utils/xml/bind/MarshallerListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="17" selection-start="135" selection-end="135" vertical-scroll-proportion="0.09426987" vertical-offset="0" max-vertical-offset="541" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Utils/src/java/ge/utils/xml/bind/UnmarshallerListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="17" selection-start="135" selection-end="135" vertical-scroll-proportion="0.09426987" vertical-offset="0" max-vertical-offset="541" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application Framework/src/java/ge/framework/application/multi/menu/item/CloseMenuItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="22" selection-start="246" selection-end="246" vertical-scroll-proportion="0.15711646" vertical-offset="0" max-vertical-offset="816" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Utils/src/java/ge/utils/buttons/DownButton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="13" selection-start="194" selection-end="194" vertical-scroll-proportion="0.15653776" vertical-offset="0" max-vertical-offset="543" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application Framework/src/java/ge/framework/application/single/SingleApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="22" selection-start="821" selection-end="821" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="2805" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application Framework/src/java/ge/framework/application/multi/menu/item/NewMenuItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="57" selection-start="573" selection-end="597" vertical-scroll-proportion="0.099415205" vertical-offset="0" max-vertical-offset="1139" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application Framework/src/java/ge/framework/application/core/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="362" column="4" selection-start="11644" selection-end="11644" vertical-scroll-proportion="0.0" vertical-offset="2704" max-vertical-offset="3247">
-          <folding>
-            <element signature="method#startup#0;class#Application#0" expanded="false" />
-            <element signature="method#initialiseJide#0;class#Application#0" expanded="false" />
-            <element signature="method#loadApplicationConfiguration#0;class#Application#0" expanded="false" />
-            <element signature="method#saveApplicationConfiguration#0;class#Application#0" expanded="false" />
-            <element signature="method#processApplicationProperties#0;class#Application#0" expanded="false" />
-            <element signature="method#processExit#0;class#Application#0" expanded="false" />
-            <element signature="method#processRestart#0;class#Application#0" expanded="false" />
-            <element signature="method#processShutdown#0;class#Application#0" expanded="false" />
-            <element signature="method#setApplicationRestarterClass#0;class#Application#0" expanded="false" />
-            <element signature="method#setAllowMultipleApplications#0;class#Application#0" expanded="false" />
-            <element signature="method#getName#0;class#Application#0" expanded="false" />
-            <element signature="method#setName#0;class#Application#0" expanded="false" />
-            <element signature="method#getDescription#0;class#Application#0" expanded="false" />
-            <element signature="method#setDescription#0;class#Application#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application Framework/src/java/ge/framework/frame/single/menu/file/SingleFileMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="6" selection-start="1745" selection-end="2101" vertical-scroll-proportion="0.73099416" vertical-offset="259" max-vertical-offset="1479" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Test Single/src/java/ge/framework/test/frame/single/TestSingleApplicationFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="118" column="33" selection-start="6235" selection-end="6235" vertical-scroll-proportion="0.5766082" vertical-offset="1258" max-vertical-offset="2958" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application Framework/src/java/ge/framework/frame/multi/menu/window/MultiWindowMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="43" selection-start="836" selection-end="836" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1292" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application Framework/src/java/ge/framework/frame/core/menu/window/WindowMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="101" column="65" selection-start="4063" selection-end="4063" vertical-scroll-proportion="0.42339182" vertical-offset="981" max-vertical-offset="1836">
-          <folding>
-            <element signature="e#1825#1856#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application Framework/src/java/ge/framework/frame/multi/menu/file/MultiFileMenu.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="143" column="35" selection-start="4625" selection-end="4625" vertical-scroll-proportion="0.6023392" vertical-offset="1576" max-vertical-offset="2448">
@@ -572,11 +858,6 @@
             <element signature="e#1488#1519#0" expanded="false" />
           </folding>
         </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/JIDE/jide-components.jar!/com/jidesoft/document/DocumentPane.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="122" column="28" selection-start="6513" selection-end="6525" vertical-scroll-proportion="0.34980237" vertical-offset="1880" max-vertical-offset="5916" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Application Framework/src/java/ge/framework/frame/core/document/ApplicationDocumentPane.java">
@@ -589,9 +870,95 @@
         <state line="37" column="33" selection-start="1317" selection-end="1317" vertical-scroll-proportion="0.5" vertical-offset="0" max-vertical-offset="3502" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Application Framework/src/java/ge/framework/application/core/dialog/ApplicationStandardDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="22" selection-start="593" selection-end="593" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application Framework/src/java/ge/framework/application/core/dialog/panel/ApplicationBannerPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="13" selection-start="335" selection-end="335" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="680">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application Framework/src/java/ge/framework/application/core/dialog/panel/ApplicationProblemBannerPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="12" selection-start="466" selection-end="466" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="680">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Application Framework/src/java/ge/framework/frame/core/ApplicationFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="103" column="43" selection-start="3334" selection-end="3334" vertical-scroll-proportion="0.59375" vertical-offset="1003" max-vertical-offset="7157">
+        <state line="104" column="43" selection-start="3390" selection-end="3390" vertical-scroll-proportion="0.0" vertical-offset="1751" max-vertical-offset="7599">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application Framework/src/java/ge/framework/application/core/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="544" column="9" selection-start="15163" selection-end="15787" vertical-scroll-proportion="0.74152046" vertical-offset="3531" max-vertical-offset="4386">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application Framework/src/java/ge/framework/frame/multi/MultiApplicationFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="19" selection-start="2142" selection-end="2169" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6766">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application Framework/src/java/ge/framework/application/ApplicationFramework.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="73" selection-start="1228" selection-end="1228" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="1343">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../Utils/lib/spring-framework/spring-beans-3.2.2.RELEASE.jar!/org/springframework/beans/factory/xml/XmlBeanDefinitionReader.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="3" selection-start="1592" selection-end="1592" vertical-scroll-proportion="1.36" vertical-offset="459" max-vertical-offset="1411">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../Utils/lib/apache-log4j/log4j-core-2.0-beta8.jar!/org/apache/logging/log4j/core/LogEvent.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="24" selection-start="327" selection-end="327" vertical-scroll-proportion="-6.8" vertical-offset="0" max-vertical-offset="697">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../Utils/lib/apache-log4j/log4j-api-2.0-beta8.jar!/org/apache/logging/log4j/Logger.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="17" selection-start="171" selection-end="171" vertical-scroll-proportion="-3.4" vertical-offset="0" max-vertical-offset="4403">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../Utils/lib/apache-log4j/log4j-api-2.0-beta8.jar!/org/apache/logging/log4j/LogManager.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="13" selection-start="167" selection-end="167" vertical-scroll-proportion="-3.4" vertical-offset="0" max-vertical-offset="986">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../Utils/lib/commons-logging/commons-logging-api.jar!/org/apache/commons/logging/impl/Jdk14Logger.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="13" selection-start="174" selection-end="174" vertical-scroll-proportion="-3.4" vertical-offset="0" max-vertical-offset="969">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../Utils/lib/commons-logging/commons-logging-api.jar!/org/apache/commons/logging/impl/LogFactoryImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="13" selection-start="174" selection-end="174" vertical-scroll-proportion="-0.4299611" vertical-offset="306" max-vertical-offset="1853">
           <folding />
         </state>
       </provider>
@@ -662,7 +1029,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Utils</last-edited>
+          <last-edited>log4j</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

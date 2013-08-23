@@ -9,7 +9,7 @@ import ge.framework.application.multi.MultiApplication;
 import ge.framework.application.multi.dialog.buttons.ApplicationPropertiesButton;
 import ge.framework.application.multi.dialog.buttons.NewFrameButton;
 import ge.framework.application.multi.dialog.buttons.OpenFrameButton;
-import ge.framework.application.multi.dialog.panel.ApplicationBannerPanel;
+import ge.framework.application.core.dialog.panel.ApplicationBannerPanel;
 import ge.framework.application.multi.dialog.panel.RecentPanel;
 import ge.framework.frame.multi.objects.FrameInstanceDetailsObject;
 import ge.utils.bundle.Resources;

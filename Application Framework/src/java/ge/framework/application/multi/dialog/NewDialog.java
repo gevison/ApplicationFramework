@@ -8,7 +8,7 @@ import com.jidesoft.swing.JideComboBox;
 import com.jidesoft.swing.PartialEtchedBorder;
 import com.jidesoft.swing.PartialLineBorder;
 import com.jidesoft.swing.PartialSide;
-import ge.framework.application.core.Application;
+import ge.framework.application.core.dialog.ApplicationStandardDialog;
 import ge.framework.application.multi.MultiApplication;
 import ge.framework.frame.core.ApplicationFrame;
 import ge.framework.frame.multi.objects.FrameDefinition;
@@ -24,7 +24,8 @@ import ge.utils.problem.enums.ProblemType;
 import ge.utils.problem.object.Problem;
 import ge.utils.problem.object.ProblemList;
 import ge.utils.text.StringArgumentMessageFormat;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -55,7 +56,7 @@ import java.util.Map;
 public class NewDialog extends ApplicationStandardDialog implements ActionListener,
                                                                     CaretListener
 {
-    private Logger logger = Logger.getLogger( NewDialog.class );
+    private Logger logger = LogManager.getLogger( NewDialog.class );
 
     private static final Resources resources =
             Resources.getInstance( "ge.framework.application.multi" );

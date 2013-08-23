@@ -1,7 +1,8 @@
-package ge.framework.application.multi.dialog.panel;
+package ge.framework.application.core.dialog.panel;
 
-import com.jidesoft.dialog.BannerPanel;
 import ge.framework.application.core.Application;
+import ge.framework.application.multi.MultiApplication;
+import ge.utils.problem.ProblemBannerPanel;
 
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
@@ -13,11 +14,11 @@ import java.awt.Font;
  * Date: 08/03/13
  * Time: 18:16
  */
-public class ApplicationBannerPanel extends BannerPanel
+public class ApplicationProblemBannerPanel extends ProblemBannerPanel
 {
     private Application application;
 
-    public ApplicationBannerPanel(Application application)
+    public ApplicationProblemBannerPanel(Application application)
     {
         super();
         this.application = application;

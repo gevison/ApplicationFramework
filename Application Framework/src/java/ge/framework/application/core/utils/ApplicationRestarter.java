@@ -1,6 +1,7 @@
 package ge.framework.application.core.utils;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.InitializingBean;
 
 import java.util.Map;
@@ -15,7 +16,7 @@ public abstract class ApplicationRestarter
 {
     public static final String MAIN = "main";
 
-    private static Logger logger = Logger.getLogger( ApplicationRestarter.class );
+    private static Logger logger = LogManager.getLogger( ApplicationRestarter.class );
 
     public static final String RESTART_PID = "ge.framework.application.restartPID";
 

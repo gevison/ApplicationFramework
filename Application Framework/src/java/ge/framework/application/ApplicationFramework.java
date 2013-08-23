@@ -6,7 +6,8 @@ import ge.framework.application.core.utils.ApplicationRestarter;
 import ge.utils.VMInstance;
 import ge.utils.os.OS;
 import ge.utils.spring.context.ClasspathApplicationContext;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,7 +21,7 @@ import java.util.Arrays;
  */
 public class ApplicationFramework
 {
-    private static Logger logger = Logger.getLogger( ApplicationFramework.class );
+    private static Logger logger = LogManager.getLogger( ApplicationFramework.class );
 
     public static void main( String[] args )
     {
@@ -40,6 +41,7 @@ public class ApplicationFramework
     public static void start( String applicationConfiguration,
                               String applicationBeanName, String[] args )
     {
+        logger.entry( applicationConfiguration, applicationBeanName, args );
         ClasspathApplicationContext classpathApplicationContext = ClasspathApplicationContext.getInstance(
                 applicationConfiguration );
 

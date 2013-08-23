@@ -18,10 +18,13 @@ import ge.utils.bundle.Resources;
 import ge.utils.file.LockFile;
 import ge.utils.properties.PropertiesDialogPage;
 import ge.utils.text.StringArgumentMessageFormat;
+import ge.utils.xml.bind.MarshallerListener;
 import ge.utils.xml.bind.TypedMarshallerListener;
 import ge.utils.xml.bind.TypedUnmarshallerListener;
+import ge.utils.xml.bind.UnmarshallerListener;
 import org.apache.commons.lang3.reflect.ConstructorUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.swing.*;
 import javax.xml.bind.JAXBContext;
@@ -50,7 +53,7 @@ public abstract class MultiApplicationFrame extends ApplicationFrame
     private static final Resources resources =
             Resources.getInstance( "ge.framework.frame.multi" );
 
-    private static Logger logger = Logger.getLogger( ApplicationFrame.class );
+    private static Logger logger = LogManager.getLogger( ApplicationFrame.class );
 
     private TypedMarshallerListener marshallerListener = new TypedMarshallerListener();
 
@@ -213,6 +216,26 @@ public abstract class MultiApplicationFrame extends ApplicationFrame
             logger.fatal( e.getMessage(), e );
             throw new IllegalStateException( e.getMessage(), e );
         }
+    }
+
+    public final UnmarshallerListener getUnmarshallerListener( Class aClass )
+    {
+        return unmarshallerListener.getListener( aClass );
+    }
+
+    public final void setUnmarshallerListener( Class aClass, UnmarshallerListener listener )
+    {
+        unmarshallerListener.setListener( aClass, listener );
+    }
+
+    public final MarshallerListener getMarshallerListener( Class aClass )
+    {
+        return marshallerListener.getListener( aClass );
+    }
+
+    public final void setMarshallerListener( Class aClass, MarshallerListener listener )
+    {
+        marshallerListener.setListener( aClass, listener );
     }
 
     private Class<? extends FrameConfiguration> getFrameConfigurationClass()

@@ -20,7 +20,8 @@ import ge.utils.xml.bind.TypedUnmarshallerListener;
 import ge.utils.xml.bind.UnmarshallerListener;
 import org.apache.commons.lang3.ClassUtils;
 import org.apache.commons.lang3.reflect.ConstructorUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.swing.*;
 import javax.xml.bind.JAXBContext;
@@ -45,7 +46,7 @@ import static org.springframework.util.Assert.notNull;
  */
 public abstract class Application extends ApplicationContextAwareObject
 {
-    private static Logger logger = Logger.getLogger( Application.class );
+    private static Logger logger = LogManager.getLogger( Application.class );
 
     protected static final File userDirectory = new File( System.getProperty( "user.home" ) );
 

@@ -1,7 +1,8 @@
 package ge.framework.application.core.utils;
 
 import ge.utils.VMDetails;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.lang.management.ManagementFactory;
@@ -19,7 +20,7 @@ import java.util.Map;
  */
 public class JavaApplicationRestarter extends ApplicationRestarter
 {
-    private static Logger logger = Logger.getLogger( JavaApplicationRestarter.class );
+    private static Logger logger = LogManager.getLogger( JavaApplicationRestarter.class );
 
     public static final String RESTART_PID = "ge.framework.application.restartPID";
 

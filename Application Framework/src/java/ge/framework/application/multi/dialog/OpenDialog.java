@@ -7,7 +7,7 @@ import com.jidesoft.swing.JideComboBox;
 import com.jidesoft.swing.PartialEtchedBorder;
 import com.jidesoft.swing.PartialLineBorder;
 import com.jidesoft.swing.PartialSide;
-import ge.framework.application.core.Application;
+import ge.framework.application.core.dialog.ApplicationStandardDialog;
 import ge.framework.application.multi.MultiApplication;
 import ge.framework.application.multi.dialog.utils.TypeFolderChooser;
 import ge.framework.frame.core.ApplicationFrame;
