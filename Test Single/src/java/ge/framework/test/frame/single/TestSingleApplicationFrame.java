@@ -5,12 +5,14 @@ import ge.framework.application.core.Application;
 import ge.framework.application.core.menu.RestartApplicationMenuItem;
 import ge.framework.frame.core.command.ApplicationCommandBar;
 import ge.framework.frame.core.command.ApplicationCommandMenuBar;
+import ge.framework.frame.core.menu.view.ViewMenu;
 import ge.framework.frame.single.SingleApplicationFrame;
+import ge.framework.frame.single.command.SinglePropertiesCommandBar;
 import ge.framework.frame.single.menu.file.SingleFileMenu;
+import ge.framework.frame.single.menu.window.SingleWindowMenu;
 import ge.utils.bundle.Resources;
-import ge.utils.controls.breadcrumb.BreadcrumbBar;
 
-import java.awt.*;
+import java.awt.HeadlessException;
 
 /**
  * Created with IntelliJ IDEA.
@@ -31,31 +33,31 @@ public class TestSingleApplicationFrame extends SingleApplicationFrame
     }
 
     @Override
-    protected void initialiseSingleApplicationFrame()
+    protected void initialiseApplicationFrame()
     {
         initialiseCommandMenuBar();
 
-        addFrame( new SingleTestFrame("Frame "+(index++)) );
-        addFrame( new SingleTestFrame("Frame "+(index++)) );
-        addFrame( new SingleTestFrame("Frame "+(index++)) );
-        addFrame( new SingleTestFrame("Frame "+(index++)) );
+        addFrame( new SingleTestFrame( "Frame " + ( index++ ) ) );
+        addFrame( new SingleTestFrame( "Frame " + ( index++ ) ) );
+        addFrame( new SingleTestFrame( "Frame " + ( index++ ) ) );
+        addFrame( new SingleTestFrame( "Frame " + ( index++ ) ) );
 
         SingleTestFrame singleTestFrame = new SingleTestFrame("Frame "+(index++));
         singleTestFrame.setVisible( false );
         addFrame( singleTestFrame );
 
+        addFrame( new SingleTestFrame( "Frame " + ( index++ ) ) );
+        addFrame( new SingleTestFrame( "Frame " + ( index++ ) ) );
+        addFrame( new SingleTestFrame( "Frame " + ( index++ ) ) );
         addFrame( new SingleTestFrame("Frame "+(index++)) );
         addFrame( new SingleTestFrame("Frame "+(index++)) );
-        addFrame( new SingleTestFrame("Frame "+(index++)) );
-        addFrame( new SingleTestFrame("Frame "+(index++)) );
-        addFrame( new SingleTestFrame("Frame "+(index++)) );
-        addFrame( new SingleTestFrame("Frame "+(index++)) );
-        addFrame( new SingleTestFrame("Frame "+(index++)) );
-        addFrame( new SingleTestFrame("Frame "+(index++)) );
-        addFrame( new SingleTestFrame("Frame "+(index++)) );
-        addFrame( new SingleTestFrame("Frame "+(index++)) );
-        addFrame( new SingleTestFrame("Frame "+(index++)) );
-        addFrame( new SingleTestFrame("Frame "+(index++)) );
+        addFrame( new SingleTestFrame( "Frame " + ( index++ ) ) );
+        addFrame( new SingleTestFrame( "Frame " + ( index++ ) ) );
+        addFrame( new SingleTestFrame( "Frame " + ( index++ ) ) );
+        addFrame( new SingleTestFrame( "Frame " + ( index++ ) ) );
+        addFrame( new SingleTestFrame( "Frame " + ( index++ ) ) );
+        addFrame( new SingleTestFrame( "Frame " + ( index++ ) ) );
+        addFrame( new SingleTestFrame( "Frame " + ( index++ ) ) );
         addFrame( new SingleTestFrame("Frame "+(index++)) );
         addFrame( new SingleTestFrame("Frame "+(index++)) );
         addFrame( new SingleTestFrame("Frame "+(index++)) );
@@ -113,16 +115,21 @@ public class TestSingleApplicationFrame extends SingleApplicationFrame
         commandMenuBar.setPaintBackground( false );
         commandMenuBar.setChevronAlwaysVisible( false );
 
-        SingleFileMenu fileMenu = ( SingleFileMenu ) getFileMenu();
-        RestartApplicationMenuItem applicationComponent = new RestartApplicationMenuItem( this );
-        applicationComponent.initialise();
-        fileMenu.addPostPropertiesMenuComponent( applicationComponent );
+        SingleFileMenu fileMenu = new SingleFileMenu( this );
+        fileMenu.initialise();
+        RestartApplicationMenuItem restartApplicationMenuItem = new RestartApplicationMenuItem( this );
+        restartApplicationMenuItem.initialise();
+        fileMenu.addPostPropertiesMenuComponent( restartApplicationMenuItem );
         commandMenuBar.add( fileMenu );
-        commandMenuBar.add( getViewMenu() );
-        commandMenuBar.add( getWindowMenu() );
+        ViewMenu viewMenu = new ViewMenu( this );
+        viewMenu.initialise();
+        commandMenuBar.add( viewMenu );
+        SingleWindowMenu windowMenu = new SingleWindowMenu( this );
+        windowMenu.initialise();
+        commandMenuBar.add( windowMenu );
 
         addDockableBar( commandMenuBar );
-        addDockableBar( getPropertiesCommandBar() );
+        addDockableBar( new SinglePropertiesCommandBar( this ) );
         addDockableBar( new ApplicationCommandBar( "Command Bar " + index++ ) );
         addDockableBar( new ApplicationCommandBar( "Command Bar " + index++ ) );
         addDockableBar( new ApplicationCommandBar( "Command Bar " + index++ ) );
@@ -155,12 +162,6 @@ public class TestSingleApplicationFrame extends SingleApplicationFrame
         addDockableBar( new ApplicationCommandBar( "Command Bar " + index++ ) );
         addDockableBar( new ApplicationCommandBar( "Command Bar " + index++ ) );
         addDockableBar( new ApplicationCommandBar( "Command Bar " + index++ ) );
-    }
-
-    @Override
-    protected BreadcrumbBar createBreadcrumbBar()
-    {
-        return null;
     }
 
     @Override

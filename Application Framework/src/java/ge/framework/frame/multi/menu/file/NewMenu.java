@@ -1,12 +1,11 @@
 package ge.framework.frame.multi.menu.file;
 
-import ge.framework.application.core.Application;
 import ge.framework.application.multi.MultiApplication;
 import ge.framework.application.multi.menu.item.NewMenuItem;
 import ge.framework.application.multi.menu.item.OtherNewMenuItem;
-import ge.framework.frame.core.ApplicationFrame;
 import ge.framework.frame.core.menu.utils.ApplicationFrameMenu;
 import ge.framework.frame.core.menu.utils.ApplicationFrameMenuSeparator;
+import ge.framework.frame.multi.MultiApplicationFrame;
 import ge.framework.frame.multi.objects.FrameDefinition;
 import ge.utils.bundle.Resources;
 
@@ -28,7 +27,7 @@ public class NewMenu extends ApplicationFrameMenu
 
     private OtherNewMenuItem otherNewMenuItem;
 
-    public NewMenu( ApplicationFrame applicationFrame )
+    public NewMenu( MultiApplicationFrame applicationFrame )
     {
         super(applicationFrame);
     }

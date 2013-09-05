@@ -2,15 +2,7 @@ package ge.framework.frame.multi;
 
 import ge.framework.application.core.Application;
 import ge.framework.frame.core.ApplicationFrame;
-import ge.framework.frame.core.command.properties.PropertiesCommandBar;
-import ge.framework.frame.core.menu.file.FileMenu;
-import ge.framework.frame.core.menu.window.WindowMenu;
-import ge.framework.frame.multi.command.FileCommandBar;
-import ge.framework.frame.multi.command.MultiPropertiesCommandBar;
 import ge.framework.frame.multi.dialog.FramePropertiesDialog;
-import ge.framework.frame.multi.dialog.properties.AbstractFramePropertiesPage;
-import ge.framework.frame.multi.menu.file.MultiFileMenu;
-import ge.framework.frame.multi.menu.window.MultiWindowMenu;
 import ge.framework.frame.multi.objects.FrameConfiguration;
 import ge.framework.frame.multi.objects.FrameDefinition;
 import ge.framework.frame.multi.objects.FrameInstanceDetailsObject;
@@ -26,21 +18,22 @@ import org.apache.commons.lang3.reflect.ConstructorUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.swing.*;
+import javax.swing.Icon;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-import java.awt.*;
+import java.awt.HeadlessException;
+import java.awt.Image;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.util.*;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -67,39 +60,11 @@ public abstract class MultiApplicationFrame extends ApplicationFrame
 
     private LockFile lockFile;
 
-    private FileMenu fileMenu;
-
-    private WindowMenu windowMenu;
-
-    private FileCommandBar fileCommandBar;
-
-    private PropertiesCommandBar propertiesCommandBar;
-
     protected MultiApplicationFrame( Application application, FrameDefinition frameDefinition ) throws HeadlessException
     {
         super( application );
         this.frameDefinition = frameDefinition;
     }
-
-    @Override
-    protected final void initialiseApplicationFrame()
-    {
-        fileMenu = new MultiFileMenu(this);
-        fileMenu.initialise();
-
-        windowMenu = new MultiWindowMenu(this);
-        windowMenu.initialise();
-
-        fileCommandBar = new FileCommandBar( this );
-
-        propertiesCommandBar = new MultiPropertiesCommandBar(this);
-        propertiesCommandBar.initialise();
-        // TODO: other
-
-        initialiseMultiApplicationFrame();
-    }
-
-    protected abstract void initialiseMultiApplicationFrame();
 
     public final void open( FrameInstanceDetailsObject frameInstanceDetailsObject )
     {
@@ -290,29 +255,6 @@ public abstract class MultiApplicationFrame extends ApplicationFrame
         catch ( IOException e )
         {
         }
-    }
-
-    @Override
-    public FileMenu getFileMenu()
-    {
-        return fileMenu;
-    }
-
-    @Override
-    public WindowMenu getWindowMenu()
-    {
-        return windowMenu;
-    }
-
-    public FileCommandBar getFileCommandBar()
-    {
-        return fileCommandBar;
-    }
-
-    @Override
-    public PropertiesCommandBar getPropertiesCommandBar()
-    {
-        return propertiesCommandBar;
     }
 
     @Override

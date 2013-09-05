@@ -4,17 +4,12 @@ import ge.framework.application.core.Application;
 import ge.framework.application.single.SingleApplication;
 import ge.framework.application.single.objects.SingleApplicationConfiguration;
 import ge.framework.frame.core.ApplicationFrame;
-import ge.framework.frame.core.command.properties.PropertiesCommandBar;
-import ge.framework.frame.core.menu.file.FileMenu;
-import ge.framework.frame.core.menu.window.WindowMenu;
-import ge.framework.frame.single.command.SinglePropertiesCommandBar;
-import ge.framework.frame.single.menu.file.SingleFileMenu;
-import ge.framework.frame.single.menu.window.SingleWindowMenu;
 import ge.utils.bundle.Resources;
 import ge.utils.text.StringArgumentMessageFormat;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.Icon;
+import java.awt.HeadlessException;
+import java.awt.Image;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
@@ -30,62 +25,19 @@ public abstract class SingleApplicationFrame extends ApplicationFrame
     private static final Resources resources =
             Resources.getInstance( "ge.framework.frame.single" );
 
-    private FileMenu fileMenu;
-
-    private WindowMenu windowMenu;
-
-    private PropertiesCommandBar propertiesCommandBar;
-
     public SingleApplicationFrame( Application application ) throws HeadlessException
     {
         super( application );
     }
 
     @Override
-    protected final void initialiseApplicationFrame()
-    {
-        fileMenu = new SingleFileMenu( this );
-        fileMenu.initialise();
-
-        windowMenu = new SingleWindowMenu(this);
-        windowMenu.initialise();
-
-        propertiesCommandBar = new SinglePropertiesCommandBar(this);
-        propertiesCommandBar.initialise();
-
-        initialiseSingleApplicationFrame();
-    }
-
-    protected abstract void initialiseSingleApplicationFrame();
-
-    @Override
     protected final void saveFrameEx()
     {
-
     }
 
     @Override
     protected final void processWindowCloseEx()
     {
-
-    }
-
-    @Override
-    public FileMenu getFileMenu()
-    {
-        return fileMenu;
-    }
-
-    @Override
-    public WindowMenu getWindowMenu()
-    {
-        return windowMenu;
-    }
-
-    @Override
-    public PropertiesCommandBar getPropertiesCommandBar()
-    {
-        return propertiesCommandBar;
     }
 
     @Override

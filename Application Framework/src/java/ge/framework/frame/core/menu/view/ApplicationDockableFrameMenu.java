@@ -25,6 +25,7 @@ public class ApplicationDockableFrameMenu extends ApplicationFrameMenu
     private static final Resources resources = Resources.getInstance( "ge.framework.frame.core" );
 
     private Map<ApplicationDockableFrame,ApplicationDockableFrameMenuItem> frameMenuItems = null;
+
     private OtherDockableFramesMenuItem otherDockableFramesMenuItem;
 
     public ApplicationDockableFrameMenu( ApplicationFrame applicationFrame )

@@ -4,7 +4,6 @@ import ge.framework.application.multi.MultiApplication;
 import ge.framework.frame.core.ApplicationFrame;
 import ge.framework.frame.core.menu.utils.ApplicationFrameMenuSeparator;
 import ge.framework.frame.core.menu.window.WindowMenu;
-import ge.framework.frame.core.menu.window.item.ApplicationDocumentMenuItem;
 import ge.framework.frame.multi.MultiApplicationFrame;
 import ge.framework.frame.multi.menu.window.item.ApplicationWindowMenuItem;
 import ge.framework.frame.multi.menu.window.item.NextWindowMenuItem;
@@ -28,7 +27,7 @@ public class MultiWindowMenu extends WindowMenu
 
     private Map<MultiApplicationFrame,ApplicationWindowMenuItem> applicationFrameMenuItems = null;
 
-    public MultiWindowMenu( ApplicationFrame applicationFrame )
+    public MultiWindowMenu( MultiApplicationFrame applicationFrame )
     {
         super(applicationFrame);
     }

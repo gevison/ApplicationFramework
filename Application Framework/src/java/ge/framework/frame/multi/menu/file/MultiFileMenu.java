@@ -1,15 +1,12 @@
 package ge.framework.frame.multi.menu.file;
 
-import ge.framework.application.core.Application;
 import ge.framework.application.multi.MultiApplication;
 import ge.framework.application.multi.menu.RecentlyOpenedMenu;
 import ge.framework.application.multi.menu.item.CloseMenuItem;
 import ge.framework.application.multi.menu.item.NewMenuItem;
 import ge.framework.application.multi.menu.item.OpenMenuItem;
-import ge.framework.frame.core.ApplicationFrame;
 import ge.framework.frame.core.menu.file.FileMenu;
 import ge.framework.frame.core.menu.utils.ApplicationFrameMenuComponent;
-import ge.framework.frame.core.menu.utils.ApplicationFrameMenuItem;
 import ge.framework.frame.multi.MultiApplicationFrame;
 import ge.framework.frame.multi.menu.file.item.FramePropertiesMenuItem;
 import ge.framework.frame.multi.objects.FrameDefinition;
@@ -41,7 +38,7 @@ public class MultiFileMenu extends FileMenu
 
     private List<ApplicationFrameMenuComponent> postPropertiesMenuItems = new ArrayList<ApplicationFrameMenuComponent>();
 
-    public MultiFileMenu( ApplicationFrame applicationFrame )
+    public MultiFileMenu( MultiApplicationFrame applicationFrame )
     {
         super( applicationFrame );
     }
@@ -65,7 +62,7 @@ public class MultiFileMenu extends FileMenu
         }
         else
         {
-            newMenu = new NewMenu(applicationFrame);
+            newMenu = new NewMenu( ( MultiApplicationFrame ) applicationFrame );
             newMenu.initialise();
         }
 

@@ -6,14 +6,10 @@ import com.jidesoft.swing.ContentContainer;
 import ge.framework.application.core.Application;
 import ge.framework.application.core.enums.CloseOrExitEnum;
 import ge.framework.frame.core.command.ApplicationCommandBarComponent;
-import ge.framework.frame.core.command.properties.PropertiesCommandBar;
 import ge.framework.frame.core.dockable.ApplicationDockableFrame;
 import ge.framework.frame.core.document.ApplicationDocumentComponent;
 import ge.framework.frame.core.manager.ApplicationDockableBarManager;
 import ge.framework.frame.core.manager.ApplicationDockingManager;
-import ge.framework.frame.core.menu.file.FileMenu;
-import ge.framework.frame.core.menu.view.ViewMenu;
-import ge.framework.frame.core.menu.window.WindowMenu;
 import ge.framework.frame.core.persistence.ApplicationLayoutPersistenceManager;
 import ge.framework.frame.core.status.ApplicationStatusBar;
 import ge.framework.frame.core.status.enums.StatusBarConstraint;
@@ -22,8 +18,15 @@ import ge.utils.os.OS;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.Icon;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.WindowConstants;
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.HeadlessException;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
@@ -41,15 +44,13 @@ public abstract class ApplicationFrame extends JFrame
 
     private ApplicationLayoutPersistenceManager layoutPersistenceManager;
 
-    private BreadcrumbBar breadcrumbBar;
+    private JScrollPane breadcrumbBarScrollPane;
 
     private ApplicationStatusBar statusBar;
 
     private boolean manualClose;
 
     private Application application;
-
-    private ViewMenu viewMenu;
 
     public ApplicationFrame( Application application ) throws HeadlessException
     {
@@ -69,11 +70,6 @@ public abstract class ApplicationFrame extends JFrame
         {
             setIconImage( getSmallImage() );
         }
-
-        viewMenu = new ViewMenu( this );
-        viewMenu.initialise();
-
-        // TODO: Menus
 
         initialiseApplicationFrame();
     }
@@ -104,17 +100,6 @@ public abstract class ApplicationFrame extends JFrame
         logger.trace( "Initialising docking manager." );
         dockingManager = new ApplicationDockingManager( this, dockableBarManager );
 
-        breadcrumbBar = createBreadcrumbBar();
-
-        if ( breadcrumbBar != null )
-        {
-            Container contentContainer = dockingManager.getContentContainer();
-            JScrollPane scrollPane = new JScrollPane( breadcrumbBar, JScrollPane.VERTICAL_SCROLLBAR_NEVER,
-                                                      JScrollPane.HORIZONTAL_SCROLLBAR_NEVER );
-            scrollPane.setBorder( null );
-            contentContainer.add( scrollPane, BorderLayout.BEFORE_FIRST_LINE );
-        }
-
         logger.trace( "Initialising status bar." );
         statusBar = new ApplicationStatusBar();
         localContentContainer.add( statusBar, BorderLayout.AFTER_LAST_LINE );
@@ -125,7 +110,31 @@ public abstract class ApplicationFrame extends JFrame
         layoutPersistenceManager.addLayoutPersistence( dockingManager );
     }
 
-    protected abstract BreadcrumbBar createBreadcrumbBar();
+    public void setBreadcrumbBar(BreadcrumbBar breadcrumbBar)
+    {
+        removeBreadcrumbBar();
+
+        if ( breadcrumbBar != null )
+        {
+            Container contentContainer = dockingManager.getContentContainer();
+            breadcrumbBarScrollPane = new JScrollPane( breadcrumbBar, JScrollPane.VERTICAL_SCROLLBAR_NEVER,
+                                                      JScrollPane.HORIZONTAL_SCROLLBAR_NEVER );
+            breadcrumbBarScrollPane.setBorder( null );
+            contentContainer.add( breadcrumbBarScrollPane, BorderLayout.BEFORE_FIRST_LINE );
+        }
+    }
+
+    private void removeBreadcrumbBar()
+    {
+        if ( breadcrumbBarScrollPane != null )
+        {
+            Container contentContainer = dockingManager.getContentContainer();
+
+            contentContainer.remove( breadcrumbBarScrollPane );
+
+            breadcrumbBarScrollPane = null;
+        }
+    }
 
     public void addFrame( ApplicationDockableFrame dockableFrame )
     {
@@ -361,17 +370,6 @@ public abstract class ApplicationFrame extends JFrame
     {
         return application;
     }
-
-    public abstract FileMenu getFileMenu();
-
-    public ViewMenu getViewMenu()
-    {
-        return viewMenu;
-    }
-
-    public abstract WindowMenu getWindowMenu();
-
-    public abstract PropertiesCommandBar getPropertiesCommandBar();
 
     public final boolean isManualClose()
     {

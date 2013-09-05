@@ -3,11 +3,14 @@ package ge.framework.test.frame.single;
 import com.jidesoft.action.DockableBarContext;
 import ge.framework.application.core.Application;
 import ge.framework.frame.core.command.ApplicationCommandMenuBar;
+import ge.framework.frame.core.menu.view.ViewMenu;
 import ge.framework.frame.multi.MultiApplicationFrame;
+import ge.framework.frame.multi.command.FileCommandBar;
+import ge.framework.frame.multi.command.MultiPropertiesCommandBar;
 import ge.framework.frame.multi.menu.file.MultiFileMenu;
+import ge.framework.frame.multi.menu.window.MultiWindowMenu;
 import ge.framework.frame.multi.objects.FrameDefinition;
 import ge.utils.bundle.Resources;
-import ge.utils.controls.breadcrumb.BreadcrumbBar;
 import ge.utils.properties.PropertiesDialogPage;
 
 import java.awt.HeadlessException;
@@ -33,7 +36,7 @@ public class TestMultiApplicationFrame extends MultiApplicationFrame
     }
 
     @Override
-    protected void initialiseMultiApplicationFrame()
+    protected void initialiseApplicationFrame()
     {
         initialiseCommandMenuBar();
     }
@@ -64,20 +67,21 @@ public class TestMultiApplicationFrame extends MultiApplicationFrame
         commandMenuBar.setPaintBackground( false );
         commandMenuBar.setChevronAlwaysVisible( false );
 
-        MultiFileMenu fileMenu = ( MultiFileMenu ) getFileMenu();
+        MultiFileMenu fileMenu = new MultiFileMenu( this );
+        fileMenu.initialise();
         commandMenuBar.add( fileMenu );
-        commandMenuBar.add( getViewMenu() );
-        commandMenuBar.add( getWindowMenu() );
+        ViewMenu viewMenu = new ViewMenu( this );
+        viewMenu.initialise();
+        commandMenuBar.add( viewMenu );
+        MultiWindowMenu windowMenu = new MultiWindowMenu( this );
+        windowMenu.initialise();
+        commandMenuBar.add( windowMenu );
 
         addDockableBar( commandMenuBar );
-        addDockableBar( getFileCommandBar() );
-        addDockableBar( getPropertiesCommandBar() );
-    }
-
-    @Override
-    protected BreadcrumbBar createBreadcrumbBar()
-    {
-        return null;
+        FileCommandBar fileCommandBar = new FileCommandBar( this );
+        addDockableBar( fileCommandBar );
+        MultiPropertiesCommandBar propertiesCommandBar = new MultiPropertiesCommandBar( this );
+        addDockableBar( propertiesCommandBar );
     }
 
     @Override

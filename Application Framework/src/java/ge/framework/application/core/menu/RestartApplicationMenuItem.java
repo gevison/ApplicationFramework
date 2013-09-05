@@ -1,15 +1,13 @@
 package ge.framework.application.core.menu;
 
-import ge.framework.application.core.Application;
 import ge.framework.frame.core.ApplicationFrame;
 import ge.framework.frame.core.menu.utils.ApplicationFrameMenuItem;
 import ge.utils.bundle.Resources;
-import ge.utils.os.OS;
 
-import javax.swing.KeyStroke;
-import java.awt.Event;
+import javax.swing.JFrame;
+import java.awt.GraphicsConfiguration;
+import java.awt.GraphicsDevice;
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
 
 /**
  * Created with IntelliJ IDEA.
@@ -32,13 +30,37 @@ public class RestartApplicationMenuItem extends ApplicationFrameMenuItem
     {
         setText( resources.getResourceString( RestartApplicationMenuItem.class, "label" ) );
         setStatusBarText( resources.getResourceString( RestartApplicationMenuItem.class, "status" ) );
+
+        GraphicsConfiguration graphicsConfiguration = applicationFrame.getGraphicsConfiguration();
+
+        GraphicsDevice device = graphicsConfiguration.getDevice();
+
+        setEnabled( device.isFullScreenSupported() );
     }
 
     @Override
     public void actionPerformed( ActionEvent e )
     {
-        Application application = applicationFrame.getApplication();
-        application.processRestart();
+//        Application application = applicationFrame.getApplication();
+//        application.processRestart();
+
+        applicationFrame.setUndecorated( true );
+        applicationFrame.setExtendedState( JFrame.MAXIMIZED_BOTH );
+        applicationFrame.toFront();
+
+
+//        GraphicsConfiguration graphicsConfiguration = applicationFrame.getGraphicsConfiguration();
+//
+//        GraphicsDevice device = graphicsConfiguration.getDevice();
+//
+//        try
+//        {
+//            device.setFullScreenWindow( applicationFrame );
+//        }
+//        finally
+//        {
+//            device.setFullScreenWindow( null );
+//        }
     }
 
     @Override
