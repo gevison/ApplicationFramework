@@ -1,6 +1,7 @@
 *.class
 out
 sys.log*
+sys2.log*
 
 plugins
 
