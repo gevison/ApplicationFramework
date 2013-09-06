@@ -2,8 +2,7 @@ package ge.framework.frame.multi.menu.file.item;
 
 import ge.framework.frame.core.ApplicationFrame;
 import ge.framework.frame.core.menu.utils.ApplicationFrameMenuItem;
-import ge.framework.frame.multi.MultiApplicationFrame;
-import ge.framework.frame.multi.objects.FrameDefinition;
+import ge.framework.frame.multi.MultiFrameApplicationFrame;
 import ge.utils.bundle.Resources;
 import ge.utils.text.StringArgumentMessageFormat;
 
@@ -32,12 +31,9 @@ public class FramePropertiesMenuItem extends ApplicationFrameMenuItem
     {
         String label = resources.getResourceString( FramePropertiesMenuItem.class, "label" );
 
-        MultiApplicationFrame multiApplicationFrame = ( MultiApplicationFrame ) applicationFrame;
-
-        FrameDefinition frameDefinition = multiApplicationFrame.getFrameDefinition();
+        MultiFrameApplicationFrame multiFrameApplicationFrame = ( MultiFrameApplicationFrame ) applicationFrame;
 
         Map<String, Object> arguments = new HashMap();
-        arguments.put( "frameDefinition", frameDefinition.getName() );
 
         label = StringArgumentMessageFormat.format( label, arguments );
 
@@ -50,9 +46,9 @@ public class FramePropertiesMenuItem extends ApplicationFrameMenuItem
     @Override
     public void actionPerformed( ActionEvent e )
     {
-        MultiApplicationFrame multiApplicationFrame = ( MultiApplicationFrame ) applicationFrame;
+        MultiFrameApplicationFrame multiFrameApplicationFrame = ( MultiFrameApplicationFrame ) applicationFrame;
 
-        multiApplicationFrame.processFrameProperties();
+        multiFrameApplicationFrame.processFrameProperties();
     }
 
     @Override

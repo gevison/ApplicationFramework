@@ -9,9 +9,7 @@ import com.jidesoft.swing.PartialLineBorder;
 import com.jidesoft.swing.PartialSide;
 import com.jidesoft.swing.StyleRange;
 import com.jidesoft.swing.StyledLabel;
-import ge.framework.application.core.Application;
-import ge.framework.application.multi.MultiApplication;
-import ge.framework.frame.multi.objects.FrameDefinition;
+import ge.framework.application.multi.MultiFrameApplication;
 import ge.framework.frame.multi.objects.FrameInstanceDetailsObject;
 import ge.utils.bundle.Resources;
 import ge.utils.text.StringArgumentMessageFormat;
@@ -30,7 +28,6 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,9 +49,9 @@ public class RecentPanel extends JPanel implements ActionListener
 
     private JideButton clearButton;
 
-    private MultiApplication application;
+    private MultiFrameApplication application;
 
-    public RecentPanel( MultiApplication application )
+    public RecentPanel( MultiFrameApplication application )
     {
         super( new BorderLayout() );
         this.application = application;
@@ -171,7 +168,7 @@ public class RecentPanel extends JPanel implements ActionListener
 
                 String problem = "";
 
-                if ( frameInstanceDetailsObject.doesConfigurationFileExist() == false )
+                if ( application.doesFrameConfigurationFileExist(frameInstanceDetailsObject) == false )
                 {
                     problem = problemMissing;
 
@@ -179,7 +176,7 @@ public class RecentPanel extends JPanel implements ActionListener
 
                     setBackground( red );
                 }
-                else if ( frameInstanceDetailsObject.isConfigurationFileLocked() == true )
+                else if ( application.isFrameConfigurationFileLocked(frameInstanceDetailsObject) == true )
                 {
                     problem = problemLocked;
 
@@ -209,9 +206,7 @@ public class RecentPanel extends JPanel implements ActionListener
                 addStyleRange( new StyleRange( 0, carriageReturn, Font.BOLD ) );
                 addStyleRange( new StyleRange( carriageReturn + 1, -1, Color.DARK_GRAY ) );
 
-                FrameDefinition frameDefinition = frameInstanceDetailsObject.getFrameDefinition();
-
-                setIcon( frameDefinition.getLargeIcon() );
+                setIcon( application.getLargeIcon() );
             }
             else
             {

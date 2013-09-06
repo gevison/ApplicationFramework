@@ -1,7 +1,7 @@
 package ge.framework.application.multi.dialog.utils;
 
 import com.jidesoft.swing.FolderChooser;
-import ge.framework.frame.multi.objects.FrameDefinition;
+import ge.framework.application.multi.MultiFrameApplication;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,12 +11,12 @@ import ge.framework.frame.multi.objects.FrameDefinition;
  */
 public class TypeFolderChooser extends FolderChooser
 {
-    private FrameDefinition type;
+    private MultiFrameApplication application;
 
-    public TypeFolderChooser( FrameDefinition type )
+    public TypeFolderChooser( MultiFrameApplication application )
     {
-        super( new TypeFileSystemView( type ) );
-        this.type = type;
+        super( new TypeFileSystemView( application ) );
+        this.application = application;
 
         setMultiSelectionEnabled( false );
     }
@@ -24,7 +24,7 @@ public class TypeFolderChooser extends FolderChooser
     @Override
     public void approveSelection()
     {
-        if ( type.isDirectory( getSelectedFile() ) == true )
+        if ( application.isFrameLocation( getSelectedFile() ) == true )
         {
             super.approveSelection();
         }

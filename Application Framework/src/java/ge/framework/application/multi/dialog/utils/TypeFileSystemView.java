@@ -1,6 +1,6 @@
 package ge.framework.application.multi.dialog.utils;
 
-import ge.framework.frame.multi.objects.FrameDefinition;
+import ge.framework.application.multi.MultiFrameApplication;
 
 import javax.swing.Icon;
 import javax.swing.filechooser.FileSystemView;
@@ -17,11 +17,11 @@ public class TypeFileSystemView extends FileSystemView
 {
     private FileSystemView fsv = FileSystemView.getFileSystemView();
 
-    private FrameDefinition frameDefinition;
+    private MultiFrameApplication application;
 
-    public TypeFileSystemView( FrameDefinition frameDefinition )
+    public TypeFileSystemView( MultiFrameApplication application )
     {
-        this.frameDefinition = frameDefinition;
+        this.application = application;
     }
 
     @Override
@@ -33,9 +33,9 @@ public class TypeFileSystemView extends FileSystemView
     @Override
     public Icon getSystemIcon( File f )
     {
-        if ( ( f.isDirectory() == true ) && ( frameDefinition.isDirectory( f ) == true ) )
+        if ( ( f.isDirectory() == true ) && ( application.isFrameLocation( f ) == true ) )
         {
-            return frameDefinition.getSmallIcon();
+            return application.getSmallIcon();
         }
         else
         {

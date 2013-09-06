@@ -1,9 +1,8 @@
 package ge.framework.application.multi.menu.item;
 
-import ge.framework.application.multi.MultiApplication;
+import ge.framework.application.multi.MultiFrameApplication;
 import ge.framework.frame.core.ApplicationFrame;
 import ge.framework.frame.core.menu.utils.ApplicationFrameMenuItem;
-import ge.framework.frame.multi.objects.FrameDefinition;
 import ge.framework.frame.multi.objects.FrameInstanceDetailsObject;
 import ge.utils.bundle.Resources;
 import ge.utils.text.StringArgumentMessageFormat;
@@ -39,11 +38,13 @@ public class OpenRecentMenuItem extends ApplicationFrameMenuItem
 
         String label;
 
-        if ( detailsObject.doesConfigurationFileExist() == false )
+        MultiFrameApplication application = ( MultiFrameApplication ) applicationFrame.getApplication();
+
+        if ( application.doesFrameConfigurationFileExist( detailsObject ) == false )
         {
             label = resources.getResourceString( getClass(), "missingLabel" );
         }
-        else if ( detailsObject.isConfigurationFileLocked() == true )
+        else if ( application.isFrameConfigurationFileLocked( detailsObject ) == true )
         {
             label = resources.getResourceString( getClass(), "lockedLabel" );
             setEnabled( false );
@@ -61,15 +62,13 @@ public class OpenRecentMenuItem extends ApplicationFrameMenuItem
         setText( label );
         setStatusBarText( statusLabel );
 
-        FrameDefinition frameDefinition = detailsObject.getFrameDefinition();
-
-        setIcon( frameDefinition.getSmallIcon() );
+        setIcon( application.getSmallIcon() );
     }
 
     @Override
     public void actionPerformed( ActionEvent e )
     {
-        MultiApplication application = ( MultiApplication ) applicationFrame.getApplication();
+        MultiFrameApplication application = ( MultiFrameApplication ) applicationFrame.getApplication();
         application.openFrame( applicationFrame, detailsObject, true );
     }
 

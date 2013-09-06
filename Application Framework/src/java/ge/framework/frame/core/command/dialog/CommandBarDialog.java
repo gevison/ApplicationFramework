@@ -67,7 +67,9 @@ public class CommandBarDialog extends StandardDialog implements ActionListener
         setSize( 450, 500 );
         setMinimumSize( new Dimension( 450, 500 ) );
 
-        setIconImage( applicationFrame.getSmallImage() );
+        Application application = applicationFrame.getApplication();
+
+        setIconImage( application.getSmallImage() );
         setTitle( resources.getResourceString( CommandBarDialog.class, "title" ) );
     }
 

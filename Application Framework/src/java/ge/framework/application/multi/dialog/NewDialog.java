@@ -1,17 +1,14 @@
 package ge.framework.application.multi.dialog;
 
 import com.jidesoft.dialog.ButtonPanel;
-import com.jidesoft.list.StyledListCellRenderer;
 import com.jidesoft.swing.FolderChooser;
 import com.jidesoft.swing.JideBoxLayout;
-import com.jidesoft.swing.JideComboBox;
 import com.jidesoft.swing.PartialEtchedBorder;
 import com.jidesoft.swing.PartialLineBorder;
 import com.jidesoft.swing.PartialSide;
 import ge.framework.application.core.dialog.ApplicationStandardDialog;
-import ge.framework.application.multi.MultiApplication;
+import ge.framework.application.multi.MultiFrameApplication;
 import ge.framework.frame.core.ApplicationFrame;
-import ge.framework.frame.multi.objects.FrameDefinition;
 import ge.framework.frame.multi.objects.FrameInstanceDetailsObject;
 import ge.utils.bundle.Resources;
 import ge.utils.file.FileUtils;
@@ -29,12 +26,10 @@ import org.apache.logging.log4j.Logger;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -50,7 +45,6 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class NewDialog extends ApplicationStandardDialog implements ActionListener,
@@ -80,8 +74,6 @@ public class NewDialog extends ApplicationStandardDialog implements ActionListen
 
     private boolean result;
 
-    private JideComboBox frameDefinitionsField;
-
     private JTextField pathField;
 
     private JButton browseButton;
@@ -92,26 +84,17 @@ public class NewDialog extends ApplicationStandardDialog implements ActionListen
 
     private boolean pathEdited = false;
 
-    private List<FrameDefinition> frameDefinitions;
-
-    private FrameDefinition frameDefinition;
-
     private FrameInstanceDetailsObject frameInstanceDetailsObject;
 
-    public NewDialog( ApplicationFrame applicationFrame, MultiApplication application, FrameDefinition frameDefinition )
+    public NewDialog( ApplicationFrame applicationFrame, MultiFrameApplication application )
     {
         super( applicationFrame, application);
-
-        this.frameDefinition = frameDefinition;
 
         initialiseDialog();
     }
 
     private void initialiseDialog()
     {
-        MultiApplication multiApplication = ( MultiApplication ) application;
-        frameDefinitions = multiApplication.getFrameDefinitions();
-
         setModal( true );
 
         setTitle( resources.getResourceString( NewDialog.class, "title" ) );
@@ -138,21 +121,6 @@ public class NewDialog extends ApplicationStandardDialog implements ActionListen
     {
         if ( contentPanel == null )
         {
-            DefaultComboBoxModel comboBoxModel = new DefaultComboBoxModel();
-
-            for ( FrameDefinition frameDefinition : frameDefinitions )
-            {
-                comboBoxModel.addElement( frameDefinition );
-            }
-
-            frameDefinitionsField = new JideComboBox( comboBoxModel );
-            frameDefinitionsField.setRenderer( new FrameDefinitionRenderer() );
-
-            if ( ( frameDefinition != null ) && ( frameDefinitions.contains( frameDefinition ) == true ) )
-            {
-                frameDefinitionsField.setSelectedItem( frameDefinition );
-            }
-
             nameField = new JTextField( DEFAULT_NAME, 40 );
             nameField.addCaretListener( this );
 
@@ -171,11 +139,6 @@ public class NewDialog extends ApplicationStandardDialog implements ActionListen
             contentPanel = new JPanel();
             contentPanel.setLayout( new JideBoxLayout( contentPanel, JideBoxLayout.Y_AXIS, 3 ) );
             contentPanel.setBorder( BorderFactory.createEmptyBorder( 10, 10, 10, 10 ) );
-
-            contentPanel
-                    .add( new JLabel( resources.getResourceString( NewDialog.class, "type", "label" ) ),
-                          JideBoxLayout.FIX );
-            contentPanel.add( frameDefinitionsField, JideBoxLayout.FIX );
 
             contentPanel
                     .add( new JLabel( resources.getResourceString( NewDialog.class, "name", "label" ) ),
@@ -263,17 +226,17 @@ public class NewDialog extends ApplicationStandardDialog implements ActionListen
                 File location = new File( pathField.getText() );
 
                 FrameInstanceDetailsObject detailsObject = new FrameInstanceDetailsObject();
-                FrameDefinition frameDefinition = ( FrameDefinition ) frameDefinitionsField.getSelectedItem();
-                detailsObject.setFrameDefinition( frameDefinition );
                 detailsObject.setName( nameField.getText() );
                 detailsObject.setLocation( location );
+
+                MultiFrameApplication multiFrameApplication = ( MultiFrameApplication ) application;
 
                 if ( location.exists() == false )
                 {
                     String message = resources.getResourceString( NewDialog.class, "message", "nodirectory" );
 
                     Map<String, Object> arguments = new HashMap<String, Object>();
-                    arguments.put( "frameDefinition", frameDefinition.getName() );
+                    arguments.put( "frameDefinition", multiFrameApplication.getFrameName() );
 
                     message = StringArgumentMessageFormat.format( message, arguments );
 
@@ -288,12 +251,12 @@ public class NewDialog extends ApplicationStandardDialog implements ActionListen
                         dispose();
                     }
                 }
-                else if ( detailsObject.isDirectory() == true )
+                else if ( multiFrameApplication.doesFrameConfigurationFileExist( detailsObject ) == true )
                 {
                     String message = resources.getResourceString( NewDialog.class, "message", "alreadyexists" );
 
                     Map<String, Object> arguments = new HashMap<String, Object>();
-                    arguments.put( "frameDefinition", frameDefinition.getName() );
+                    arguments.put( "frameDefinition", multiFrameApplication.getFrameName() );
 
                     message = StringArgumentMessageFormat.format( message, arguments );
 
@@ -470,8 +433,9 @@ public class NewDialog extends ApplicationStandardDialog implements ActionListen
         }
         else
         {
-            FrameDefinition frameDefinition = ( FrameDefinition ) frameDefinitionsField.getSelectedItem();
             File pathFile = new File( pathText );
+
+            MultiFrameApplication multiFrameApplication = ( MultiFrameApplication ) application;
 
             if ( FileUtils.isFileValidName( pathFile ) == false )
             {
@@ -483,14 +447,14 @@ public class NewDialog extends ApplicationStandardDialog implements ActionListen
                 problems.add( new Problem( resources, NewDialog.class, ProblemType.WARNING,
                                            "problem", "notthere", "path" ) );
             }
-            else if ( frameDefinition.isDirectory( pathFile ) == true )
+            else if ( multiFrameApplication.isFrameLocation( pathFile ) == true )
             {
-                if ( frameDefinition.isConfigurationFileLocked( pathFile ) == true )
+                if ( multiFrameApplication.isFrameLocationLocked( pathFile ) == true )
                 {
                     Problem problem = new Problem( resources, NewDialog.class, ProblemType.ERROR,
                                                    "problem", "locked", "path" );
 
-                    problem.putArgument( "frameDefinition", frameDefinition.getName() );
+                    problem.putArgument( "frameDefinition", multiFrameApplication.getFrameName() );
 
                     problems.add( problem );
                 }
@@ -499,7 +463,7 @@ public class NewDialog extends ApplicationStandardDialog implements ActionListen
                     Problem problem = new Problem( resources, NewDialog.class, ProblemType.WARNING,
                                                    "problem", "exists", "path" );
 
-                    problem.putArgument( "frameDefinition", frameDefinition.getName() );
+                    problem.putArgument( "frameDefinition", multiFrameApplication.getFrameName() );
 
                     problems.add( problem );
                 }
@@ -541,27 +505,5 @@ public class NewDialog extends ApplicationStandardDialog implements ActionListen
     public FrameInstanceDetailsObject getFrameInstanceDetailsObject()
     {
         return frameInstanceDetailsObject;
-    }
-
-    private class FrameDefinitionRenderer extends StyledListCellRenderer
-    {
-        @Override
-        protected void customizeStyledLabel( JList list, Object value, int index, boolean isSelected,
-                                             boolean cellHasFocus )
-        {
-            if ( value instanceof FrameDefinition )
-            {
-                FrameDefinition frameDefinition = ( FrameDefinition ) value;
-
-                super.customizeStyledLabel( list, frameDefinition.getName(), index, isSelected,
-                                            cellHasFocus );
-
-                setIcon( frameDefinition.getSmallIcon() );
-            }
-            else
-            {
-                super.customizeStyledLabel( list, value, index, isSelected, cellHasFocus );
-            }
-        }
     }
 }

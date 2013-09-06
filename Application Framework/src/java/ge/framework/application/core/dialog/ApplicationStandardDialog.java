@@ -2,13 +2,11 @@ package ge.framework.application.core.dialog;
 
 import com.jidesoft.dialog.StandardDialog;
 import ge.framework.application.core.Application;
-import ge.framework.application.multi.MultiApplication;
 import ge.framework.application.multi.dialog.utils.RootPaneDisposeActionListener;
 import ge.framework.frame.core.ApplicationFrame;
 
 import javax.swing.JComponent;
 import javax.swing.KeyStroke;
-import java.awt.Dialog;
 import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
 

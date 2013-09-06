@@ -1,17 +1,14 @@
 package ge.framework.application.multi.dialog;
 
 import com.jidesoft.dialog.ButtonPanel;
-import com.jidesoft.list.StyledListCellRenderer;
 import com.jidesoft.swing.JideBoxLayout;
-import com.jidesoft.swing.JideComboBox;
 import com.jidesoft.swing.PartialEtchedBorder;
 import com.jidesoft.swing.PartialLineBorder;
 import com.jidesoft.swing.PartialSide;
 import ge.framework.application.core.dialog.ApplicationStandardDialog;
-import ge.framework.application.multi.MultiApplication;
+import ge.framework.application.multi.MultiFrameApplication;
 import ge.framework.application.multi.dialog.utils.TypeFolderChooser;
 import ge.framework.frame.core.ApplicationFrame;
-import ge.framework.frame.multi.objects.FrameDefinition;
 import ge.framework.frame.multi.objects.FrameInstanceDetailsObject;
 import ge.utils.bundle.Resources;
 import ge.utils.problem.ProblemBannerPanel;
@@ -21,12 +18,10 @@ import ge.utils.problem.object.ProblemList;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -37,7 +32,6 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.util.List;
 
 public class OpenDialog extends ApplicationStandardDialog implements ActionListener
 {
@@ -54,11 +48,7 @@ public class OpenDialog extends ApplicationStandardDialog implements ActionListe
 
     private boolean result;
 
-    private List<FrameDefinition> frameDefinitions;
-
     private JPanel contentPanel;
-
-    private JideComboBox frameDefinitionField;
 
     private JTextField pathField;
 
@@ -66,7 +56,7 @@ public class OpenDialog extends ApplicationStandardDialog implements ActionListe
 
     private FrameInstanceDetailsObject frameInstanceDetailsObject;
 
-    public OpenDialog( ApplicationFrame applicationFrame, MultiApplication application )
+    public OpenDialog( ApplicationFrame applicationFrame, MultiFrameApplication application )
     {
         super(applicationFrame, application);
 
@@ -75,8 +65,7 @@ public class OpenDialog extends ApplicationStandardDialog implements ActionListe
 
     private void initialiseDialog()
     {
-        MultiApplication multiApplication = ( MultiApplication ) application;
-        frameDefinitions = multiApplication.getFrameDefinitions();
+        MultiFrameApplication multiFrameApplication = ( MultiFrameApplication ) application;
 
         setModal( true );
 
@@ -106,16 +95,6 @@ public class OpenDialog extends ApplicationStandardDialog implements ActionListe
     {
         if ( contentPanel == null )
         {
-            DefaultComboBoxModel comboBoxModel = new DefaultComboBoxModel();
-
-            for ( FrameDefinition frameDefinition : frameDefinitions )
-            {
-                comboBoxModel.addElement( frameDefinition );
-            }
-
-            frameDefinitionField = new JideComboBox( comboBoxModel );
-            frameDefinitionField.setRenderer( new FrameDetailsObjectRenderer() );
-
             pathField = new JTextField( "", 40 );
             pathField.setEditable( false );
 
@@ -131,11 +110,6 @@ public class OpenDialog extends ApplicationStandardDialog implements ActionListe
             contentPanel = new JPanel();
             contentPanel.setLayout( new JideBoxLayout( contentPanel, JideBoxLayout.Y_AXIS, 3 ) );
             contentPanel.setBorder( BorderFactory.createEmptyBorder( 10, 10, 10, 10 ) );
-
-            contentPanel
-                    .add( new JLabel( resources.getResourceString( OpenDialog.class, "type", "label" ) ),
-                          JideBoxLayout.FIX );
-            contentPanel.add( frameDefinitionField, JideBoxLayout.FIX );
 
             contentPanel.add( Box.createVerticalStrut( 6 ), JideBoxLayout.FIX );
             contentPanel
@@ -199,7 +173,6 @@ public class OpenDialog extends ApplicationStandardDialog implements ActionListe
         if ( source == okButton )
         {
             frameInstanceDetailsObject = new FrameInstanceDetailsObject();
-            frameInstanceDetailsObject.setFrameDefinition( ( FrameDefinition ) frameDefinitionField.getSelectedItem() );
             frameInstanceDetailsObject.setLocation( new File( pathField.getText() ) );
 
             result = true;
@@ -213,8 +186,9 @@ public class OpenDialog extends ApplicationStandardDialog implements ActionListe
         }
         else if ( source == browseButton )
         {
+            MultiFrameApplication multiFrameApplication = ( MultiFrameApplication ) application;
             TypeFolderChooser folderChooser =
-                    new TypeFolderChooser( ( FrameDefinition ) frameDefinitionField.getSelectedItem() );
+                    new TypeFolderChooser( multiFrameApplication );
 
             int result = folderChooser.showOpenDialog( this );
 
@@ -222,14 +196,12 @@ public class OpenDialog extends ApplicationStandardDialog implements ActionListe
             {
                 File pathFile = folderChooser.getSelectedFile();
 
-                FrameDefinition type = ( FrameDefinition ) frameDefinitionField.getSelectedItem();
-
-                if ( type.isConfigurationFileLocked( pathFile ) == true )
+                if ( multiFrameApplication.isFrameLocationLocked( pathFile ) == true )
                 {
                     Problem problem = new Problem( resources, OpenDialog.class, ProblemType.ERROR,
                                                    "problem", "locked", "path" );
 
-                    problem.putArgument( "frameDefinition", type.getName() );
+                    problem.putArgument( "frameDefinition", multiFrameApplication.getFrameName() );
 
                     problems.add( problem );
                 }
@@ -273,27 +245,5 @@ public class OpenDialog extends ApplicationStandardDialog implements ActionListe
     public FrameInstanceDetailsObject getFrameInstanceDetailsObject()
     {
         return frameInstanceDetailsObject;
-    }
-
-    private class FrameDetailsObjectRenderer extends StyledListCellRenderer
-    {
-        @Override
-        protected void customizeStyledLabel( JList list, Object value, int index, boolean isSelected,
-                                             boolean cellHasFocus )
-        {
-            if ( value instanceof FrameDefinition )
-            {
-                FrameDefinition frameDefinition = ( FrameDefinition ) value;
-
-                super.customizeStyledLabel( list, frameDefinition.getName(), index, isSelected,
-                                            cellHasFocus );
-
-                setIcon( frameDefinition.getSmallIcon() );
-            }
-            else
-            {
-                super.customizeStyledLabel( list, value, index, isSelected, cellHasFocus );
-            }
-        }
     }
 }

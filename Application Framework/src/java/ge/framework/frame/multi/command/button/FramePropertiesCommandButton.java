@@ -1,8 +1,7 @@
 package ge.framework.frame.multi.command.button;
 
 import com.jidesoft.swing.JideButton;
-import ge.framework.frame.core.ApplicationFrame;
-import ge.framework.frame.multi.MultiApplicationFrame;
+import ge.framework.frame.multi.MultiFrameApplicationFrame;
 import ge.framework.frame.multi.dialog.FramePropertiesDialog;
 import ge.utils.bundle.Resources;
 
@@ -20,9 +19,9 @@ public class FramePropertiesCommandButton extends JideButton implements ActionLi
     private static final Resources resources =
             Resources.getInstance( "ge.framework.frame.multi" );
 
-    private final MultiApplicationFrame applicationFrame;
+    private final MultiFrameApplicationFrame applicationFrame;
 
-    public FramePropertiesCommandButton( MultiApplicationFrame applicationFrame )
+    public FramePropertiesCommandButton( MultiFrameApplicationFrame applicationFrame )
     {
         this.applicationFrame = applicationFrame;
 

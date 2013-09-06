@@ -5,7 +5,7 @@ import com.jidesoft.swing.PartialEtchedBorder;
 import com.jidesoft.swing.PartialLineBorder;
 import com.jidesoft.swing.PartialSide;
 import ge.framework.application.core.dialog.ApplicationStandardDialog;
-import ge.framework.application.multi.MultiApplication;
+import ge.framework.application.multi.MultiFrameApplication;
 import ge.framework.application.multi.dialog.panel.RecentPanel;
 import ge.framework.frame.core.ApplicationFrame;
 import ge.framework.frame.multi.objects.FrameInstanceDetailsObject;
@@ -93,7 +93,7 @@ public class RecentDialog extends ApplicationStandardDialog implements ActionLis
 
     private Component createRecentList()
     {
-        recentListPanel = new RecentPanel( ( MultiApplication ) application );
+        recentListPanel = new RecentPanel( ( MultiFrameApplication ) application );
 
         return recentListPanel;
     }
@@ -150,7 +150,8 @@ public class RecentDialog extends ApplicationStandardDialog implements ActionLis
 
             if ( frameInstanceDetailsObject != null )
             {
-                if ( frameInstanceDetailsObject.doesConfigurationFileExist() == false )
+                MultiFrameApplication multiFrameApplication = ( MultiFrameApplication ) application;
+                if ( multiFrameApplication.doesFrameConfigurationFileExist( frameInstanceDetailsObject ) == false )
                 {
                     MissingLocationDialog missingLocationDialog =
                             new MissingLocationDialog( applicationFrame, frameInstanceDetailsObject.getName() );
@@ -160,7 +161,7 @@ public class RecentDialog extends ApplicationStandardDialog implements ActionLis
                         return;
                     }
                 }
-                else if ( frameInstanceDetailsObject.isConfigurationFileLocked() == true )
+                else if ( multiFrameApplication.isFrameConfigurationFileLocked( frameInstanceDetailsObject ) == true )
                 {
                     LockedLocationDialog lockedLocationDialog =
                             new LockedLocationDialog( applicationFrame, frameInstanceDetailsObject.getName() );

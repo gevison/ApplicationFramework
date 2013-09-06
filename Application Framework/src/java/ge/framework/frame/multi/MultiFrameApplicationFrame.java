@@ -1,10 +1,9 @@
 package ge.framework.frame.multi;
 
-import ge.framework.application.core.Application;
+import ge.framework.application.multi.MultiFrameApplication;
 import ge.framework.frame.core.ApplicationFrame;
 import ge.framework.frame.multi.dialog.FramePropertiesDialog;
 import ge.framework.frame.multi.objects.FrameConfiguration;
-import ge.framework.frame.multi.objects.FrameDefinition;
 import ge.framework.frame.multi.objects.FrameInstanceDetailsObject;
 import ge.utils.bundle.Resources;
 import ge.utils.file.LockFile;
@@ -18,13 +17,11 @@ import org.apache.commons.lang3.reflect.ConstructorUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.swing.Icon;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.awt.HeadlessException;
-import java.awt.Image;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -41,7 +38,7 @@ import java.util.Map;
  * Date: 26/07/13
  * Time: 13:25
  */
-public abstract class MultiApplicationFrame extends ApplicationFrame
+public abstract class MultiFrameApplicationFrame extends ApplicationFrame<MultiFrameApplication>
 {
     private static final Resources resources =
             Resources.getInstance( "ge.framework.frame.multi" );
@@ -52,18 +49,15 @@ public abstract class MultiApplicationFrame extends ApplicationFrame
 
     private TypedUnmarshallerListener unmarshallerListener = new TypedUnmarshallerListener();
 
-    private FrameDefinition frameDefinition;
-
     private FrameInstanceDetailsObject frameInstanceDetailsObject;
 
     private FrameConfiguration frameConfiguration;
 
     private LockFile lockFile;
 
-    protected MultiApplicationFrame( Application application, FrameDefinition frameDefinition ) throws HeadlessException
+    protected MultiFrameApplicationFrame( MultiFrameApplication application ) throws HeadlessException
     {
         super( application );
-        this.frameDefinition = frameDefinition;
     }
 
     public final void open( FrameInstanceDetailsObject frameInstanceDetailsObject )
@@ -72,12 +66,14 @@ public abstract class MultiApplicationFrame extends ApplicationFrame
 
         loadFrameConfiguration( frameInstanceDetailsObject );
 
+        setTitle( null );
+
         loadFrame();
     }
 
     private void loadFrameConfiguration( FrameInstanceDetailsObject frameInstanceDetailsObject )
     {
-        File configFile = frameInstanceDetailsObject.getConfigurationFile();
+        File configFile = application.getFrameConfigurationFile( frameInstanceDetailsObject );
 
         logger.trace( "Loading FrameConfiguration from: " + configFile.toString() );
 
@@ -142,7 +138,7 @@ public abstract class MultiApplicationFrame extends ApplicationFrame
 
     public void saveFrameConfiguration()
     {
-        File configFile = frameInstanceDetailsObject.getConfigurationFile();
+        File configFile = application.getFrameConfigurationFile( frameInstanceDetailsObject );
 
         logger.trace( "Saving FrameConfiguration to: " + configFile.toString() );
 
@@ -205,7 +201,7 @@ public abstract class MultiApplicationFrame extends ApplicationFrame
 
     private Class<? extends FrameConfiguration> getFrameConfigurationClass()
     {
-        return frameDefinition.getConfigurationClass();
+        return application.getFrameConfigurationClass();
     }
 
     @SuppressWarnings( "unchecked" )
@@ -258,48 +254,6 @@ public abstract class MultiApplicationFrame extends ApplicationFrame
     }
 
     @Override
-    protected final String getProfileKey()
-    {
-        return frameDefinition.getBeanName();
-    }
-
-    @Override
-    public final Icon getSmallIcon()
-    {
-        return frameDefinition.getSmallIcon();
-    }
-
-    @Override
-    public final Image getSmallImage()
-    {
-        return frameDefinition.getSmallImage();
-    }
-
-    @Override
-    public final Icon getLargeIcon()
-    {
-        return frameDefinition.getLargeIcon();
-    }
-
-    @Override
-    public final Image getLargeImage()
-    {
-        return frameDefinition.getLargeImage();
-    }
-
-    @Override
-    public final Icon getMacIcon()
-    {
-        return frameDefinition.getMacIcon();
-    }
-
-    @Override
-    public final Image getMacImage()
-    {
-        return frameDefinition.getMacImage();
-    }
-
-    @Override
     protected final boolean isStatusBarConfiguredVisible()
     {
         return frameConfiguration.isStatusBarVisible();
@@ -326,41 +280,42 @@ public abstract class MultiApplicationFrame extends ApplicationFrame
     @Override
     protected final File getLayoutDirectory()
     {
-        return frameInstanceDetailsObject.getMetadataDirectory();
+        File location = frameInstanceDetailsObject.getLocation();
+        return new File( location, application.getFrameMetaDataName() );
     }
 
     @Override
     public final void setTitle( String title )
     {
-        Map<String, Object> arguments = new HashMap<String, Object>();
-        arguments.put( "applicationName", getApplication().getName() );
-        arguments.put( "frameName", frameDefinition.getName() );
-        arguments.put( "configName", frameDefinition.getName() );
-
-        String resourceString;
-        if ( title == null )
+        if ( frameInstanceDetailsObject == null )
         {
-            resourceString = resources.getResourceString( MultiApplicationFrame.class, "frame", "title" );
+            super.setTitle( application.getName() );
         }
         else
         {
-            resourceString = resources.getResourceString( MultiApplicationFrame.class, "frame", "exTitle" );
-            arguments.put( "title", title );
+            Map<String, Object> arguments = new HashMap<String, Object>();
+            arguments.put( "frameName", frameInstanceDetailsObject.getName() );
+
+            String resourceString;
+            if ( title == null )
+            {
+                resourceString = resources.getResourceString( MultiFrameApplicationFrame.class, "frame", "title" );
+            }
+            else
+            {
+                resourceString = resources.getResourceString( MultiFrameApplicationFrame.class, "frame", "exTitle" );
+                arguments.put( "title", title );
+            }
+
+            resourceString = StringArgumentMessageFormat.format( resourceString, arguments );
+
+            super.setTitle( resourceString );
         }
-
-        resourceString = StringArgumentMessageFormat.format( resourceString, arguments );
-
-        super.setTitle( resourceString );
     }
 
     public FrameConfiguration getFrameConfiguration()
     {
         return frameConfiguration;
-    }
-
-    public FrameDefinition getFrameDefinition()
-    {
-        return frameDefinition;
     }
 
     public void processFrameProperties(  )

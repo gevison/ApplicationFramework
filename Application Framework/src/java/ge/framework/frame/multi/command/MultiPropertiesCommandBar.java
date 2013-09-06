@@ -2,7 +2,7 @@ package ge.framework.frame.multi.command;
 
 import ge.framework.frame.core.ApplicationFrame;
 import ge.framework.frame.core.command.properties.PropertiesCommandBar;
-import ge.framework.frame.multi.MultiApplicationFrame;
+import ge.framework.frame.multi.MultiFrameApplicationFrame;
 import ge.framework.frame.multi.command.button.FramePropertiesCommandButton;
 
 /**
@@ -23,7 +23,7 @@ public class MultiPropertiesCommandBar extends PropertiesCommandBar
     @Override
     protected void initialisePropertiesCommandBar()
     {
-        framePropertiesCommandButton = new FramePropertiesCommandButton( ( MultiApplicationFrame ) applicationFrame );
+        framePropertiesCommandButton = new FramePropertiesCommandButton( ( MultiFrameApplicationFrame ) applicationFrame );
 
         add( framePropertiesCommandButton );
     }

@@ -1,8 +1,7 @@
 package ge.framework.frame.multi.menu.window.item;
 
-import ge.framework.application.multi.MultiApplication;
+import ge.framework.application.multi.MultiFrameApplication;
 import ge.framework.frame.core.ApplicationFrame;
-import ge.framework.frame.core.menu.utils.ApplicationFrameCheckboxMenuItem;
 import ge.framework.frame.core.menu.utils.ApplicationFrameMenuItem;
 import ge.utils.bundle.Resources;
 
@@ -33,17 +32,17 @@ public class PreviousWindowMenuItem extends ApplicationFrameMenuItem
     @Override
     public void actionPerformed( ActionEvent actionEvent )
     {
-        MultiApplication multiApplication = ( MultiApplication ) applicationFrame.getApplication();
+        MultiFrameApplication multiFrameApplication = ( MultiFrameApplication ) applicationFrame.getApplication();
 
-        multiApplication.previousFrame();
+        multiFrameApplication.previousFrame();
     }
 
     @Override
     public void update()
     {
-        MultiApplication multiApplication = ( MultiApplication ) applicationFrame.getApplication();
+        MultiFrameApplication multiFrameApplication = ( MultiFrameApplication ) applicationFrame.getApplication();
 
-        if ( multiApplication.getFrameCount() > 1 )
+        if ( multiFrameApplication.getFrameCount() > 1 )
             setEnabled( true );
         else
             setEnabled( false );

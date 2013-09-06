@@ -1,9 +1,8 @@
 package ge.framework.application.multi.menu.item;
 
-import ge.framework.application.multi.MultiApplication;
+import ge.framework.application.multi.MultiFrameApplication;
 import ge.framework.frame.core.ApplicationFrame;
 import ge.framework.frame.core.menu.utils.ApplicationFrameMenuItem;
-import ge.framework.frame.multi.objects.FrameDefinition;
 import ge.utils.bundle.Resources;
 import ge.utils.text.StringArgumentMessageFormat;
 
@@ -21,22 +20,21 @@ public class NewMenuItem extends ApplicationFrameMenuItem
 {
     protected static final Resources resources =
             Resources.getInstance( "ge.framework.application.multi" );
-    private FrameDefinition frameDefinition;
 
     private boolean topLevel;
 
-    public NewMenuItem( ApplicationFrame applicationFrame, FrameDefinition frameDefinition, boolean topLevel )
+    public NewMenuItem( ApplicationFrame applicationFrame, boolean topLevel )
     {
         super( applicationFrame );
-        this.frameDefinition = frameDefinition;
         this.topLevel = topLevel;
     }
 
     @Override
     protected void initialiseMenuItem()
     {
+        MultiFrameApplication application = ( MultiFrameApplication ) applicationFrame.getApplication();
         Map<String, Object> arguments = new HashMap<String, Object>();
-        arguments.put( "frameDefinition", frameDefinition.getName() );
+        arguments.put( "frameDefinition", application.getFrameName() );
 
         String label;
 
@@ -56,15 +54,15 @@ public class NewMenuItem extends ApplicationFrameMenuItem
 
         setText( label );
         setStatusBarText( statusLabel );
-        setIcon( frameDefinition.getSmallIcon() );
+        setIcon( application.getSmallIcon() );
     }
 
     @Override
     public void actionPerformed( ActionEvent e )
     {
-        MultiApplication application = ( MultiApplication ) applicationFrame.getApplication();
+        MultiFrameApplication application = ( MultiFrameApplication ) applicationFrame.getApplication();
 
-        application.processNew( applicationFrame, frameDefinition );
+        application.processNew( applicationFrame );
     }
 
     @Override

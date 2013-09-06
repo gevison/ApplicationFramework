@@ -5,7 +5,7 @@ import com.jidesoft.dialog.StandardDialog;
 import com.jidesoft.swing.PartialLineBorder;
 import com.jidesoft.swing.PartialSide;
 import com.jidesoft.swing.StyledLabel;
-import ge.framework.application.multi.MultiApplication;
+import ge.framework.application.multi.MultiFrameApplication;
 import ge.framework.application.multi.dialog.buttons.ApplicationPropertiesButton;
 import ge.framework.application.multi.dialog.buttons.NewFrameButton;
 import ge.framework.application.multi.dialog.buttons.OpenFrameButton;
@@ -44,9 +44,9 @@ public class InitialDialog extends StandardDialog implements ListSelectionListen
 
     private RecentPanel recentListPanel;
 
-    private MultiApplication application;
+    private MultiFrameApplication application;
 
-    public InitialDialog( MultiApplication application)
+    public InitialDialog( MultiFrameApplication application)
     {
         super();
         this.application = application;
@@ -187,7 +187,7 @@ public class InitialDialog extends StandardDialog implements ListSelectionListen
         }
     }
 
-    public MultiApplication getApplication()
+    public MultiFrameApplication getApplication()
     {
         return application;
     }

@@ -1,6 +1,6 @@
 package ge.framework.test.application.single;
 
-import ge.framework.application.single.SingleApplication;
+import ge.framework.application.single.SingleFrameApplication;
 import ge.utils.properties.PropertiesDialogPage;
 
 import java.util.List;
@@ -11,13 +11,8 @@ import java.util.List;
  * Date: 26/07/13
  * Time: 17:21
  */
-public class TestSingleApplication extends SingleApplication
+public class TestSingleFrameApplication extends SingleFrameApplication
 {
-    @Override
-    protected void validateSingleApplicationObject()
-    {
-
-    }
 
     @Override
     protected void initialiseSingleApplication( String[] args )
@@ -41,5 +36,11 @@ public class TestSingleApplication extends SingleApplication
     protected List<PropertiesDialogPage> getSingleApplicationConfigurationPages()
     {
         return null;
+    }
+
+    @Override
+    protected void validateApplicationObject()
+    {
+
     }
 }

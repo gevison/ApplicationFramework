@@ -2,7 +2,7 @@ package ge.framework.frame.multi.menu.window.item;
 
 import ge.framework.frame.core.ApplicationFrame;
 import ge.framework.frame.core.menu.utils.ApplicationFrameCheckboxMenuItem;
-import ge.framework.frame.multi.MultiApplicationFrame;
+import ge.framework.frame.multi.MultiFrameApplicationFrame;
 import ge.framework.frame.multi.objects.FrameInstanceDetailsObject;
 
 import java.awt.event.ActionEvent;
@@ -16,9 +16,9 @@ import java.awt.event.ActionEvent;
  */
 public class ApplicationWindowMenuItem extends ApplicationFrameCheckboxMenuItem
 {
-    private MultiApplicationFrame target;
+    private MultiFrameApplicationFrame target;
 
-    public ApplicationWindowMenuItem( ApplicationFrame applicationFrame, MultiApplicationFrame target )
+    public ApplicationWindowMenuItem( ApplicationFrame applicationFrame, MultiFrameApplicationFrame target )
     {
         super(applicationFrame);
         this.target = target;

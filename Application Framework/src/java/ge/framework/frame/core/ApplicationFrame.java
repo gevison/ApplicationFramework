@@ -13,27 +13,32 @@ import ge.framework.frame.core.manager.ApplicationDockingManager;
 import ge.framework.frame.core.persistence.ApplicationLayoutPersistenceManager;
 import ge.framework.frame.core.status.ApplicationStatusBar;
 import ge.framework.frame.core.status.enums.StatusBarConstraint;
+import ge.utils.bundle.Resources;
 import ge.utils.controls.breadcrumb.BreadcrumbBar;
 import ge.utils.os.OS;
+import ge.utils.text.StringArgumentMessageFormat;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.swing.Icon;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.WindowConstants;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.HeadlessException;
-import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public abstract class ApplicationFrame extends JFrame
+public abstract class ApplicationFrame<APPLICATION extends Application> extends JFrame
 {
+    private static final Resources resources =
+            Resources.getInstance( "ge.framework.frame.core" );
+
     private static Logger logger = LogManager.getLogger( ApplicationFrame.class );
 
     private ApplicationFrameWindowAdapter applicationFrameWindowAdapter;
@@ -50,9 +55,9 @@ public abstract class ApplicationFrame extends JFrame
 
     private boolean manualClose;
 
-    private Application application;
+    protected APPLICATION application;
 
-    public ApplicationFrame( Application application ) throws HeadlessException
+    public ApplicationFrame( APPLICATION application ) throws HeadlessException
     {
         this.application = application;
     }
@@ -64,14 +69,36 @@ public abstract class ApplicationFrame extends JFrame
         setTitle( null );
         if ( OS.isMac() == true )
         {
-            setIconImage( getMacImage() );
+            setIconImage( application.getMacImage() );
         }
         else
         {
-            setIconImage( getSmallImage() );
+            setIconImage( application.getSmallImage() );
         }
 
         initialiseApplicationFrame();
+    }
+
+    @Override
+    public void setTitle( String title )
+    {
+        Map<String, Object> arguments = new HashMap<String, Object>();
+        arguments.put( "applicationName", getApplication().getName() );
+
+        String resourceString;
+        if ( title == null )
+        {
+            resourceString = resources.getResourceString( ApplicationFrame.class, "frame", "title" );
+        }
+        else
+        {
+            resourceString = resources.getResourceString( ApplicationFrame.class, "frame", "exTitle" );
+            arguments.put( "title", title );
+        }
+
+        resourceString = StringArgumentMessageFormat.format( resourceString, arguments );
+
+        super.setTitle( resourceString );
     }
 
     protected abstract void initialiseApplicationFrame();
@@ -105,7 +132,7 @@ public abstract class ApplicationFrame extends JFrame
         localContentContainer.add( statusBar, BorderLayout.AFTER_LAST_LINE );
 
         logger.trace( "Initialising layout persistence manager." );
-        layoutPersistenceManager = new ApplicationLayoutPersistenceManager( getProfileKey() );
+        layoutPersistenceManager = new ApplicationLayoutPersistenceManager( application.getName() );
         layoutPersistenceManager.addLayoutPersistence( dockableBarManager );
         layoutPersistenceManager.addLayoutPersistence( dockingManager );
     }
@@ -375,20 +402,6 @@ public abstract class ApplicationFrame extends JFrame
     {
         return manualClose;
     }
-
-    protected abstract String getProfileKey();
-
-    public abstract Icon getSmallIcon();
-
-    public abstract Image getSmallImage();
-
-    public abstract Icon getLargeIcon();
-
-    public abstract Image getLargeImage();
-
-    public abstract Icon getMacIcon();
-
-    public abstract Image getMacImage();
 
     protected abstract boolean isStatusBarConfiguredVisible();
 

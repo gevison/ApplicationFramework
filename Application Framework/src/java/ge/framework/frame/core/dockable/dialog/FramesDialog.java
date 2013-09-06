@@ -5,6 +5,7 @@ import com.jidesoft.dialog.StandardDialog;
 import com.jidesoft.swing.PartialEtchedBorder;
 import com.jidesoft.swing.PartialLineBorder;
 import com.jidesoft.swing.PartialSide;
+import ge.framework.application.core.Application;
 import ge.framework.frame.core.ApplicationFrame;
 import ge.framework.frame.core.dockable.ApplicationDockableFrame;
 import ge.framework.frame.core.dockable.dialog.panel.FramesPanel;
@@ -66,7 +67,10 @@ public class FramesDialog extends StandardDialog implements ActionListener
         setMinimumSize( new Dimension( 450, 500 ) );
 
         setTitle( resources.getResourceString( FramesDialog.class, "title" ) );
-        setIconImage( applicationFrame.getSmallImage() );
+
+        Application application = applicationFrame.getApplication();
+
+        setIconImage( application.getSmallImage() );
     }
 
     @Override

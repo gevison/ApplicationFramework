@@ -1,7 +1,7 @@
 package ge.framework.application.multi.dialog.buttons;
 
 
-import ge.framework.application.multi.MultiApplication;
+import ge.framework.application.multi.MultiFrameApplication;
 import ge.framework.application.multi.dialog.InitialDialog;
 
 import java.awt.event.ActionEvent;
@@ -25,8 +25,8 @@ public class NewFrameButton extends InitialDialogButton
     @Override
     public void actionPerformed( ActionEvent e )
     {
-        MultiApplication application = initialDialog.getApplication();
-        if ( application.processNew( null, null) == true )
+        MultiFrameApplication application = initialDialog.getApplication();
+        if ( application.processNew( null ) == true )
         {
             initialDialog.dispose();
         }

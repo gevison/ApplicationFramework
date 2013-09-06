@@ -1,6 +1,6 @@
 package ge.framework.application.multi.menu.item;
 
-import ge.framework.application.multi.MultiApplication;
+import ge.framework.application.multi.MultiFrameApplication;
 import ge.framework.application.multi.dialog.RecentDialog;
 import ge.framework.frame.core.ApplicationFrame;
 import ge.framework.frame.core.menu.utils.ApplicationFrameMenuItem;
@@ -43,7 +43,7 @@ public class OtherRecentMenuItem extends ApplicationFrameMenuItem
         {
             FrameInstanceDetailsObject frameInstanceDetailsObject = recentDialog.getFrameInstanceDetailsObject();
 
-            MultiApplication application = ( MultiApplication ) applicationFrame.getApplication();
+            MultiFrameApplication application = ( MultiFrameApplication ) applicationFrame.getApplication();
 
             application.openFrame( applicationFrame, frameInstanceDetailsObject, false );
         }
@@ -52,7 +52,7 @@ public class OtherRecentMenuItem extends ApplicationFrameMenuItem
     @Override
     public void update()
     {
-        MultiApplication application = ( MultiApplication ) applicationFrame.getApplication();
+        MultiFrameApplication application = ( MultiFrameApplication ) applicationFrame.getApplication();
 
         List<FrameInstanceDetailsObject> recentlyOpened = application.getRecentlyOpened();
 

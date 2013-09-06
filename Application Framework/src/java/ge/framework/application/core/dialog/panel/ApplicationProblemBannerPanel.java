@@ -1,7 +1,6 @@
 package ge.framework.application.core.dialog.panel;
 
 import ge.framework.application.core.Application;
-import ge.framework.application.multi.MultiApplication;
 import ge.utils.problem.ProblemBannerPanel;
 
 import javax.swing.ImageIcon;

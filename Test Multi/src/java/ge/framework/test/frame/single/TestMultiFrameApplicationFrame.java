@@ -1,15 +1,14 @@
 package ge.framework.test.frame.single;
 
 import com.jidesoft.action.DockableBarContext;
-import ge.framework.application.core.Application;
+import ge.framework.application.multi.MultiFrameApplication;
 import ge.framework.frame.core.command.ApplicationCommandMenuBar;
 import ge.framework.frame.core.menu.view.ViewMenu;
-import ge.framework.frame.multi.MultiApplicationFrame;
+import ge.framework.frame.multi.MultiFrameApplicationFrame;
 import ge.framework.frame.multi.command.FileCommandBar;
 import ge.framework.frame.multi.command.MultiPropertiesCommandBar;
 import ge.framework.frame.multi.menu.file.MultiFileMenu;
 import ge.framework.frame.multi.menu.window.MultiWindowMenu;
-import ge.framework.frame.multi.objects.FrameDefinition;
 import ge.utils.bundle.Resources;
 import ge.utils.properties.PropertiesDialogPage;
 
@@ -22,17 +21,16 @@ import java.util.List;
  * Date: 01/08/13
  * Time: 14:28
  */
-public class TestMultiApplicationFrame extends MultiApplicationFrame
+public class TestMultiFrameApplicationFrame extends MultiFrameApplicationFrame
 {
     private static final Resources resources = Resources.getInstance( "ge.framework.test.frame.multi" );
 
     private ApplicationCommandMenuBar commandMenuBar;
 
-    public TestMultiApplicationFrame( Application application,
-                                         FrameDefinition frameDefinition )
+    public TestMultiFrameApplicationFrame( MultiFrameApplication application )
             throws HeadlessException
     {
-        super( application, frameDefinition );
+        super( application );
     }
 
     @Override
@@ -56,7 +54,7 @@ public class TestMultiApplicationFrame extends MultiApplicationFrame
     private void initialiseCommandMenuBar()
     {
         commandMenuBar = new ApplicationCommandMenuBar( "menuBar" );
-        commandMenuBar.setTitle( resources.getResourceString( TestMultiApplicationFrame.class, "menuBar", "title" ) );
+        commandMenuBar.setTitle( resources.getResourceString( TestMultiFrameApplicationFrame.class, "menuBar", "title" ) );
         commandMenuBar.setInitSide( DockableBarContext.DOCK_SIDE_NORTH );
         commandMenuBar.setRearrangable( false );
         commandMenuBar.setFloatable( false );
@@ -81,6 +79,7 @@ public class TestMultiApplicationFrame extends MultiApplicationFrame
         FileCommandBar fileCommandBar = new FileCommandBar( this );
         addDockableBar( fileCommandBar );
         MultiPropertiesCommandBar propertiesCommandBar = new MultiPropertiesCommandBar( this );
+        propertiesCommandBar.initialise();
         addDockableBar( propertiesCommandBar );
     }
 

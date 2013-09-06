@@ -3,7 +3,6 @@ package ge.framework.frame.single.menu.window;
 import ge.framework.frame.core.ApplicationFrame;
 import ge.framework.frame.core.menu.utils.ApplicationFrameMenuComponent;
 import ge.framework.frame.core.menu.window.WindowMenu;
-import ge.framework.frame.single.SingleApplicationFrame;
 
 import java.util.ArrayList;
 import java.util.List;

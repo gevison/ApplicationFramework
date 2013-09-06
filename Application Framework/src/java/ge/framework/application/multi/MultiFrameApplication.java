@@ -12,23 +12,27 @@ import ge.framework.application.multi.objects.MultiApplicationConfiguration;
 import ge.framework.application.multi.objects.enums.OpenLocationEnum;
 import ge.framework.application.multi.properties.MultiGeneralApplicationPropertiesPage;
 import ge.framework.frame.core.ApplicationFrame;
-import ge.framework.frame.multi.MultiApplicationFrame;
+import ge.framework.frame.multi.MultiFrameApplicationFrame;
 import ge.framework.frame.multi.objects.FrameConfiguration;
-import ge.framework.frame.multi.objects.FrameDefinition;
 import ge.framework.frame.multi.objects.FrameInstanceDetailsObject;
+import ge.utils.file.LockFile;
 import ge.utils.properties.PropertiesDialogPage;
 import org.apache.commons.lang3.reflect.ConstructorUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.util.Assert;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import static org.springframework.util.Assert.hasLength;
+import static org.springframework.util.Assert.notNull;
 
 /**
  * Created with IntelliJ IDEA.
@@ -36,16 +40,20 @@ import java.util.Set;
  * Date: 26/07/13
  * Time: 14:19
  */
-public abstract class MultiApplication extends Application
+public abstract class MultiFrameApplication extends Application
 {
-    private static Logger logger = LogManager.getLogger( MultiApplication.class );
+    private static Logger logger = LogManager.getLogger( MultiFrameApplication.class );
 
-    private List<FrameDefinition> frameDefinitions;
+    private String frameName;
 
-    private Map<String, FrameDefinition> frameDefinitionsMap;
+    private String frameMetaDataName;
 
-    private Map<FrameInstanceDetailsObject, MultiApplicationFrame> frames =
-            new HashMap<FrameInstanceDetailsObject, MultiApplicationFrame>();
+    private String frameConfigurationName;
+
+    private Class<? extends FrameConfiguration> frameConfigurationClass;
+
+    private Map<FrameInstanceDetailsObject, MultiFrameApplicationFrame> frames =
+            new HashMap<FrameInstanceDetailsObject, MultiFrameApplicationFrame>();
 
     private MultiApplicationClosedWindowAdapter
             multiApplicationClosedWindowAdapter = new MultiApplicationClosedWindowAdapter(this);
@@ -89,14 +97,10 @@ public abstract class MultiApplication extends Application
     @Override
     protected final void validateApplicationObject()
     {
-        Assert.notEmpty( frameDefinitions );
 
-        frameDefinitionsMap = new HashMap<String, FrameDefinition>();
-
-        for ( FrameDefinition frameDefinition : frameDefinitions )
-        {
-            frameDefinitionsMap.put( frameDefinition.getBeanName(), frameDefinition );
-        }
+        hasLength( frameMetaDataName );
+        hasLength( frameConfigurationName );
+        notNull( frameConfigurationClass );
 
         validateMultiApplicationObject();
     }
@@ -110,19 +114,6 @@ public abstract class MultiApplication extends Application
     }
 
     protected abstract void initialiseMultiApplication( String[] args );
-
-    @Override
-    protected final void initialiseApplicationConfiguration()
-    {
-        MultiApplicationConfiguration multiApplicationConfiguration =
-                ( MultiApplicationConfiguration ) getConfiguration();
-
-        multiApplicationConfiguration.initialiseDetails( frameDefinitionsMap );
-
-        initialiseMultiApplicationConfiguration();
-    }
-
-    protected abstract void initialiseMultiApplicationConfiguration();
 
     @Override
     protected final void startupApplication()
@@ -210,12 +201,8 @@ public abstract class MultiApplication extends Application
 
         try
         {
-            FrameDefinition frameDefinition = frameInstanceDetailsObject.getFrameDefinition();
-
-            Class<? extends MultiApplicationFrame> frameClass =
-                    ( Class<? extends MultiApplicationFrame> ) frameDefinition.getFrameClass();
-
-            MultiApplicationFrame newApplicationFrame = ConstructorUtils.invokeConstructor(frameClass, this, frameDefinition );
+            MultiFrameApplicationFrame newApplicationFrame =
+                    ( MultiFrameApplicationFrame ) ConstructorUtils.invokeConstructor( frameClass, this );
 
             newApplicationFrame.initialise( );
 
@@ -247,9 +234,9 @@ public abstract class MultiApplication extends Application
     {
         if ( frames.containsValue( applicationFrame ) == true )
         {
-            Set<Map.Entry<FrameInstanceDetailsObject, MultiApplicationFrame>> entries = frames.entrySet();
+            Set<Map.Entry<FrameInstanceDetailsObject, MultiFrameApplicationFrame>> entries = frames.entrySet();
 
-            for ( Map.Entry<FrameInstanceDetailsObject, MultiApplicationFrame> entry : entries )
+            for ( Map.Entry<FrameInstanceDetailsObject, MultiFrameApplicationFrame> entry : entries )
             {
                 if ( entry.getValue() == applicationFrame )
                 {
@@ -267,9 +254,9 @@ public abstract class MultiApplication extends Application
         }
     }
 
-    public boolean processNew( ApplicationFrame applicationFrame, FrameDefinition frameDefinition )
+    public boolean processNew( ApplicationFrame applicationFrame )
     {
-        NewDialog newDialog = new NewDialog( null, this, frameDefinition );
+        NewDialog newDialog = new NewDialog( null, this );
 
         if ( newDialog.doModal() == true )
         {
@@ -310,14 +297,14 @@ public abstract class MultiApplication extends Application
     private boolean validateFrameInstanceDetails( ApplicationFrame applicationFrame,
                                                   FrameInstanceDetailsObject frameInstanceDetailsObject )
     {
-        if ( frameInstanceDetailsObject.doesConfigurationFileExist() == false )
+        if ( doesFrameConfigurationFileExist( frameInstanceDetailsObject ) == false )
         {
             MissingLocationDialog missingLocationDialog =
                     new MissingLocationDialog( applicationFrame, frameInstanceDetailsObject.getName() );
 
             return missingLocationDialog.showMessage();
         }
-        else if ( frameInstanceDetailsObject.isConfigurationFileLocked() == true )
+        else if ( isFrameConfigurationFileLocked( frameInstanceDetailsObject ) == true )
         {
             LockedLocationDialog lockedLocationDialog =
                     new LockedLocationDialog( applicationFrame, frameInstanceDetailsObject.getName() );
@@ -379,17 +366,6 @@ public abstract class MultiApplication extends Application
         return applicationFrame;
     }
 
-    public final List<FrameDefinition> getFrameDefinitions()
-    {
-        return frameDefinitions;
-    }
-
-    public final void setFrameDefinitions( List<FrameDefinition> frameDefinitions )
-    {
-        testInitialised();
-        this.frameDefinitions = frameDefinitions;
-    }
-
     public final int getFrameCount()
     {
         return frames.size();
@@ -431,19 +407,115 @@ public abstract class MultiApplication extends Application
         values.get( index ).setVisible( true );
     }
 
-    public List<MultiApplicationFrame> getFrames()
+    public List<MultiFrameApplicationFrame> getFrames()
     {
-        List<MultiApplicationFrame> retVal = new ArrayList<MultiApplicationFrame>( frames.values() );
+        List<MultiFrameApplicationFrame> retVal = new ArrayList<MultiFrameApplicationFrame>( frames.values() );
         return retVal;
+    }
+
+    public String getFrameName()
+    {
+        return frameName;
+    }
+
+    public void setFrameName( String frameName )
+    {
+        this.frameName = frameName;
+    }
+
+    public String getFrameMetaDataName()
+    {
+        return frameMetaDataName;
+    }
+
+    public void setFrameMetaDataName( String frameMetaDataName )
+    {
+        testInitialised();
+        this.frameMetaDataName = frameMetaDataName;
+    }
+
+    public String getFrameConfigurationName()
+    {
+        return frameConfigurationName;
+    }
+
+    public void setFrameConfigurationName( String frameConfigurationName )
+    {
+        testInitialised();
+        this.frameConfigurationName = frameConfigurationName;
+    }
+
+    public Class<? extends FrameConfiguration> getFrameConfigurationClass()
+    {
+        return frameConfigurationClass;
+    }
+
+    public void setFrameConfigurationClass( Class<? extends FrameConfiguration> frameConfigurationClass )
+    {
+        testInitialised();
+        this.frameConfigurationClass = frameConfigurationClass;
+    }
+
+    public boolean doesFrameConfigurationFileExist( FrameInstanceDetailsObject frameInstanceDetailsObject )
+    {
+        File configFile = getFrameConfigurationFile(frameInstanceDetailsObject);
+        return configFile.exists();
+    }
+
+    public boolean isFrameConfigurationFileLocked( FrameInstanceDetailsObject frameInstanceDetailsObject )
+    {
+        try
+        {
+            File configFile = getFrameConfigurationFile( frameInstanceDetailsObject );
+            return LockFile.isFileLocked( configFile );
+        }
+        catch ( IOException e )
+        {
+            logger.error( e.getMessage(), e );
+            return true;
+        }
+    }
+
+    public File getFrameConfigurationFile( FrameInstanceDetailsObject frameInstanceDetailsObject )
+    {
+        File metadataDirectory = getFrameMetaDataDirectory(frameInstanceDetailsObject);
+        return new File( metadataDirectory, frameConfigurationName);
+    }
+
+    public File getFrameMetaDataDirectory( FrameInstanceDetailsObject frameInstanceDetailsObject )
+    {
+        return new File(frameInstanceDetailsObject.getLocation(),frameMetaDataName);
+    }
+
+    public boolean isFrameLocationLocked( File location )
+    {
+        try
+        {
+            File metaDataDirectory = new File( location, frameMetaDataName );
+            File configFile = new File( metaDataDirectory, frameConfigurationName );
+            return LockFile.isFileLocked( configFile );
+        }
+        catch ( IOException e )
+        {
+            logger.error( e.getMessage(), e );
+            return true;
+        }
+    }
+
+    public boolean isFrameLocation( File location )
+    {
+        File metaDataDirectory = new File( location, frameMetaDataName );
+        File configFile = new File( metaDataDirectory, frameConfigurationName );
+        return configFile.exists();
     }
 
     private class MultiApplicationClosedWindowAdapter extends WindowAdapter
     {
-        private MultiApplication multiApplication;
+        private MultiFrameApplication multiFrameApplication;
 
-        public MultiApplicationClosedWindowAdapter( MultiApplication multiApplication )
+        public MultiApplicationClosedWindowAdapter( MultiFrameApplication multiFrameApplication )
         {
-            this.multiApplication = multiApplication;
+            this.multiFrameApplication = multiFrameApplication;
         }
 
         @Override
@@ -451,43 +523,43 @@ public abstract class MultiApplication extends Application
         {
             Object source = e.getSource();
 
-            multiApplication.removeFrame( ( ApplicationFrame ) source );
+            multiFrameApplication.removeFrame( ( ApplicationFrame ) source );
 
             if ( frames.isEmpty() == true )
             {
-                multiApplication.showInitialDialog();
+                multiFrameApplication.showInitialDialog();
             }
         }
     }
 
     private class MultiApplicationShutdownWindowAdapter extends WindowAdapter
     {
-        private MultiApplication application;
+        private MultiFrameApplication application;
 
-        private Map<FrameInstanceDetailsObject, MultiApplicationFrame> frames;
+        private Map<FrameInstanceDetailsObject, MultiFrameApplicationFrame> frames;
 
-        public MultiApplicationShutdownWindowAdapter( MultiApplication application,
-                                                      Map<FrameInstanceDetailsObject, MultiApplicationFrame> frames )
+        public MultiApplicationShutdownWindowAdapter( MultiFrameApplication application,
+                                                      Map<FrameInstanceDetailsObject, MultiFrameApplicationFrame> frames )
         {
             this.application = application;
             this.frames = frames;
 
-            for ( MultiApplicationFrame multiApplicationFrame : frames.values() )
+            for ( MultiFrameApplicationFrame multiFrameApplicationFrame : frames.values() )
             {
-                multiApplicationFrame.addWindowListener( this );
+                multiFrameApplicationFrame.addWindowListener( this );
             }
         }
 
         @Override
         public final void windowClosed( WindowEvent e )
         {
-            MultiApplicationFrame applicationFrame = ( MultiApplicationFrame ) e.getSource();
+            MultiFrameApplicationFrame applicationFrame = ( MultiFrameApplicationFrame ) e.getSource();
 
             if ( frames.containsValue( applicationFrame ) == true )
             {
-                Set<Map.Entry<FrameInstanceDetailsObject, MultiApplicationFrame>> entries = frames.entrySet();
+                Set<Map.Entry<FrameInstanceDetailsObject, MultiFrameApplicationFrame>> entries = frames.entrySet();
 
-                for ( Map.Entry<FrameInstanceDetailsObject, MultiApplicationFrame> entry : entries )
+                for ( Map.Entry<FrameInstanceDetailsObject, MultiFrameApplicationFrame> entry : entries )
                 {
                     if ( entry.getValue() == applicationFrame )
                     {

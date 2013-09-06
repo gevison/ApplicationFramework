@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="TestMultiApplication" class="ge.framework.test.application.multi.TestMultiApplication">
+    <bean id="TestMultiFrameApplication" class="ge.framework.test.application.multi.TestMultiFrameApplication">
         <property name="allowMultipleApplications" value="false"/>
         <property name="configurationClass"
                   value="ge.framework.test.application.multi.objects.TestMultiApplicationConfiguration"/>
@@ -17,23 +17,10 @@
         <property name="metaDataName" value=".TestMultiApp"/>
         <property name="name" value="Test Multi Application"/>
         <property name="description" value="Test Multi Application Desciption"/>
-
-        <property name="frameDefinitions">
-            <list>
-                <bean id="TestMultiApplicationFrame" class="ge.framework.frame.multi.objects.FrameDefinition">
-                    <property name="configurationClass" value="ge.framework.test.frame.single.objects.TestMultiFrameConfiguration"/>
-                    <property name="metaDataName" value=".TestMulti"/>
-                    <property name="configurationName" value="TestMulti.xml"/>
-                    <property name="name" value="Test Multi Frame"/>
-                    <property name="largeIcon" value="Application.ico:2"/>
-                    <property name="largeImage" value="Application.ico:2"/>
-                    <property name="smallIcon" value="Application.ico:4"/>
-                    <property name="smallImage" value="Application.ico:4"/>
-                    <property name="macIcon" value="Application.ico:1"/>
-                    <property name="macImage" value="Application.ico:1"/>
-                    <property name="frameClass" value="ge.framework.test.frame.single.TestMultiApplicationFrame"/>
-                </bean>
-            </list>
-        </property>
+        <property name="frameName" value="Test Multi Frame"/>
+        <property name="frameClass" value="ge.framework.test.frame.single.TestMultiFrameApplicationFrame"/>
+        <property name="frameConfigurationClass" value="ge.framework.test.frame.single.objects.TestMultiFrameConfiguration"/>
+        <property name="frameMetaDataName" value=".TestMulti"/>
+        <property name="frameConfigurationName" value="TestMulti.xml"/>
     </bean>
 </beans>

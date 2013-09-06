@@ -20,8 +20,6 @@ public class FrameInstanceDetailsObject
 
     private File location;
 
-    private FrameDefinition frameDefinition;
-
     public String getName()
     {
         return name;
@@ -42,16 +40,6 @@ public class FrameInstanceDetailsObject
         this.location = location;
     }
 
-    public void setFrameDefinition( FrameDefinition frameDefinition )
-    {
-        this.frameDefinition = frameDefinition;
-    }
-
-    public FrameDefinition getFrameDefinition()
-    {
-        return frameDefinition;
-    }
-
     @Override
     public boolean equals( Object o )
     {
@@ -66,11 +54,11 @@ public class FrameInstanceDetailsObject
 
         FrameInstanceDetailsObject that = ( FrameInstanceDetailsObject ) o;
 
-        if ( frameDefinition != null ? !frameDefinition.equals( that.frameDefinition ) : that.frameDefinition != null )
+        if ( location != null ? !location.equals( that.location ) : that.location != null )
         {
             return false;
         }
-        if ( location != null ? !location.equals( that.location ) : that.location != null )
+        if ( name != null ? !name.equals( that.name ) : that.name != null )
         {
             return false;
         }
@@ -81,33 +69,17 @@ public class FrameInstanceDetailsObject
     @Override
     public int hashCode()
     {
-        int result = location != null ? location.hashCode() : 0;
-        result = 31 * result + ( frameDefinition != null ? frameDefinition.hashCode() : 0 );
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + ( location != null ? location.hashCode() : 0 );
         return result;
     }
 
-    public boolean doesConfigurationFileExist()
+    @Override
+    public String toString()
     {
-        return frameDefinition.doesConfigurationFileExist( location );
-    }
-
-    public boolean isConfigurationFileLocked()
-    {
-        return frameDefinition.isConfigurationFileLocked( location );
-    }
-
-    public boolean isDirectory()
-    {
-        return frameDefinition.isDirectory( location );
-    }
-
-    public File getConfigurationFile()
-    {
-        return frameDefinition.getConfigurationFile( location );
-    }
-
-    public File getMetadataDirectory()
-    {
-        return frameDefinition.getMetadataDirectory( location );
+        return "FrameInstanceDetailsObject{" +
+                "name='" + name + '\'' +
+                ", location=" + location +
+                '}';
     }
 }

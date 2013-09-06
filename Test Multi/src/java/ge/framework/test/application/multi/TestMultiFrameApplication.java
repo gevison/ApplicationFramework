@@ -1,6 +1,6 @@
 package ge.framework.test.application.multi;
 
-import ge.framework.application.multi.MultiApplication;
+import ge.framework.application.multi.MultiFrameApplication;
 import ge.utils.properties.PropertiesDialogPage;
 
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
  * Date: 01/08/13
  * Time: 13:45
  */
-public class TestMultiApplication extends MultiApplication
+public class TestMultiFrameApplication extends MultiFrameApplication
 {
     @Override
     protected List<PropertiesDialogPage> getMultiApplicationConfigurationPages()
@@ -32,13 +32,13 @@ public class TestMultiApplication extends MultiApplication
     }
 
     @Override
-    protected void initialiseMultiApplicationConfiguration()
+    protected void processMultiApplicationShutdown()
     {
 
     }
 
     @Override
-    protected void processMultiApplicationShutdown()
+    protected void initialiseApplicationConfiguration()
     {
 
     }

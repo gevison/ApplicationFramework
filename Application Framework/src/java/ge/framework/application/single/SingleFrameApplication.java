@@ -4,7 +4,7 @@ import ge.framework.application.core.Application;
 import ge.framework.application.core.enums.CloseOrExitEnum;
 import ge.framework.application.single.properties.SingleGeneralApplicationPropertiesPage;
 import ge.framework.frame.core.ApplicationFrame;
-import ge.framework.frame.single.SingleApplicationFrame;
+import ge.framework.frame.single.SingleFrameApplicationFrame;
 import ge.utils.properties.PropertiesDialogPage;
 import org.apache.commons.lang3.reflect.ConstructorUtils;
 
@@ -23,21 +23,9 @@ import static org.springframework.util.Assert.notNull;
  * Date: 26/07/13
  * Time: 14:19
  */
-public abstract class SingleApplication extends Application
+public abstract class SingleFrameApplication extends Application
 {
-    private Class<? extends SingleApplicationFrame> frameClass;
-
-    private SingleApplicationFrame applicationFrame;
-
-    @Override
-    protected void validateApplicationObject()
-    {
-        notNull( frameClass );
-
-        validateSingleApplicationObject();
-    }
-
-    protected abstract void validateSingleApplicationObject();
+    private SingleFrameApplicationFrame applicationFrame;
 
     @Override
     protected final void initialiseApplication( String[] args )
@@ -60,7 +48,7 @@ public abstract class SingleApplication extends Application
     {
         try
         {
-            applicationFrame = ConstructorUtils.invokeConstructor(frameClass, this );
+            applicationFrame = ( SingleFrameApplicationFrame ) ConstructorUtils.invokeConstructor( frameClass, this );
             applicationFrame.initialise();
             applicationFrame.loadFrame();
         }
@@ -150,22 +138,11 @@ public abstract class SingleApplication extends Application
         return new File( userDirectory, getMetaDataName() );
     }
 
-    public Class<? extends SingleApplicationFrame> getFrameClass()
-    {
-        return frameClass;
-    }
-
-    public void setFrameClass( Class<? extends SingleApplicationFrame> frameClass )
-    {
-        testInitialised();
-        this.frameClass = frameClass;
-    }
-
     private class SingleApplicationShutdownWindowAdapter extends WindowAdapter
     {
-        private SingleApplication application;
+        private SingleFrameApplication application;
 
-        public SingleApplicationShutdownWindowAdapter( SingleApplication application )
+        public SingleApplicationShutdownWindowAdapter( SingleFrameApplication application )
         {
             this.application = application;
         }

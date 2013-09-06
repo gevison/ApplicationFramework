@@ -1,6 +1,6 @@
 package ge.framework.application.multi.menu.item;
 
-import ge.framework.application.multi.MultiApplication;
+import ge.framework.application.multi.MultiFrameApplication;
 import ge.framework.frame.core.ApplicationFrame;
 import ge.framework.frame.core.menu.utils.ApplicationFrameMenuItem;
 import ge.utils.bundle.Resources;
@@ -34,7 +34,7 @@ public class CloseMenuItem extends ApplicationFrameMenuItem
     @Override
     public void actionPerformed( ActionEvent e )
     {
-        MultiApplication application = ( MultiApplication ) applicationFrame.getApplication();
+        MultiFrameApplication application = ( MultiFrameApplication ) applicationFrame.getApplication();
 
         application.processClose(applicationFrame);
     }

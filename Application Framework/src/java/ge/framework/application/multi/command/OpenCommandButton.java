@@ -2,7 +2,7 @@ package ge.framework.application.multi.command;
 
 import com.jidesoft.swing.JideMenu;
 import com.jidesoft.swing.JideSplitButton;
-import ge.framework.application.multi.MultiApplication;
+import ge.framework.application.multi.MultiFrameApplication;
 import ge.framework.application.multi.menu.item.ClearRecentMenuItem;
 import ge.framework.application.multi.menu.item.OpenMenuItem;
 import ge.framework.application.multi.menu.item.OpenRecentMenuItem;
@@ -14,7 +14,6 @@ import ge.utils.bundle.Resources;
 import javax.swing.JPopupMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -57,7 +56,7 @@ public class OpenCommandButton extends JideSplitButton implements ActionListener
     @Override
     public void actionPerformed( ActionEvent e )
     {
-        MultiApplication application = ( MultiApplication ) applicationFrame.getApplication();
+        MultiFrameApplication application = ( MultiFrameApplication ) applicationFrame.getApplication();
         application.processOpen(applicationFrame);
     }
 
@@ -68,7 +67,7 @@ public class OpenCommandButton extends JideSplitButton implements ActionListener
         {
             removeAll();
 
-            MultiApplication application = ( MultiApplication ) applicationFrame.getApplication();
+            MultiFrameApplication application = ( MultiFrameApplication ) applicationFrame.getApplication();
 
             List<FrameInstanceDetailsObject> frameInstanceDetailsObjects =
                     application.getRecentlyOpened();

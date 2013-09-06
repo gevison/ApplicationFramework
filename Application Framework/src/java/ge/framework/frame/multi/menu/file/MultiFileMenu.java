@@ -1,15 +1,14 @@
 package ge.framework.frame.multi.menu.file;
 
-import ge.framework.application.multi.MultiApplication;
+import ge.framework.application.multi.MultiFrameApplication;
 import ge.framework.application.multi.menu.RecentlyOpenedMenu;
 import ge.framework.application.multi.menu.item.CloseMenuItem;
 import ge.framework.application.multi.menu.item.NewMenuItem;
 import ge.framework.application.multi.menu.item.OpenMenuItem;
 import ge.framework.frame.core.menu.file.FileMenu;
 import ge.framework.frame.core.menu.utils.ApplicationFrameMenuComponent;
-import ge.framework.frame.multi.MultiApplicationFrame;
+import ge.framework.frame.multi.MultiFrameApplicationFrame;
 import ge.framework.frame.multi.menu.file.item.FramePropertiesMenuItem;
-import ge.framework.frame.multi.objects.FrameDefinition;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +21,7 @@ import java.util.List;
  */
 public class MultiFileMenu extends FileMenu
 {
-    private List<NewMenuItem> newItems;
-
-    private NewMenu newMenu;
+    private NewMenuItem newItem;
 
     private List<ApplicationFrameMenuComponent> additionalNewItems = new ArrayList<ApplicationFrameMenuComponent>(  );
 
@@ -38,7 +35,7 @@ public class MultiFileMenu extends FileMenu
 
     private List<ApplicationFrameMenuComponent> postPropertiesMenuItems = new ArrayList<ApplicationFrameMenuComponent>();
 
-    public MultiFileMenu( MultiApplicationFrame applicationFrame )
+    public MultiFileMenu( MultiFrameApplicationFrame applicationFrame )
     {
         super( applicationFrame );
     }
@@ -46,25 +43,10 @@ public class MultiFileMenu extends FileMenu
     @Override
     protected void initialiseFileMenu()
     {
-        MultiApplication application = ( MultiApplication ) applicationFrame.getApplication();
+        MultiFrameApplication application = ( MultiFrameApplication ) applicationFrame.getApplication();
 
-        List<FrameDefinition> availableFrameConfigurationNames = application.getFrameDefinitions();
-
-        if ( availableFrameConfigurationNames.size() <= 5 )
-        {
-            newItems = new ArrayList<NewMenuItem>(  );
-            for ( FrameDefinition availableFrameConfigurationName : availableFrameConfigurationNames )
-            {
-                NewMenuItem newMenuItem = new NewMenuItem( applicationFrame, availableFrameConfigurationName, true );
-                newMenuItem.initialise();
-                newItems.add(newMenuItem);
-            }
-        }
-        else
-        {
-            newMenu = new NewMenu( ( MultiApplicationFrame ) applicationFrame );
-            newMenu.initialise();
-        }
+        newItem = new NewMenuItem( applicationFrame, true );
+        newItem.initialise();
 
         openMenuItem = new OpenMenuItem(applicationFrame);
         openMenuItem.initialise();
@@ -75,9 +57,9 @@ public class MultiFileMenu extends FileMenu
         closeMenuItem = new CloseMenuItem( applicationFrame );
         closeMenuItem.initialise();
 
-        MultiApplicationFrame multiApplicationFrame = ( MultiApplicationFrame ) applicationFrame;
+        MultiFrameApplicationFrame multiFrameApplicationFrame = ( MultiFrameApplicationFrame ) applicationFrame;
 
-        if ( multiApplicationFrame.shouldCreateFrameConfigurationMenu() == true )
+        if ( multiFrameApplicationFrame.shouldCreateFrameConfigurationMenu() == true )
         {
             framePropertiesMenuItem = new FramePropertiesMenuItem( applicationFrame );
             framePropertiesMenuItem.initialise();
@@ -87,17 +69,7 @@ public class MultiFileMenu extends FileMenu
     @Override
     protected void customizePrePropertiesMenuItems()
     {
-        if ( newItems != null )
-        {
-            for ( NewMenuItem newItem : newItems )
-            {
-                addMenuComponent( newItem );
-            }
-        }
-        else if ( newMenu != null )
-        {
-            addMenuComponent( newMenu );
-        }
+        addMenuComponent( newItem );
 
         if ( additionalNewItems.isEmpty() == false )
         {

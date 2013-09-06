@@ -3,12 +3,12 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="TestSingleApplication" class="ge.framework.test.application.single.TestSingleApplication">
+    <bean id="TestSingleApplication" class="ge.framework.test.application.single.TestSingleFrameApplication">
         <property name="applicationRestarterClass" value="ge.framework.application.core.utils.JavaApplicationRestarter"/>
         <property name="allowMultipleApplications" value="false"/>
         <property name="configurationClass" value="ge.framework.test.application.single.objects.TestSingleApplicationConfiguration"/>
         <property name="configurationName" value="TestSingle.xml"/>
-        <property name="frameClass" value="ge.framework.test.frame.single.TestSingleApplicationFrame"/>
+        <property name="frameClass" value="ge.framework.test.frame.single.TestSingleFrameApplicationFrame"/>
         <property name="largeIcon" value="Application.ico:2"/>
         <property name="largeImage" value="Application.ico:2"/>
         <property name="smallIcon" value="Application.ico:4"/>

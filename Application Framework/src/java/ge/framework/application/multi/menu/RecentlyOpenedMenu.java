@@ -1,15 +1,12 @@
 package ge.framework.application.multi.menu;
 
-import ge.framework.application.core.Application;
-import ge.framework.application.multi.MultiApplication;
+import ge.framework.application.multi.MultiFrameApplication;
 import ge.framework.application.multi.menu.item.ClearRecentMenuItem;
 import ge.framework.application.multi.menu.item.OpenRecentMenuItem;
 import ge.framework.application.multi.menu.item.OtherRecentMenuItem;
 import ge.framework.frame.core.ApplicationFrame;
-import ge.framework.frame.core.document.ApplicationDocumentComponent;
 import ge.framework.frame.core.menu.utils.ApplicationFrameMenu;
 import ge.framework.frame.core.menu.utils.ApplicationFrameMenuSeparator;
-import ge.framework.frame.core.menu.window.item.ApplicationDocumentMenuItem;
 import ge.framework.frame.multi.objects.FrameInstanceDetailsObject;
 import ge.utils.bundle.Resources;
 
@@ -60,7 +57,7 @@ public class RecentlyOpenedMenu extends ApplicationFrameMenu
         Map<FrameInstanceDetailsObject, OpenRecentMenuItem> currentMenuItems;
         currentMenuItems = new HashMap<FrameInstanceDetailsObject, OpenRecentMenuItem>();
 
-        MultiApplication application = ( MultiApplication ) applicationFrame.getApplication();
+        MultiFrameApplication application = ( MultiFrameApplication ) applicationFrame.getApplication();
 
         List<FrameInstanceDetailsObject> detailsObjects = application.getRecentlyOpened();
 

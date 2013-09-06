@@ -6,8 +6,8 @@ import ge.framework.application.core.dialog.ExitDialog;
 import ge.framework.application.core.enums.CloseOrExitEnum;
 import ge.framework.application.core.objects.ApplicationConfiguration;
 import ge.framework.application.core.utils.ApplicationRestarter;
-import ge.framework.application.core.utils.JavaApplicationRestarter;
 import ge.framework.frame.core.ApplicationFrame;
+import ge.framework.frame.single.SingleFrameApplicationFrame;
 import ge.utils.VMInstance;
 import ge.utils.message.MessageDialog;
 import ge.utils.message.enums.MessageResult;
@@ -18,17 +18,18 @@ import ge.utils.xml.bind.MarshallerListener;
 import ge.utils.xml.bind.TypedMarshallerListener;
 import ge.utils.xml.bind.TypedUnmarshallerListener;
 import ge.utils.xml.bind.UnmarshallerListener;
-import org.apache.commons.lang3.ClassUtils;
 import org.apache.commons.lang3.reflect.ConstructorUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.swing.*;
+import javax.swing.Icon;
+import javax.swing.UIManager;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Image;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -78,6 +79,8 @@ public abstract class Application extends ApplicationContextAwareObject
 
     private Class<? extends ApplicationConfiguration> configurationClass;
 
+    protected Class<? extends ApplicationFrame> frameClass;
+
     private ApplicationConfiguration configuration;
 
     private TypedMarshallerListener marshallerListener = new TypedMarshallerListener();
@@ -105,6 +108,8 @@ public abstract class Application extends ApplicationContextAwareObject
         hasLength( metaDataName );
         hasLength( configurationName );
         notNull( configurationClass );
+
+        notNull( frameClass );
 
         validateApplicationObject();
     }
@@ -523,6 +528,17 @@ public abstract class Application extends ApplicationContextAwareObject
     public ApplicationConfiguration getConfiguration()
     {
         return configuration;
+    }
+
+    public Class<? extends ApplicationFrame> getFrameClass()
+    {
+        return frameClass;
+    }
+
+    public void setFrameClass( Class<? extends SingleFrameApplicationFrame> frameClass )
+    {
+        testInitialised();
+        this.frameClass = frameClass;
     }
 
     public final UnmarshallerListener getUnmarshallerListener( Class aClass )

@@ -2,7 +2,6 @@ package ge.framework.application.multi.objects;
 
 import ge.framework.application.core.objects.ApplicationConfiguration;
 import ge.framework.application.multi.objects.enums.OpenLocationEnum;
-import ge.framework.frame.multi.objects.FrameDefinition;
 import ge.framework.frame.multi.objects.FrameInstanceDetailsObject;
 
 import javax.xml.bind.annotation.XmlAccessOrder;
@@ -11,7 +10,6 @@ import javax.xml.bind.annotation.XmlAccessorOrder;
 import javax.xml.bind.annotation.XmlAccessorType;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -34,33 +32,6 @@ public abstract class MultiApplicationConfiguration extends ApplicationConfigura
     private OpenLocationEnum openLocation = OpenLocationEnum.ASK;
 
     private int allowedRecentlyOpenedCount = 10;
-
-    public void initialiseDetails( Map<String, FrameDefinition> frameDefinitionMap )
-    {
-        initialiseDetails( frameDefinitionMap, open );
-        initialiseDetails( frameDefinitionMap, recent );
-    }
-
-    private void initialiseDetails( Map<String, FrameDefinition> map,
-                                    List<FrameInstanceDetailsObject> list )
-    {
-        FrameInstanceDetailsObject[] frameInstanceDetailsObjects =
-                list.toArray( new FrameInstanceDetailsObject[ list.size() ] );
-
-        for ( FrameInstanceDetailsObject frameInstanceDetailsObject : frameInstanceDetailsObjects )
-        {
-            FrameDefinition frameDefinition = frameInstanceDetailsObject.getFrameDefinition();
-
-            if ( map.containsKey( frameDefinition.getBeanName() ) == true )
-            {
-                frameInstanceDetailsObject.setFrameDefinition( map.get( frameDefinition.getBeanName() ) );
-            }
-            else
-            {
-                list.remove( frameInstanceDetailsObject );
-            }
-        }
-    }
 
     public boolean isReOpenLast()
     {
