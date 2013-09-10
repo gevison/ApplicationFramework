@@ -4,8 +4,7 @@ import ge.framework.application.single.SingleFrameApplication;
 import ge.framework.frame.core.DocumentWorkspaceApplicationFrame;
 import ge.framework.frame.core.document.ApplicationDocumentComponent;
 import ge.framework.frame.core.document.ApplicationDocumentPane;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import ge.utils.log.LoggerEx;
 
 import java.awt.HeadlessException;
 import java.util.ArrayList;
@@ -18,10 +17,8 @@ import java.util.List;
  * Time: 09:31
  */
 public abstract class DocumentSingleFrameApplicationFrame extends SingleFrameApplicationFrame implements
-                                                                                            DocumentWorkspaceApplicationFrame
+                                                                                              DocumentWorkspaceApplicationFrame
 {
-    private static final Logger logger = LogManager.getLogger( DocumentSingleFrameApplicationFrame.class );
-
     private ApplicationDocumentPane documentPane;
 
     public DocumentSingleFrameApplicationFrame( SingleFrameApplication application ) throws HeadlessException
@@ -32,7 +29,7 @@ public abstract class DocumentSingleFrameApplicationFrame extends SingleFrameApp
     @Override
     protected final void initialiseApplicationFrame()
     {
-        logger.trace( "Initialising document pane." );
+        LoggerEx.trace( "Initialising document pane." );
         documentPane = new ApplicationDocumentPane();
 
         setWorkspaceComponent( documentPane );

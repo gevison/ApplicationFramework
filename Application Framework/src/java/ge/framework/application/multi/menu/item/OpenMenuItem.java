@@ -23,7 +23,7 @@ public class OpenMenuItem extends ApplicationFrameMenuItem
 
     public OpenMenuItem( ApplicationFrame applicationFrame )
     {
-        super(applicationFrame);
+        super( applicationFrame );
     }
 
     @Override

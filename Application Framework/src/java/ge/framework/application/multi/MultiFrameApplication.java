@@ -16,10 +16,9 @@ import ge.framework.frame.multi.MultiFrameApplicationFrame;
 import ge.framework.frame.multi.objects.FrameConfiguration;
 import ge.framework.frame.multi.objects.FrameInstanceDetailsObject;
 import ge.utils.file.LockFile;
+import ge.utils.log.LoggerEx;
 import ge.utils.properties.PropertiesDialogPage;
 import org.apache.commons.lang3.reflect.ConstructorUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -42,8 +41,6 @@ import static org.springframework.util.Assert.notNull;
  */
 public abstract class MultiFrameApplication extends Application
 {
-    private static Logger logger = LogManager.getLogger( MultiFrameApplication.class );
-
     private String frameName;
 
     private String frameMetaDataName;
@@ -56,7 +53,7 @@ public abstract class MultiFrameApplication extends Application
             new HashMap<FrameInstanceDetailsObject, MultiFrameApplicationFrame>();
 
     private MultiApplicationClosedWindowAdapter
-            multiApplicationClosedWindowAdapter = new MultiApplicationClosedWindowAdapter(this);
+            multiApplicationClosedWindowAdapter = new MultiApplicationClosedWindowAdapter( this );
 
     private MultiApplicationShutdownWindowAdapter shutdownWindowsAdapter;
 
@@ -151,7 +148,7 @@ public abstract class MultiFrameApplication extends Application
 
     private void showInitialDialog()
     {
-        InitialDialog initialDialog = new InitialDialog(this);
+        InitialDialog initialDialog = new InitialDialog( this );
 
         initialDialog.doModal();
 
@@ -204,7 +201,7 @@ public abstract class MultiFrameApplication extends Application
             MultiFrameApplicationFrame newApplicationFrame =
                     ( MultiFrameApplicationFrame ) ConstructorUtils.invokeConstructor( frameClass, this );
 
-            newApplicationFrame.initialise( );
+            newApplicationFrame.initialise();
 
             newApplicationFrame.addWindowListener( multiApplicationClosedWindowAdapter );
             frames.put( frameInstanceDetailsObject, newApplicationFrame );
@@ -224,7 +221,7 @@ public abstract class MultiFrameApplication extends Application
         }
         catch ( Exception e )
         {
-            logger.error( e.getMessage(), e );
+            LoggerEx.error( e.getMessage(), e );
             System.exit( -1 );
             return false;
         }
@@ -268,7 +265,7 @@ public abstract class MultiFrameApplication extends Application
 
     public boolean processOpen( ApplicationFrame applicationFrame )
     {
-        OpenDialog openDialog = new OpenDialog( null, this);
+        OpenDialog openDialog = new OpenDialog( null, this );
 
         if ( openDialog.doModal() == true )
         {
@@ -375,7 +372,7 @@ public abstract class MultiFrameApplication extends Application
     {
         ApplicationFrame applicationFrame = discoverFocusedFrame();
 
-        List<ApplicationFrame> values = new ArrayList<ApplicationFrame>(frames.values());
+        List<ApplicationFrame> values = new ArrayList<ApplicationFrame>( frames.values() );
 
         int index = values.indexOf( applicationFrame );
 
@@ -393,7 +390,7 @@ public abstract class MultiFrameApplication extends Application
     {
         ApplicationFrame applicationFrame = discoverFocusedFrame();
 
-        List<ApplicationFrame> values = new ArrayList<ApplicationFrame>(frames.values());
+        List<ApplicationFrame> values = new ArrayList<ApplicationFrame>( frames.values() );
 
         int index = values.indexOf( applicationFrame );
 
@@ -458,7 +455,7 @@ public abstract class MultiFrameApplication extends Application
 
     public boolean doesFrameConfigurationFileExist( FrameInstanceDetailsObject frameInstanceDetailsObject )
     {
-        File configFile = getFrameConfigurationFile(frameInstanceDetailsObject);
+        File configFile = getFrameConfigurationFile( frameInstanceDetailsObject );
         return configFile.exists();
     }
 
@@ -471,20 +468,20 @@ public abstract class MultiFrameApplication extends Application
         }
         catch ( IOException e )
         {
-            logger.error( e.getMessage(), e );
+            LoggerEx.error( e.getMessage(), e );
             return true;
         }
     }
 
     public File getFrameConfigurationFile( FrameInstanceDetailsObject frameInstanceDetailsObject )
     {
-        File metadataDirectory = getFrameMetaDataDirectory(frameInstanceDetailsObject);
-        return new File( metadataDirectory, frameConfigurationName);
+        File metadataDirectory = getFrameMetaDataDirectory( frameInstanceDetailsObject );
+        return new File( metadataDirectory, frameConfigurationName );
     }
 
     public File getFrameMetaDataDirectory( FrameInstanceDetailsObject frameInstanceDetailsObject )
     {
-        return new File(frameInstanceDetailsObject.getLocation(),frameMetaDataName);
+        return new File( frameInstanceDetailsObject.getLocation(), frameMetaDataName );
     }
 
     public boolean isFrameLocationLocked( File location )
@@ -497,7 +494,7 @@ public abstract class MultiFrameApplication extends Application
         }
         catch ( IOException e )
         {
-            logger.error( e.getMessage(), e );
+            LoggerEx.error( e.getMessage(), e );
             return true;
         }
     }

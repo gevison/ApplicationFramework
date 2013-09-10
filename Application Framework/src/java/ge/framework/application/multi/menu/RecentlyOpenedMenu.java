@@ -33,7 +33,7 @@ public class RecentlyOpenedMenu extends ApplicationFrameMenu
 
     public RecentlyOpenedMenu( ApplicationFrame applicationFrame )
     {
-        super(applicationFrame);
+        super( applicationFrame );
     }
 
     @Override
@@ -44,10 +44,10 @@ public class RecentlyOpenedMenu extends ApplicationFrameMenu
 
         recentMenuItems = new HashMap<FrameInstanceDetailsObject, OpenRecentMenuItem>();
 
-        otherRecentMenuItem = new OtherRecentMenuItem(applicationFrame);
+        otherRecentMenuItem = new OtherRecentMenuItem( applicationFrame );
         otherRecentMenuItem.initialise();
 
-        clearRecentMenuItem = new ClearRecentMenuItem(applicationFrame);
+        clearRecentMenuItem = new ClearRecentMenuItem( applicationFrame );
         clearRecentMenuItem.initialise();
     }
 

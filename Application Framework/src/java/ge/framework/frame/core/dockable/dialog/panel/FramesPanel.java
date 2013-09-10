@@ -40,7 +40,7 @@ public class FramesPanel extends JPanel
 
     private ApplicationFrame applicationFrame;
 
-    public FramesPanel(ApplicationFrame applicationFrame)
+    public FramesPanel( ApplicationFrame applicationFrame )
     {
         super( new BorderLayout() );
         this.applicationFrame = applicationFrame;

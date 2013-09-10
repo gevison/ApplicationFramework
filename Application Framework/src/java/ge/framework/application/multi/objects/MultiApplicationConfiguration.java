@@ -17,8 +17,8 @@ import java.util.List;
  * Date: 29/01/13
  * Time: 09:18
  */
-@XmlAccessorType( XmlAccessType.FIELD )
-@XmlAccessorOrder( XmlAccessOrder.ALPHABETICAL )
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlAccessorOrder(XmlAccessOrder.ALPHABETICAL)
 public abstract class MultiApplicationConfiguration extends ApplicationConfiguration
 {
     private boolean reOpenLast = false;

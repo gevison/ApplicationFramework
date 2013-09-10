@@ -20,7 +20,7 @@ public class PreviousWindowMenuItem extends ApplicationFrameMenuItem
 
     public PreviousWindowMenuItem( ApplicationFrame applicationFrame )
     {
-        super(applicationFrame);
+        super( applicationFrame );
     }
 
     @Override
@@ -43,8 +43,12 @@ public class PreviousWindowMenuItem extends ApplicationFrameMenuItem
         MultiFrameApplication multiFrameApplication = ( MultiFrameApplication ) applicationFrame.getApplication();
 
         if ( multiFrameApplication.getFrameCount() > 1 )
+        {
             setEnabled( true );
+        }
         else
+        {
             setEnabled( false );
+        }
     }
 }

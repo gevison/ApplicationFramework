@@ -7,8 +7,8 @@ import ge.utils.properties.PropertiesDialog;
 import ge.utils.properties.PropertiesDialogPage;
 import ge.utils.text.StringArgumentMessageFormat;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.ImageIcon;
+import java.awt.Dimension;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

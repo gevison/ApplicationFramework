@@ -20,7 +20,7 @@ public class ApplicationWindowMenuItem extends ApplicationFrameCheckboxMenuItem
 
     public ApplicationWindowMenuItem( ApplicationFrame applicationFrame, MultiFrameApplicationFrame target )
     {
-        super(applicationFrame);
+        super( applicationFrame );
         this.target = target;
     }
 
@@ -41,8 +41,12 @@ public class ApplicationWindowMenuItem extends ApplicationFrameCheckboxMenuItem
     public void update()
     {
         if ( applicationFrame == target )
+        {
             setSelected( true );
+        }
         else
+        {
             setSelected( false );
+        }
     }
 }

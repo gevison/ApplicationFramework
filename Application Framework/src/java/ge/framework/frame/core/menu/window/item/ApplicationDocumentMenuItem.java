@@ -1,8 +1,6 @@
 package ge.framework.frame.core.menu.window.item;
 
-import com.jidesoft.action.DockableBarManager;
 import ge.framework.frame.core.ApplicationFrame;
-import ge.framework.frame.core.command.ApplicationCommandBarComponent;
 import ge.framework.frame.core.document.ApplicationDocumentComponent;
 import ge.framework.frame.core.menu.utils.ApplicationFrameCheckboxMenuItem;
 

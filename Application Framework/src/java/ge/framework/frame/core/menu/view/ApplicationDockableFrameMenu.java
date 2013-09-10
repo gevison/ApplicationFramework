@@ -24,7 +24,7 @@ public class ApplicationDockableFrameMenu extends ApplicationFrameMenu
 {
     private static final Resources resources = Resources.getInstance( "ge.framework.frame.core" );
 
-    private Map<ApplicationDockableFrame,ApplicationDockableFrameMenuItem> frameMenuItems = null;
+    private Map<ApplicationDockableFrame, ApplicationDockableFrameMenuItem> frameMenuItems = null;
 
     private OtherDockableFramesMenuItem otherDockableFramesMenuItem;
 
@@ -38,17 +38,17 @@ public class ApplicationDockableFrameMenu extends ApplicationFrameMenu
     {
         setText( resources.getResourceString( ApplicationDockableFrameMenu.class, "title" ) );
 
-        frameMenuItems = new HashMap<ApplicationDockableFrame, ApplicationDockableFrameMenuItem>(  );
+        frameMenuItems = new HashMap<ApplicationDockableFrame, ApplicationDockableFrameMenuItem>();
 
-        otherDockableFramesMenuItem = new OtherDockableFramesMenuItem(applicationFrame);
+        otherDockableFramesMenuItem = new OtherDockableFramesMenuItem( applicationFrame );
         otherDockableFramesMenuItem.initialise();
     }
 
     @Override
     protected void customizeMenu()
     {
-        Map<ApplicationDockableFrame,ApplicationDockableFrameMenuItem> currentMenuItems;
-        currentMenuItems = new HashMap<ApplicationDockableFrame, ApplicationDockableFrameMenuItem>(  );
+        Map<ApplicationDockableFrame, ApplicationDockableFrameMenuItem> currentMenuItems;
+        currentMenuItems = new HashMap<ApplicationDockableFrame, ApplicationDockableFrameMenuItem>();
 
         List<ApplicationDockableFrame> frames = applicationFrame.getDockingFrames();
 
@@ -61,7 +61,7 @@ public class ApplicationDockableFrameMenu extends ApplicationFrameMenu
             }
             else
             {
-                menuItem = new ApplicationDockableFrameMenuItem(applicationFrame,frame);
+                menuItem = new ApplicationDockableFrameMenuItem( applicationFrame, frame );
                 menuItem.initialise();
             }
 
@@ -89,7 +89,7 @@ public class ApplicationDockableFrameMenu extends ApplicationFrameMenu
 
         if ( frames.size() != onMenu.size() )
         {
-            addMenuComponent( new ApplicationFrameMenuSeparator());
+            addMenuComponent( new ApplicationFrameMenuSeparator() );
             addMenuComponent( otherDockableFramesMenuItem );
         }
     }
@@ -97,9 +97,9 @@ public class ApplicationDockableFrameMenu extends ApplicationFrameMenu
     @Override
     public void update()
     {
-         List<ApplicationDockableFrame> frames = applicationFrame.getDockingFrames();
+        List<ApplicationDockableFrame> frames = applicationFrame.getDockingFrames();
 
-        if (( frames == null ) || (frames.isEmpty() == true ))
+        if ( ( frames == null ) || ( frames.isEmpty() == true ) )
         {
             setEnabled( false );
         }

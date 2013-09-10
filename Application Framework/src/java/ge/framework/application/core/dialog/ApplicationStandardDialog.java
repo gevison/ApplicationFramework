@@ -20,7 +20,8 @@ public abstract class ApplicationStandardDialog extends StandardDialog
 {
     protected Application application;
 
-    protected ApplicationStandardDialog(ApplicationFrame applicationFrame, Application application) throws HeadlessException
+    protected ApplicationStandardDialog( ApplicationFrame applicationFrame, Application application )
+            throws HeadlessException
     {
         super( applicationFrame );
         this.application = application;

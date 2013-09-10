@@ -22,7 +22,7 @@ public class OtherDockableFramesMenuItem extends ApplicationFrameMenuItem
 
     public OtherDockableFramesMenuItem( ApplicationFrame applicationFrame )
     {
-        super(applicationFrame);
+        super( applicationFrame );
     }
 
     @Override

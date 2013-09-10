@@ -1,8 +1,6 @@
 package ge.framework.application.core.utils;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.InitializingBean;
+import ge.utils.log.LoggerEx;
 
 import java.util.Map;
 
@@ -15,8 +13,6 @@ import java.util.Map;
 public abstract class ApplicationRestarter
 {
     public static final String MAIN = "main";
-
-    private static Logger logger = LogManager.getLogger( ApplicationRestarter.class );
 
     public static final String RESTART_PID = "ge.framework.application.restartPID";
 
@@ -58,19 +54,19 @@ public abstract class ApplicationRestarter
         }
         catch ( Exception e )
         {
-            logger.error( e.getMessage(), e );
+            LoggerEx.error( e.getMessage(), e );
             throw new IllegalStateException( e.getMessage(), e );
         }
 
-        logger.error( "Failed to initialise the Restarter." );
+        LoggerEx.error( "Failed to initialise the Restarter." );
         throw new IllegalStateException( "Failed to initialise the Restarter." );
     }
 
-    public void restartApplication(  )
+    public void restartApplication()
     {
         try
         {
-            logger.info( "Initiating restart" );
+            LoggerEx.info( "Initiating restart" );
 
             String[] command = getRestartCommand( mainClass, applicationArgs );
 
@@ -78,7 +74,7 @@ public abstract class ApplicationRestarter
             {
                 ProcessBuilder processBuilder = new ProcessBuilder( command );
 
-                logger.info( "Executing second process" );
+                LoggerEx.info( "Executing second process" );
                 processBuilder.start();
                 try
                 {
@@ -91,7 +87,7 @@ public abstract class ApplicationRestarter
         }
         catch ( Exception e )
         {
-            logger.error( e.getMessage(), e );
+            LoggerEx.error( e.getMessage(), e );
         }
     }
 

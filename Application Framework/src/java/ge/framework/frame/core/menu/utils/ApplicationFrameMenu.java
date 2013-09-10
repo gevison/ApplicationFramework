@@ -4,7 +4,7 @@ import com.jidesoft.swing.JideMenu;
 import ge.framework.frame.core.ApplicationFrame;
 import ge.framework.frame.core.status.utils.menu.StatusBarEnabledSpacerMenu;
 
-import javax.swing.*;
+import javax.swing.JPopupMenu;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,7 +63,7 @@ public abstract class ApplicationFrameMenu extends StatusBarEnabledSpacerMenu im
                     if ( additionalMenuComponent.isVisible() == true )
                     {
                         if ( ( additionalMenuComponent instanceof ApplicationFrameMenuSeparator ) &&
-                             ( lastItemSeparator == false ) )
+                                ( lastItemSeparator == false ) )
                         {
                             addSeparator();
 

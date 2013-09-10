@@ -58,7 +58,7 @@ public class OpenDialog extends ApplicationStandardDialog implements ActionListe
 
     public OpenDialog( ApplicationFrame applicationFrame, MultiFrameApplication application )
     {
-        super(applicationFrame, application);
+        super( applicationFrame, application );
 
         initialiseDialog();
     }

@@ -29,11 +29,11 @@ public class MultiFrameWindowMenu extends ApplicationFrameMenu
 
     private PreviousWindowMenuItem previousWindowMenuItem;
 
-    private Map<MultiFrameApplicationFrame,ApplicationWindowMenuItem> applicationFrameMenuItems = null;
+    private Map<MultiFrameApplicationFrame, ApplicationWindowMenuItem> applicationFrameMenuItems = null;
 
     public MultiFrameWindowMenu( MultiFrameApplicationFrame applicationFrame )
     {
-        super(applicationFrame,false);
+        super( applicationFrame, false );
     }
 
     @Override
@@ -43,9 +43,9 @@ public class MultiFrameWindowMenu extends ApplicationFrameMenu
         setStatusBarText( resources.getResourceString( MultiFrameWindowMenu.class, "status" ) );
         setMnemonic( resources.getResourceCharacter( MultiFrameWindowMenu.class, "mnemonic" ) );
 
-        applicationFrameMenuItems = new HashMap<MultiFrameApplicationFrame, ApplicationWindowMenuItem>(  );
+        applicationFrameMenuItems = new HashMap<MultiFrameApplicationFrame, ApplicationWindowMenuItem>();
 
-        nextWindowMenuItem = new NextWindowMenuItem(applicationFrame);
+        nextWindowMenuItem = new NextWindowMenuItem( applicationFrame );
         nextWindowMenuItem.initialise();
 
         previousWindowMenuItem = new PreviousWindowMenuItem( applicationFrame );
@@ -60,8 +60,8 @@ public class MultiFrameWindowMenu extends ApplicationFrameMenu
         addMenuComponent( previousWindowMenuItem );
         addMenuComponent( new ApplicationFrameMenuSeparator() );
 
-        Map<MultiFrameApplicationFrame,ApplicationWindowMenuItem> currentMenuItems;
-        currentMenuItems = new HashMap<MultiFrameApplicationFrame, ApplicationWindowMenuItem>(  );
+        Map<MultiFrameApplicationFrame, ApplicationWindowMenuItem> currentMenuItems;
+        currentMenuItems = new HashMap<MultiFrameApplicationFrame, ApplicationWindowMenuItem>();
 
         MultiFrameApplication application = ( MultiFrameApplication ) applicationFrame.getApplication();
 
@@ -76,7 +76,7 @@ public class MultiFrameWindowMenu extends ApplicationFrameMenu
             }
             else
             {
-                menuItem = new ApplicationWindowMenuItem(applicationFrame, frame );
+                menuItem = new ApplicationWindowMenuItem( applicationFrame, frame );
                 menuItem.initialise();
             }
 

@@ -5,7 +5,7 @@ import ge.framework.frame.core.ApplicationFrame;
 import ge.framework.frame.core.manager.ApplicationDockingManager;
 import org.jdom2.Element;
 
-import javax.swing.*;
+import javax.swing.Icon;
 
 public abstract class ApplicationDockableFrame extends DockableFrame
 {

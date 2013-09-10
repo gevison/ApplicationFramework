@@ -20,7 +20,7 @@ public class OtherDocumentMenuItem extends DocumentWorkspaceApplicationFrameMenu
 
     public OtherDocumentMenuItem( DocumentWorkspaceApplicationFrame applicationFrame )
     {
-        super(applicationFrame);
+        super( applicationFrame );
     }
 
     @Override
@@ -33,7 +33,7 @@ public class OtherDocumentMenuItem extends DocumentWorkspaceApplicationFrameMenu
     public void actionPerformed( ActionEvent actionEvent )
     {
         DocumentsDialog documentsDialog =
-                new DocumentsDialog( ( DocumentWorkspaceApplicationFrame)applicationFrame );
+                new DocumentsDialog( ( DocumentWorkspaceApplicationFrame ) applicationFrame );
 
         if ( documentsDialog.doModal() == true )
         {

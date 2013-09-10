@@ -26,7 +26,7 @@ public class ApplicationPropertiesButton extends InitialDialogButton
     public void actionPerformed( ActionEvent e )
     {
         Application application = initialDialog.getApplication();
-        application.processApplicationProperties( );
+        application.processApplicationProperties();
     }
 
 }

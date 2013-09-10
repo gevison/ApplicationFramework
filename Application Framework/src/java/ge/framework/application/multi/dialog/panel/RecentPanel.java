@@ -168,7 +168,7 @@ public class RecentPanel extends JPanel implements ActionListener
 
                 String problem = "";
 
-                if ( application.doesFrameConfigurationFileExist(frameInstanceDetailsObject) == false )
+                if ( application.doesFrameConfigurationFileExist( frameInstanceDetailsObject ) == false )
                 {
                     problem = problemMissing;
 
@@ -176,7 +176,7 @@ public class RecentPanel extends JPanel implements ActionListener
 
                     setBackground( red );
                 }
-                else if ( application.isFrameConfigurationFileLocked(frameInstanceDetailsObject) == true )
+                else if ( application.isFrameConfigurationFileLocked( frameInstanceDetailsObject ) == true )
                 {
                     problem = problemLocked;
 

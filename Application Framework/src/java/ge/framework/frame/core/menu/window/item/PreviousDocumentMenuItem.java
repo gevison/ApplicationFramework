@@ -20,7 +20,7 @@ public class PreviousDocumentMenuItem extends DocumentWorkspaceApplicationFrameM
 
     public PreviousDocumentMenuItem( DocumentWorkspaceApplicationFrame applicationFrame )
     {
-        super(applicationFrame);
+        super( applicationFrame );
     }
 
     @Override
@@ -42,7 +42,8 @@ public class PreviousDocumentMenuItem extends DocumentWorkspaceApplicationFrameM
     {
         DocumentWorkspaceApplicationFrame documentWorkspaceApplicationFrame =
                 ( DocumentWorkspaceApplicationFrame ) applicationFrame;
-        List<ApplicationDocumentComponent> documentComponents = documentWorkspaceApplicationFrame.getDocumentComponents();
+        List<ApplicationDocumentComponent> documentComponents =
+                documentWorkspaceApplicationFrame.getDocumentComponents();
 
         if ( documentComponents.size() <= 1 )
         {

@@ -18,7 +18,8 @@ public class SingleFileMenu extends FileMenu
 {
     private List<ApplicationFrameMenuComponent> prePropertiesMenuItems = new ArrayList<ApplicationFrameMenuComponent>();
 
-    private List<ApplicationFrameMenuComponent> otherPropertiesMenuItems = new ArrayList<ApplicationFrameMenuComponent>();
+    private List<ApplicationFrameMenuComponent> otherPropertiesMenuItems =
+            new ArrayList<ApplicationFrameMenuComponent>();
 
     private List<ApplicationFrameMenuComponent> postPropertiesMenuItems =
             new ArrayList<ApplicationFrameMenuComponent>();

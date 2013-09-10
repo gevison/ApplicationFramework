@@ -1,8 +1,7 @@
 package ge.framework.application.core.utils;
 
 import ge.utils.VMDetails;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import ge.utils.log.LoggerEx;
 
 import java.io.File;
 import java.lang.management.ManagementFactory;
@@ -20,8 +19,6 @@ import java.util.Map;
  */
 public class JavaApplicationRestarter extends ApplicationRestarter
 {
-    private static Logger logger = LogManager.getLogger( JavaApplicationRestarter.class );
-
     public static final String RESTART_PID = "ge.framework.application.restartPID";
 
     private static File javaHome = new File( System.getProperty( "java.home" ) );
@@ -90,22 +87,22 @@ public class JavaApplicationRestarter extends ApplicationRestarter
 
         String thisClassPath = runtimeMXBean.getClassPath();
 
-        logger.debug( "Java exe: " + javaExe.getPath() );
+        LoggerEx.debug( "Java exe: " + javaExe.getPath() );
 
         command.add( "\"" + javaExe.getPath() + "\"" );
 
         for ( String inputArgument : inputArguments )
         {
             if ( ( inputArgument.startsWith( "-D" + RESTART_PID ) == false ) &&
-                 ( inputArgument.startsWith( "-agentlib" ) == false ) )
+                    ( inputArgument.startsWith( "-agentlib" ) == false ) )
             {
-                logger.debug( "Added input argument: " + inputArgument );
+                LoggerEx.debug( "Added input argument: " + inputArgument );
                 command.add( inputArgument );
             }
         }
 
         String argument = "-D" + RESTART_PID + "=" + thisVmDetails.getPid();
-        logger.debug( "Added argument: " + argument );
+        LoggerEx.debug( "Added argument: " + argument );
         command.add( argument );
 
         if ( ( thisClassPath != null ) && ( thisClassPath.isEmpty() == false ) )
@@ -119,28 +116,28 @@ public class JavaApplicationRestarter extends ApplicationRestarter
 
                 if ( dirToJarMap.containsKey( classPathElementFile ) == true )
                 {
-                    logger.debug( "Dir substitution: " + classPathElementFile.getPath() );
+                    LoggerEx.debug( "Dir substitution: " + classPathElementFile.getPath() );
                     classPathElementFile = dirToJarMap.get( classPathElementFile );
-                    logger.debug( "Jar substituted: " + classPathElementFile.getPath() );
+                    LoggerEx.debug( "Jar substituted: " + classPathElementFile.getPath() );
                 }
 
-                logger.debug( "Adding classpath value: " + classPathElementFile.getPath() );
+                LoggerEx.debug( "Adding classpath value: " + classPathElementFile.getPath() );
                 classPath += classPathElementFile.getPath() + File.pathSeparator;
             }
 
-            logger.debug( "Setting classpath: " + classPath );
+            LoggerEx.debug( "Setting classpath: " + classPath );
             command.add( "-cp" );
             command.add( classPath );
         }
 
-        logger.debug( "Main Class: " + mainClass );
+        LoggerEx.debug( "Main Class: " + mainClass );
         command.add( mainClass );
 
         if ( ( applicationArguments != null ) && ( applicationArguments.length != 0 ) )
         {
             for ( String applicationArg : applicationArguments )
             {
-                logger.debug( "Application Argument: " + applicationArg );
+                LoggerEx.debug( "Application Argument: " + applicationArg );
                 command.add( applicationArg );
             }
         }

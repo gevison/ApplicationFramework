@@ -7,6 +7,7 @@ import ge.framework.frame.multi.objects.FrameConfiguration;
 import ge.framework.frame.multi.objects.FrameInstanceDetailsObject;
 import ge.utils.bundle.Resources;
 import ge.utils.file.LockFile;
+import ge.utils.log.LoggerEx;
 import ge.utils.properties.PropertiesDialogPage;
 import ge.utils.text.StringArgumentMessageFormat;
 import ge.utils.xml.bind.MarshallerListener;
@@ -14,8 +15,6 @@ import ge.utils.xml.bind.TypedMarshallerListener;
 import ge.utils.xml.bind.TypedUnmarshallerListener;
 import ge.utils.xml.bind.UnmarshallerListener;
 import org.apache.commons.lang3.reflect.ConstructorUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -42,8 +41,6 @@ public abstract class MultiFrameApplicationFrame extends ApplicationFrame<MultiF
 {
     private static final Resources resources =
             Resources.getInstance( "ge.framework.frame.multi" );
-
-    private static Logger logger = LogManager.getLogger( ApplicationFrame.class );
 
     private TypedMarshallerListener marshallerListener = new TypedMarshallerListener();
 
@@ -75,7 +72,7 @@ public abstract class MultiFrameApplicationFrame extends ApplicationFrame<MultiF
     {
         File configFile = application.getFrameConfigurationFile( frameInstanceDetailsObject );
 
-        logger.trace( "Loading FrameConfiguration from: " + configFile.toString() );
+        LoggerEx.trace( "Loading FrameConfiguration from: " + configFile.toString() );
 
         try
         {
@@ -83,9 +80,10 @@ public abstract class MultiFrameApplicationFrame extends ApplicationFrame<MultiF
 
             if ( configFile.exists() == false )
             {
-                logger.trace( "Failed to find config file: " + configFile.toString() );
+                LoggerEx.trace( "Failed to find config file: " + configFile.toString() );
 
-                frameConfiguration = ConstructorUtils.invokeConstructor( frameConfigurationClass, frameInstanceDetailsObject.getName() );
+                frameConfiguration = ConstructorUtils
+                        .invokeConstructor( frameConfigurationClass, frameInstanceDetailsObject.getName() );
 
                 saveFrameConfiguration();
             }
@@ -96,7 +94,7 @@ public abstract class MultiFrameApplicationFrame extends ApplicationFrame<MultiF
                 Unmarshaller unmarshaller = requestContext.createUnmarshaller();
                 unmarshaller.setListener( unmarshallerListener );
 
-                logger.trace( "Found config file: " + configFile.toString() );
+                LoggerEx.trace( "Found config file: " + configFile.toString() );
 
                 frameConfiguration = ( FrameConfiguration ) unmarshaller.unmarshal( configFile );
             }
@@ -106,32 +104,32 @@ public abstract class MultiFrameApplicationFrame extends ApplicationFrame<MultiF
         }
         catch ( JAXBException e )
         {
-            logger.fatal( e.getMessage(), e );
+            LoggerEx.fatal( e.getMessage(), e );
             throw new IllegalStateException( e.getMessage(), e );
         }
         catch ( NoSuchMethodException e )
         {
-            logger.fatal( e.getMessage() );
+            LoggerEx.fatal( e.getMessage() );
             throw new IllegalStateException( e.getMessage(), e );
         }
         catch ( InvocationTargetException e )
         {
-            logger.fatal( e.getMessage() );
+            LoggerEx.fatal( e.getMessage() );
             throw new IllegalStateException( e.getMessage(), e );
         }
         catch ( InstantiationException e )
         {
-            logger.fatal( e.getMessage() );
+            LoggerEx.fatal( e.getMessage() );
             throw new IllegalStateException( e.getMessage(), e );
         }
         catch ( IllegalAccessException e )
         {
-            logger.fatal( e.getMessage() );
+            LoggerEx.fatal( e.getMessage() );
             throw new IllegalStateException( e.getMessage(), e );
         }
         catch ( IOException e )
         {
-            logger.fatal( e.getMessage() );
+            LoggerEx.fatal( e.getMessage() );
             throw new IllegalStateException( e.getMessage(), e );
         }
     }
@@ -140,7 +138,7 @@ public abstract class MultiFrameApplicationFrame extends ApplicationFrame<MultiF
     {
         File configFile = application.getFrameConfigurationFile( frameInstanceDetailsObject );
 
-        logger.trace( "Saving FrameConfiguration to: " + configFile.toString() );
+        LoggerEx.trace( "Saving FrameConfiguration to: " + configFile.toString() );
 
         Class<? extends FrameConfiguration> frameConfigurationClass = getFrameConfigurationClass();
 
@@ -169,12 +167,12 @@ public abstract class MultiFrameApplicationFrame extends ApplicationFrame<MultiF
         }
         catch ( JAXBException e )
         {
-            logger.fatal( e.getMessage(), e );
+            LoggerEx.fatal( e.getMessage(), e );
             throw new IllegalStateException( e.getMessage(), e );
         }
         catch ( FileNotFoundException e )
         {
-            logger.fatal( e.getMessage(), e );
+            LoggerEx.fatal( e.getMessage(), e );
             throw new IllegalStateException( e.getMessage(), e );
         }
     }
@@ -318,7 +316,7 @@ public abstract class MultiFrameApplicationFrame extends ApplicationFrame<MultiF
         return frameConfiguration;
     }
 
-    public void processFrameProperties(  )
+    public void processFrameProperties()
     {
         FramePropertiesDialog framePropertiesDialog = new FramePropertiesDialog( this );
 

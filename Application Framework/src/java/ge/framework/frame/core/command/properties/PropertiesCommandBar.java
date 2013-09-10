@@ -1,9 +1,9 @@
 package ge.framework.frame.core.command.properties;
 
 import com.jidesoft.action.DockableBarContext;
+import ge.framework.application.core.command.ApplicationPropertiesCommandButton;
 import ge.framework.frame.core.ApplicationFrame;
 import ge.framework.frame.core.command.ApplicationCommandBar;
-import ge.framework.application.core.command.ApplicationPropertiesCommandButton;
 import ge.utils.bundle.Resources;
 
 /**
@@ -21,9 +21,9 @@ public abstract class PropertiesCommandBar extends ApplicationCommandBar
 
     private ApplicationPropertiesCommandButton applicationPropertiesCommandButton;
 
-    public PropertiesCommandBar(ApplicationFrame applicationFrame)
+    public PropertiesCommandBar( ApplicationFrame applicationFrame )
     {
-        super("propertiesCommandBar");
+        super( "propertiesCommandBar" );
 
         this.applicationFrame = applicationFrame;
     }
@@ -39,9 +39,9 @@ public abstract class PropertiesCommandBar extends ApplicationCommandBar
         setChevronAlwaysVisible( false );
         setStretch( false );
 
-        applicationPropertiesCommandButton = new ApplicationPropertiesCommandButton(applicationFrame);
+        applicationPropertiesCommandButton = new ApplicationPropertiesCommandButton( applicationFrame );
 
-        add(applicationPropertiesCommandButton);
+        add( applicationPropertiesCommandButton );
 
         initialisePropertiesCommandBar();
     }

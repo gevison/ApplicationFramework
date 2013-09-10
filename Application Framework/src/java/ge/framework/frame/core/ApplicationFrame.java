@@ -14,10 +14,11 @@ import ge.framework.frame.core.status.ApplicationStatusBar;
 import ge.framework.frame.core.status.enums.StatusBarConstraint;
 import ge.utils.bundle.Resources;
 import ge.utils.controls.breadcrumb.BreadcrumbBar;
+import ge.utils.log.LoggerEx;
 import ge.utils.os.OS;
 import ge.utils.text.StringArgumentMessageFormat;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -105,7 +106,7 @@ public abstract class ApplicationFrame<APPLICATION extends Application> extends 
 
     private void initialiseFrame()
     {
-        logger.trace( "Initialising frame." );
+        LoggerEx.trace( "Initialising frame." );
 
         applicationFrameWindowAdapter = new ApplicationFrameWindowAdapter( this );
 
@@ -120,24 +121,24 @@ public abstract class ApplicationFrame<APPLICATION extends Application> extends 
         contentPane.setLayout( new BorderLayout() );
         contentPane.add( localContentContainer, BorderLayout.CENTER );
 
-        logger.trace( "Initialising dockable bar manager." );
+        LoggerEx.trace( "Initialising dockable bar manager." );
         dockableBarManager = new ApplicationDockableBarManager( this, localContentContainer );
         dockableBarManager.setRearrangable( true );
 
-        logger.trace( "Initialising docking manager." );
+        LoggerEx.trace( "Initialising docking manager." );
         dockingManager = new ApplicationDockingManager( this, dockableBarManager );
 
-        logger.trace( "Initialising status bar." );
+        LoggerEx.trace( "Initialising status bar." );
         statusBar = new ApplicationStatusBar();
         localContentContainer.add( statusBar, BorderLayout.AFTER_LAST_LINE );
 
-        logger.trace( "Initialising layout persistence manager." );
+        LoggerEx.trace( "Initialising layout persistence manager." );
         layoutPersistenceManager = new ApplicationLayoutPersistenceManager( application.getName() );
         layoutPersistenceManager.addLayoutPersistence( dockableBarManager );
         layoutPersistenceManager.addLayoutPersistence( dockingManager );
     }
 
-    public void setBreadcrumbBar(BreadcrumbBar breadcrumbBar)
+    public void setBreadcrumbBar( BreadcrumbBar breadcrumbBar )
     {
         removeBreadcrumbBar();
 
@@ -145,7 +146,7 @@ public abstract class ApplicationFrame<APPLICATION extends Application> extends 
         {
             Container contentContainer = dockingManager.getContentContainer();
             breadcrumbBarScrollPane = new JScrollPane( breadcrumbBar, JScrollPane.VERTICAL_SCROLLBAR_NEVER,
-                                                      JScrollPane.HORIZONTAL_SCROLLBAR_NEVER );
+                                                       JScrollPane.HORIZONTAL_SCROLLBAR_NEVER );
             breadcrumbBarScrollPane.setBorder( null );
             contentContainer.add( breadcrumbBarScrollPane, BorderLayout.BEFORE_FIRST_LINE );
         }
@@ -163,7 +164,7 @@ public abstract class ApplicationFrame<APPLICATION extends Application> extends 
         }
     }
 
-    public void setWorkspaceComponent(JComponent workspaceComponent )
+    public void setWorkspaceComponent( JComponent workspaceComponent )
     {
         dockingManager.setWorkspaceComponent( workspaceComponent );
     }
@@ -197,7 +198,7 @@ public abstract class ApplicationFrame<APPLICATION extends Application> extends 
     {
         if ( dockableBar != null )
         {
-            logger.debug( "Adding dockable bar: " + dockableBar.getKey() );
+            LoggerEx.debug( "Adding dockable bar: " + dockableBar.getKey() );
             dockableBarManager.addDockableBar( dockableBar );
         }
     }
@@ -206,7 +207,7 @@ public abstract class ApplicationFrame<APPLICATION extends Application> extends 
     {
         if ( dockableBar != null )
         {
-            logger.debug( "Removing dockable bar: " + dockableBar.getKey() );
+            LoggerEx.debug( "Removing dockable bar: " + dockableBar.getKey() );
             dockableBarManager.removeDockableBar( dockableBar );
         }
     }
@@ -284,7 +285,7 @@ public abstract class ApplicationFrame<APPLICATION extends Application> extends 
     public final void close()
     {
         manualClose = true;
-        logger.info( "Firing close event." );
+        LoggerEx.info( "Firing close event." );
         WindowEvent windowEvent = new WindowEvent( this, WindowEvent.WINDOW_CLOSING );
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent( windowEvent );
     }
@@ -293,7 +294,7 @@ public abstract class ApplicationFrame<APPLICATION extends Application> extends 
     {
         if ( ( application.isRestarting() == true ) || ( confirmWindowClosing() == true ) )
         {
-            logger.debug( "Closing window." );
+            LoggerEx.debug( "Closing window." );
 
             try
             {
@@ -301,7 +302,7 @@ public abstract class ApplicationFrame<APPLICATION extends Application> extends 
             }
             catch ( Exception e )
             {
-                logger.warn( e.getMessage(), e );
+                LoggerEx.warn( e.getMessage(), e );
             }
 
             if ( layoutPersistenceManager != null )
@@ -328,7 +329,7 @@ public abstract class ApplicationFrame<APPLICATION extends Application> extends 
             }
             catch ( Exception e )
             {
-                logger.warn( e.getMessage(), e );
+                LoggerEx.warn( e.getMessage(), e );
             }
         }
     }
@@ -346,7 +347,7 @@ public abstract class ApplicationFrame<APPLICATION extends Application> extends 
 
     private void closed()
     {
-        logger.debug( "Window closed." );
+        LoggerEx.debug( "Window closed." );
 
         removeWindowListener( applicationFrameWindowAdapter );
         applicationFrameWindowAdapter.dispose();
@@ -388,7 +389,7 @@ public abstract class ApplicationFrame<APPLICATION extends Application> extends 
             Application application = applicationFrame.getApplication();
 
             if ( ( applicationFrame.isManualClose() == true ) ||
-                 ( application.closeOrExit() == CloseOrExitEnum.CLOSE ) )
+                    ( application.closeOrExit() == CloseOrExitEnum.CLOSE ) )
             {
                 applicationFrame.closing();
             }

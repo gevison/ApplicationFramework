@@ -26,19 +26,19 @@ public class MultiFrameDocumentWindowMenu extends DocumentWorkspaceWindowMenu
 
     private PreviousWindowMenuItem previousWindowMenuItem;
 
-    private Map<MultiFrameApplicationFrame,ApplicationWindowMenuItem> applicationFrameMenuItems = null;
+    private Map<MultiFrameApplicationFrame, ApplicationWindowMenuItem> applicationFrameMenuItems = null;
 
     public MultiFrameDocumentWindowMenu( DocumentMultiFrameApplicationFrame applicationFrame )
     {
-        super(applicationFrame);
+        super( applicationFrame );
     }
 
     @Override
     protected void initialiseWindowMenu()
     {
-        applicationFrameMenuItems = new HashMap<MultiFrameApplicationFrame, ApplicationWindowMenuItem>(  );
+        applicationFrameMenuItems = new HashMap<MultiFrameApplicationFrame, ApplicationWindowMenuItem>();
 
-        nextWindowMenuItem = new NextWindowMenuItem(applicationFrame);
+        nextWindowMenuItem = new NextWindowMenuItem( applicationFrame );
         nextWindowMenuItem.initialise();
 
         previousWindowMenuItem = new PreviousWindowMenuItem( applicationFrame );
@@ -53,8 +53,8 @@ public class MultiFrameDocumentWindowMenu extends DocumentWorkspaceWindowMenu
         addMenuComponent( previousWindowMenuItem );
         addMenuComponent( new ApplicationFrameMenuSeparator() );
 
-        Map<MultiFrameApplicationFrame,ApplicationWindowMenuItem> currentMenuItems;
-        currentMenuItems = new HashMap<MultiFrameApplicationFrame, ApplicationWindowMenuItem>(  );
+        Map<MultiFrameApplicationFrame, ApplicationWindowMenuItem> currentMenuItems;
+        currentMenuItems = new HashMap<MultiFrameApplicationFrame, ApplicationWindowMenuItem>();
 
         MultiFrameApplication application = ( MultiFrameApplication ) applicationFrame.getApplication();
 
@@ -69,7 +69,7 @@ public class MultiFrameDocumentWindowMenu extends DocumentWorkspaceWindowMenu
             }
             else
             {
-                menuItem = new ApplicationWindowMenuItem(applicationFrame, frame );
+                menuItem = new ApplicationWindowMenuItem( applicationFrame, frame );
                 menuItem.initialise();
             }
 

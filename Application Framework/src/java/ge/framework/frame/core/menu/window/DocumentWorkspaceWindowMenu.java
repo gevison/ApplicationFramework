@@ -39,7 +39,8 @@ public class DocumentWorkspaceWindowMenu extends ApplicationFrameMenu
 
     private CloseAllDocumentMenuItem closeAllDocumentMenuItem;
 
-    private List<ApplicationFrameMenuComponent> additionalDocumentItems = new ArrayList<ApplicationFrameMenuComponent>(  );
+    private List<ApplicationFrameMenuComponent> additionalDocumentItems =
+            new ArrayList<ApplicationFrameMenuComponent>();
 
     public DocumentWorkspaceWindowMenu( DocumentWorkspaceApplicationFrame applicationFrame )
     {

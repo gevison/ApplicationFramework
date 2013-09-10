@@ -25,7 +25,7 @@ public class ApplicationDocumentMenu extends ApplicationFrameMenu
 {
     private static final Resources resources = Resources.getInstance( "ge.framework.frame.core" );
 
-    private Map<ApplicationDocumentComponent,ApplicationDocumentMenuItem> documentMenuItems = null;
+    private Map<ApplicationDocumentComponent, ApplicationDocumentMenuItem> documentMenuItems = null;
 
     private OtherDocumentMenuItem otherDocumentMenuItem;
 
@@ -39,7 +39,7 @@ public class ApplicationDocumentMenu extends ApplicationFrameMenu
     {
         setText( resources.getResourceString( ApplicationDocumentMenu.class, "title" ) );
 
-        documentMenuItems = new HashMap<ApplicationDocumentComponent, ApplicationDocumentMenuItem>(  );
+        documentMenuItems = new HashMap<ApplicationDocumentComponent, ApplicationDocumentMenuItem>();
 
         otherDocumentMenuItem = new OtherDocumentMenuItem( ( DocumentWorkspaceApplicationFrame ) applicationFrame );
         otherDocumentMenuItem.initialise();
@@ -48,8 +48,8 @@ public class ApplicationDocumentMenu extends ApplicationFrameMenu
     @Override
     protected void customizeMenu()
     {
-        Map<ApplicationDocumentComponent,ApplicationDocumentMenuItem> currentMenuItems;
-        currentMenuItems = new HashMap<ApplicationDocumentComponent, ApplicationDocumentMenuItem>(  );
+        Map<ApplicationDocumentComponent, ApplicationDocumentMenuItem> currentMenuItems;
+        currentMenuItems = new HashMap<ApplicationDocumentComponent, ApplicationDocumentMenuItem>();
 
         DocumentWorkspaceApplicationFrame documentWorkspaceApplicationFrame =
                 ( DocumentWorkspaceApplicationFrame ) applicationFrame;
@@ -65,7 +65,7 @@ public class ApplicationDocumentMenu extends ApplicationFrameMenu
             }
             else
             {
-                menuItem = new ApplicationDocumentMenuItem(applicationFrame, document );
+                menuItem = new ApplicationDocumentMenuItem( applicationFrame, document );
                 menuItem.initialise();
             }
 
@@ -93,7 +93,7 @@ public class ApplicationDocumentMenu extends ApplicationFrameMenu
 
         if ( documents.size() != onMenu.size() )
         {
-            addMenuComponent( new ApplicationFrameMenuSeparator());
+            addMenuComponent( new ApplicationFrameMenuSeparator() );
             addMenuComponent( otherDocumentMenuItem );
         }
     }
@@ -107,7 +107,7 @@ public class ApplicationDocumentMenu extends ApplicationFrameMenu
 
         List<ApplicationDocumentComponent> documents = documentWorkspaceApplicationFrame.getDocumentComponents();
 
-        if (( documents == null ) || (documents.isEmpty() == true ))
+        if ( ( documents == null ) || ( documents.isEmpty() == true ) )
         {
             setEnabled( false );
         }

@@ -34,7 +34,7 @@ public class CloseDocumentMenuItem extends DocumentWorkspaceApplicationFrameMenu
     {
         DocumentWorkspaceApplicationFrame documentWorkspaceApplicationFrame =
                 ( DocumentWorkspaceApplicationFrame ) applicationFrame;
-        documentWorkspaceApplicationFrame.closeCurrentDocument(  );
+        documentWorkspaceApplicationFrame.closeCurrentDocument();
     }
 
     @Override

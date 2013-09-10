@@ -20,7 +20,7 @@ public class ClearRecentMenuItem extends ApplicationFrameMenuItem
 
     public ClearRecentMenuItem( ApplicationFrame applicationFrame )
     {
-        super(applicationFrame);
+        super( applicationFrame );
     }
 
     @Override

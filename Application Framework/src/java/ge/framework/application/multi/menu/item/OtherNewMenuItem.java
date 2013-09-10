@@ -18,7 +18,7 @@ public class OtherNewMenuItem extends ApplicationFrameMenuItem
     protected static final Resources resources =
             Resources.getInstance( "ge.framework.application.resources" );
 
-    public OtherNewMenuItem(ApplicationFrame applicationFrame)
+    public OtherNewMenuItem( ApplicationFrame applicationFrame )
     {
         super( applicationFrame );
     }
@@ -34,7 +34,7 @@ public class OtherNewMenuItem extends ApplicationFrameMenuItem
     public void actionPerformed( ActionEvent e )
     {
         MultiFrameApplication application = ( MultiFrameApplication ) applicationFrame.getApplication();
-        application.processNew( applicationFrame);
+        application.processNew( applicationFrame );
     }
 
     @Override

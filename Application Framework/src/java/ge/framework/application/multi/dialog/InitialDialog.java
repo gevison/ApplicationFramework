@@ -5,11 +5,11 @@ import com.jidesoft.dialog.StandardDialog;
 import com.jidesoft.swing.PartialLineBorder;
 import com.jidesoft.swing.PartialSide;
 import com.jidesoft.swing.StyledLabel;
+import ge.framework.application.core.dialog.panel.ApplicationBannerPanel;
 import ge.framework.application.multi.MultiFrameApplication;
 import ge.framework.application.multi.dialog.buttons.ApplicationPropertiesButton;
 import ge.framework.application.multi.dialog.buttons.NewFrameButton;
 import ge.framework.application.multi.dialog.buttons.OpenFrameButton;
-import ge.framework.application.core.dialog.panel.ApplicationBannerPanel;
 import ge.framework.application.multi.dialog.panel.RecentPanel;
 import ge.framework.frame.multi.objects.FrameInstanceDetailsObject;
 import ge.utils.bundle.Resources;
@@ -46,7 +46,7 @@ public class InitialDialog extends StandardDialog implements ListSelectionListen
 
     private MultiFrameApplication application;
 
-    public InitialDialog( MultiFrameApplication application)
+    public InitialDialog( MultiFrameApplication application )
     {
         super();
         this.application = application;
@@ -72,7 +72,7 @@ public class InitialDialog extends StandardDialog implements ListSelectionListen
     {
         if ( bannerPanel == null )
         {
-            bannerPanel = new ApplicationBannerPanel(application);
+            bannerPanel = new ApplicationBannerPanel( application );
 
             bannerPanel.setBackground( getBackground() );
         }

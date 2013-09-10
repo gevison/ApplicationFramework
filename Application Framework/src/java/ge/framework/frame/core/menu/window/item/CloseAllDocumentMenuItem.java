@@ -20,7 +20,7 @@ public class CloseAllDocumentMenuItem extends DocumentWorkspaceApplicationFrameM
 
     public CloseAllDocumentMenuItem( DocumentWorkspaceApplicationFrame applicationFrame )
     {
-        super(applicationFrame);
+        super( applicationFrame );
     }
 
     @Override

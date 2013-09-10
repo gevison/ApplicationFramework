@@ -7,7 +7,8 @@ import com.jidesoft.swing.JideBoxLayout;
 import ge.framework.frame.core.status.enums.StatusBarConstraint;
 import ge.framework.frame.core.status.utils.StatusBarEnabled;
 
-import javax.swing.*;
+import javax.swing.MenuElement;
+import javax.swing.MenuSelectionManager;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.util.Arrays;

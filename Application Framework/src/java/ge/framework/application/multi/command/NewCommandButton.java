@@ -21,7 +21,7 @@ public class NewCommandButton extends JideButton implements ActionListener
 
     private ApplicationFrame applicationFrame;
 
-    public NewCommandButton(ApplicationFrame applicationFrame)
+    public NewCommandButton( ApplicationFrame applicationFrame )
     {
         this.applicationFrame = applicationFrame;
         initialiseMenu();
@@ -41,6 +41,6 @@ public class NewCommandButton extends JideButton implements ActionListener
     public void actionPerformed( ActionEvent e )
     {
         MultiFrameApplication application = ( MultiFrameApplication ) applicationFrame.getApplication();
-        application.processNew(applicationFrame);
+        application.processNew( applicationFrame );
     }
 }

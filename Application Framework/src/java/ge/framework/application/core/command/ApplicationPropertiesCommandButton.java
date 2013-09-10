@@ -21,7 +21,7 @@ public class ApplicationPropertiesCommandButton extends JideButton implements Ac
 
     private ApplicationFrame applicationFrame;
 
-    public ApplicationPropertiesCommandButton(ApplicationFrame applicationFrame)
+    public ApplicationPropertiesCommandButton( ApplicationFrame applicationFrame )
     {
         this.applicationFrame = applicationFrame;
         addActionListener( this );

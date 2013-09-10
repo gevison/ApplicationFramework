@@ -9,11 +9,23 @@ import ge.utils.controls.EnumeratedButtonGroup;
 import ge.utils.problem.object.Problem;
 import ge.utils.properties.PropertiesDialogPage;
 
-import javax.swing.*;
+import javax.swing.Icon;
+import javax.swing.JCheckBox;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerModel;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -194,7 +206,7 @@ public class MultiGeneralApplicationPropertiesPage extends PropertiesDialogPage<
         Object source = e.getSource();
 
         if ( ( source == reopenLast ) || ( source == confirmExit ) || ( source == openInSameWindow ) ||
-             ( source == openInNewWindow ) || ( source == confirmWindow ) )
+                ( source == openInNewWindow ) || ( source == confirmWindow ) )
         {
             firePropertyValueChangedEvent();
         }

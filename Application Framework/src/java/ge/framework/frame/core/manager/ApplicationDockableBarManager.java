@@ -5,8 +5,9 @@ import com.jidesoft.action.DockableBar;
 import ge.framework.frame.core.ApplicationFrame;
 import ge.framework.frame.core.command.ApplicationCommandBarComponent;
 
-import java.awt.*;
-import java.util.*;
+import java.awt.Container;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -36,9 +37,9 @@ public class ApplicationDockableBarManager extends DefaultDockableBarManager
     {
         Collection<DockableBar> dockableBars = getAllDockableBars();
 
-        List<ApplicationCommandBarComponent> retVal = new ArrayList<ApplicationCommandBarComponent>(  );
+        List<ApplicationCommandBarComponent> retVal = new ArrayList<ApplicationCommandBarComponent>();
 
-        if (( dockableBars != null ) && ( dockableBars.isEmpty() == false ))
+        if ( ( dockableBars != null ) && ( dockableBars.isEmpty() == false ) )
         {
             for ( DockableBar dockableBar : dockableBars )
             {

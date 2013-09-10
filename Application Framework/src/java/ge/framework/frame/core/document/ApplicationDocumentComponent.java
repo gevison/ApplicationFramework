@@ -3,7 +3,8 @@ package ge.framework.frame.core.document;
 import com.jidesoft.document.DocumentComponent;
 import com.jidesoft.document.IDocumentPane;
 
-import javax.swing.*;
+import javax.swing.Icon;
+import javax.swing.JPanel;
 
 /**
  * Created with IntelliJ IDEA.

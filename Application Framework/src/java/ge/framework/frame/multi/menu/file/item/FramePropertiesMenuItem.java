@@ -23,7 +23,7 @@ public class FramePropertiesMenuItem extends ApplicationFrameMenuItem
 
     public FramePropertiesMenuItem( ApplicationFrame applicationFrame )
     {
-        super(applicationFrame);
+        super( applicationFrame );
     }
 
     @Override

@@ -4,8 +4,7 @@ import ge.framework.application.multi.MultiFrameApplication;
 import ge.framework.frame.core.DocumentWorkspaceApplicationFrame;
 import ge.framework.frame.core.document.ApplicationDocumentComponent;
 import ge.framework.frame.core.document.ApplicationDocumentPane;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import ge.utils.log.LoggerEx;
 
 import java.awt.HeadlessException;
 import java.util.ArrayList;
@@ -20,8 +19,6 @@ import java.util.List;
 public abstract class DocumentMultiFrameApplicationFrame extends MultiFrameApplicationFrame implements
                                                                                             DocumentWorkspaceApplicationFrame
 {
-    private static final Logger logger = LogManager.getLogger( DocumentMultiFrameApplicationFrame.class );
-
     private ApplicationDocumentPane documentPane;
 
     public DocumentMultiFrameApplicationFrame( MultiFrameApplication application ) throws HeadlessException
@@ -32,7 +29,7 @@ public abstract class DocumentMultiFrameApplicationFrame extends MultiFrameAppli
     @Override
     protected final void initialiseApplicationFrame()
     {
-        logger.trace( "Initialising document pane." );
+        LoggerEx.trace( "Initialising document pane." );
         documentPane = new ApplicationDocumentPane();
 
         setWorkspaceComponent( documentPane );

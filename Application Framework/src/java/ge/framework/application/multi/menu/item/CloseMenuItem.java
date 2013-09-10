@@ -36,7 +36,7 @@ public class CloseMenuItem extends ApplicationFrameMenuItem
     {
         MultiFrameApplication application = ( MultiFrameApplication ) applicationFrame.getApplication();
 
-        application.processClose(applicationFrame);
+        application.processClose( applicationFrame );
     }
 
     @Override

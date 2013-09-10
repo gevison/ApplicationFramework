@@ -17,9 +17,10 @@ import java.awt.event.ActionEvent;
 public class NextWindowMenuItem extends ApplicationFrameMenuItem
 {
     private static Resources resources = Resources.getInstance( "ge.framework.frame.multi" );
+
     public NextWindowMenuItem( ApplicationFrame applicationFrame )
     {
-        super(applicationFrame);
+        super( applicationFrame );
     }
 
     @Override
@@ -42,8 +43,12 @@ public class NextWindowMenuItem extends ApplicationFrameMenuItem
         MultiFrameApplication multiFrameApplication = ( MultiFrameApplication ) applicationFrame.getApplication();
 
         if ( multiFrameApplication.getFrameCount() > 1 )
+        {
             setEnabled( true );
+        }
         else
+        {
             setEnabled( false );
+        }
     }
 }

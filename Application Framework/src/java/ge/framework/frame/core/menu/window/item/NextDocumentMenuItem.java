@@ -20,7 +20,7 @@ public class NextDocumentMenuItem extends DocumentWorkspaceApplicationFrameMenuI
 
     public NextDocumentMenuItem( DocumentWorkspaceApplicationFrame applicationFrame )
     {
-        super(applicationFrame);
+        super( applicationFrame );
     }
 
     @Override

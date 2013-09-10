@@ -26,8 +26,8 @@ public class FileCommandBar extends ApplicationCommandBar
     {
         super( "fileCommandBar" );
 
-        newCommandButton = new NewCommandButton(applicationFrame);
-        openCommandButton = new OpenCommandButton(applicationFrame);
+        newCommandButton = new NewCommandButton( applicationFrame );
+        openCommandButton = new OpenCommandButton( applicationFrame );
 
         setTitle( resources.getResourceString( FileCommandBar.class, "label" ) );
         setInitSide( DockableBarContext.DOCK_SIDE_NORTH );

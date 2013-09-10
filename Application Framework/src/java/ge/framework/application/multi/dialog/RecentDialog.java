@@ -50,7 +50,7 @@ public class RecentDialog extends ApplicationStandardDialog implements ActionLis
 
     private ApplicationFrame applicationFrame;
 
-    public RecentDialog(ApplicationFrame applicationFrame)
+    public RecentDialog( ApplicationFrame applicationFrame )
     {
         super( applicationFrame, applicationFrame.getApplication() );
         this.applicationFrame = applicationFrame;

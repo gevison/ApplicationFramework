@@ -3,7 +3,7 @@ package ge.framework.frame.core.status.utils.menu.item;
 
 import ge.framework.frame.core.status.utils.StatusBarEnabled;
 
-import javax.swing.*;
+import javax.swing.JCheckBoxMenuItem;
 
 /**
  * Created with IntelliJ IDEA.

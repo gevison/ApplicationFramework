@@ -23,7 +23,7 @@ public class MultiFileMenu extends FileMenu
 {
     private NewMenuItem newItem;
 
-    private List<ApplicationFrameMenuComponent> additionalNewItems = new ArrayList<ApplicationFrameMenuComponent>(  );
+    private List<ApplicationFrameMenuComponent> additionalNewItems = new ArrayList<ApplicationFrameMenuComponent>();
 
     private OpenMenuItem openMenuItem;
 
@@ -33,7 +33,8 @@ public class MultiFileMenu extends FileMenu
 
     private FramePropertiesMenuItem framePropertiesMenuItem;
 
-    private List<ApplicationFrameMenuComponent> postPropertiesMenuItems = new ArrayList<ApplicationFrameMenuComponent>();
+    private List<ApplicationFrameMenuComponent> postPropertiesMenuItems =
+            new ArrayList<ApplicationFrameMenuComponent>();
 
     public MultiFileMenu( MultiFrameApplicationFrame applicationFrame )
     {
@@ -48,7 +49,7 @@ public class MultiFileMenu extends FileMenu
         newItem = new NewMenuItem( applicationFrame, true );
         newItem.initialise();
 
-        openMenuItem = new OpenMenuItem(applicationFrame);
+        openMenuItem = new OpenMenuItem( applicationFrame );
         openMenuItem.initialise();
 
         recentlyOpenedMenu = new RecentlyOpenedMenu( applicationFrame );

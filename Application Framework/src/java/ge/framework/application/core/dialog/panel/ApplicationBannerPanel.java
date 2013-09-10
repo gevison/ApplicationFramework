@@ -17,7 +17,7 @@ public class ApplicationBannerPanel extends BannerPanel
 {
     private Application application;
 
-    public ApplicationBannerPanel(Application application)
+    public ApplicationBannerPanel( Application application )
     {
         super();
         this.application = application;

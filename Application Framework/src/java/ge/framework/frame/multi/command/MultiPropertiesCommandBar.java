@@ -17,13 +17,14 @@ public class MultiPropertiesCommandBar extends PropertiesCommandBar
 
     public MultiPropertiesCommandBar( ApplicationFrame applicationFrame )
     {
-        super(applicationFrame);
+        super( applicationFrame );
     }
 
     @Override
     protected void initialisePropertiesCommandBar()
     {
-        framePropertiesCommandButton = new FramePropertiesCommandButton( ( MultiFrameApplicationFrame ) applicationFrame );
+        framePropertiesCommandButton =
+                new FramePropertiesCommandButton( ( MultiFrameApplicationFrame ) applicationFrame );
 
         add( framePropertiesCommandButton );
     }

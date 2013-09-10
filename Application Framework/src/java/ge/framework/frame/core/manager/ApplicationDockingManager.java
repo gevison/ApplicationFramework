@@ -8,10 +8,7 @@ import com.jidesoft.docking.Workspace;
 import com.jidesoft.swing.JideTabbedPane;
 import ge.framework.frame.core.ApplicationFrame;
 import ge.framework.frame.core.dockable.ApplicationDockableFrame;
-import ge.framework.frame.core.document.ApplicationDocumentComponent;
-import ge.framework.frame.core.document.ApplicationDocumentPane;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import ge.utils.log.LoggerEx;
 
 import javax.swing.JComponent;
 import javax.swing.SwingConstants;
@@ -28,8 +25,6 @@ import java.util.List;
  */
 public final class ApplicationDockingManager extends DefaultDockingManager
 {
-    private static final Logger logger = LogManager.getLogger( ApplicationDockingManager.class );
-
     private JComponent workspaceComponent;
 
     public ApplicationDockingManager( ApplicationFrame applicationFrame,
@@ -39,12 +34,12 @@ public final class ApplicationDockingManager extends DefaultDockingManager
 
         setTabbedPaneCustomizer( new ApplicationTabbedPaneCustomizer() );
 
-        logger.trace( "Initialising workspace." );
+        LoggerEx.trace( "Initialising workspace." );
         Workspace dockingManagerWorkspace = getWorkspace();
         dockingManagerWorkspace.setAdjustOpacityOnFly( true );
     }
 
-    public final void setWorkspaceComponent(JComponent workspaceComponent)
+    public final void setWorkspaceComponent( JComponent workspaceComponent )
     {
         removeWorkspaceComponent();
 
@@ -74,7 +69,7 @@ public final class ApplicationDockingManager extends DefaultDockingManager
     {
         if ( dockableFrame != null )
         {
-            logger.debug( "Adding dockable frame: " + dockableFrame.getKey() );
+            LoggerEx.debug( "Adding dockable frame: " + dockableFrame.getKey() );
             super.addFrame( dockableFrame );
         }
     }
@@ -83,7 +78,7 @@ public final class ApplicationDockingManager extends DefaultDockingManager
     {
         if ( dockableFrame != null )
         {
-            logger.debug( "Removing dockable frame: " + dockableFrame.getKey() );
+            LoggerEx.debug( "Removing dockable frame: " + dockableFrame.getKey() );
             super.removeFrame( dockableFrame.getKey() );
         }
     }
@@ -155,7 +150,7 @@ public final class ApplicationDockingManager extends DefaultDockingManager
 
     public List<ApplicationDockableFrame> getDockingFrames()
     {
-        List<ApplicationDockableFrame> retVal = new ArrayList<ApplicationDockableFrame>(  );
+        List<ApplicationDockableFrame> retVal = new ArrayList<ApplicationDockableFrame>();
 
         List<String> allFrameNames = getAllFrameNames();
 

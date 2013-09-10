@@ -3,9 +3,7 @@ package ge.framework.frame.core.menu.view.item;
 import com.jidesoft.action.DockableBarManager;
 import ge.framework.frame.core.ApplicationFrame;
 import ge.framework.frame.core.command.ApplicationCommandBarComponent;
-import ge.framework.frame.core.dockable.ApplicationDockableFrame;
 import ge.framework.frame.core.menu.utils.ApplicationFrameCheckboxMenuItem;
-import ge.framework.frame.core.menu.utils.ApplicationFrameMenuItem;
 
 import java.awt.event.ActionEvent;
 

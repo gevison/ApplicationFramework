@@ -12,6 +12,7 @@ import ge.framework.frame.core.ApplicationFrame;
 import ge.framework.frame.multi.objects.FrameInstanceDetailsObject;
 import ge.utils.bundle.Resources;
 import ge.utils.file.FileUtils;
+import ge.utils.log.LoggerEx;
 import ge.utils.message.MessageDialog;
 import ge.utils.message.enums.MessageLevel;
 import ge.utils.message.enums.MessageResult;
@@ -21,8 +22,6 @@ import ge.utils.problem.enums.ProblemType;
 import ge.utils.problem.object.Problem;
 import ge.utils.problem.object.ProblemList;
 import ge.utils.text.StringArgumentMessageFormat;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -50,8 +49,6 @@ import java.util.Map;
 public class NewDialog extends ApplicationStandardDialog implements ActionListener,
                                                                     CaretListener
 {
-    private Logger logger = LogManager.getLogger( NewDialog.class );
-
     private static final Resources resources =
             Resources.getInstance( "ge.framework.application.multi" );
 
@@ -88,7 +85,7 @@ public class NewDialog extends ApplicationStandardDialog implements ActionListen
 
     public NewDialog( ApplicationFrame applicationFrame, MultiFrameApplication application )
     {
-        super( applicationFrame, application);
+        super( applicationFrame, application );
 
         initialiseDialog();
     }
@@ -195,7 +192,7 @@ public class NewDialog extends ApplicationStandardDialog implements ActionListen
         }
         catch ( IOException e )
         {
-            logger.error( "Failed to validate Details.", e );
+            LoggerEx.error( "Failed to validate Details.", e );
         }
 
         setVisible( true );
@@ -218,7 +215,7 @@ public class NewDialog extends ApplicationStandardDialog implements ActionListen
             }
             catch ( IOException e )
             {
-                logger.error( "Failed to validate Details.", e );
+                LoggerEx.error( "Failed to validate Details.", e );
             }
 
             if ( okButton.isEnabled() == true )
@@ -345,7 +342,7 @@ public class NewDialog extends ApplicationStandardDialog implements ActionListen
         }
         catch ( IOException e )
         {
-            logger.error( "Failed to validate Project Details.", e );
+            LoggerEx.error( "Failed to validate Project Details.", e );
         }
     }
 
@@ -392,7 +389,7 @@ public class NewDialog extends ApplicationStandardDialog implements ActionListen
         }
         catch ( IOException e )
         {
-            logger.error( "Failed to validate Project Details.", e );
+            LoggerEx.error( "Failed to validate Project Details.", e );
         }
     }
 

@@ -37,7 +37,7 @@ public class OtherRecentMenuItem extends ApplicationFrameMenuItem
     @Override
     public void actionPerformed( ActionEvent e )
     {
-        RecentDialog recentDialog = new RecentDialog(applicationFrame);
+        RecentDialog recentDialog = new RecentDialog( applicationFrame );
 
         if ( recentDialog.doModal() == true )
         {

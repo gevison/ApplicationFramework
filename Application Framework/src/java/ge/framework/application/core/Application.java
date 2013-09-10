@@ -9,6 +9,7 @@ import ge.framework.application.core.utils.ApplicationRestarter;
 import ge.framework.frame.core.ApplicationFrame;
 import ge.framework.frame.single.SingleFrameApplicationFrame;
 import ge.utils.VMInstance;
+import ge.utils.log.LoggerEx;
 import ge.utils.message.MessageDialog;
 import ge.utils.message.enums.MessageResult;
 import ge.utils.os.OS;
@@ -19,8 +20,6 @@ import ge.utils.xml.bind.TypedMarshallerListener;
 import ge.utils.xml.bind.TypedUnmarshallerListener;
 import ge.utils.xml.bind.UnmarshallerListener;
 import org.apache.commons.lang3.reflect.ConstructorUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import javax.swing.Icon;
 import javax.swing.UIManager;
@@ -47,8 +46,6 @@ import static org.springframework.util.Assert.notNull;
  */
 public abstract class Application extends ApplicationContextAwareObject
 {
-    private static Logger logger = LogManager.getLogger( Application.class );
-
     protected static final File userDirectory = new File( System.getProperty( "user.home" ) );
 
     private Class<? extends ApplicationRestarter> applicationRestarterClass;
@@ -146,27 +143,27 @@ public abstract class Application extends ApplicationContextAwareObject
             }
             catch ( NoSuchMethodException e )
             {
-                logger.fatal( e.getMessage(), e );
+                LoggerEx.fatal( e.getMessage(), e );
                 throw new IllegalStateException( e.getMessage(), e );
             }
             catch ( IllegalAccessException e )
             {
-                logger.fatal( e.getMessage(), e );
+                LoggerEx.fatal( e.getMessage(), e );
                 throw new IllegalStateException( e.getMessage(), e );
             }
             catch ( InvocationTargetException e )
             {
-                logger.fatal( e.getMessage(), e );
+                LoggerEx.fatal( e.getMessage(), e );
                 throw new IllegalStateException( e.getMessage(), e );
             }
             catch ( InstantiationException e )
             {
-                logger.fatal( e.getMessage(), e );
+                LoggerEx.fatal( e.getMessage(), e );
                 throw new IllegalStateException( e.getMessage(), e );
             }
             catch ( NumberFormatException e )
             {
-                logger.fatal( e.getMessage(), e );
+                LoggerEx.fatal( e.getMessage(), e );
                 throw new IllegalStateException( e.getMessage(), e );
             }
         }
@@ -175,7 +172,7 @@ public abstract class Application extends ApplicationContextAwareObject
         {
             if ( VMInstance.isVmUnique() == false )
             {
-                logger.fatal( "Another instance of this app already exists." );
+                LoggerEx.fatal( "Another instance of this app already exists." );
                 System.exit( -1 );
             }
         }
@@ -230,13 +227,13 @@ public abstract class Application extends ApplicationContextAwareObject
         File metadataDirectory = new File( userDirectory, metaDataName );
         File configFile = new File( metadataDirectory, configurationName );
 
-        logger.trace( "Loading ApplicationConfiguration from: " + configFile.toString() );
+        LoggerEx.trace( "Loading ApplicationConfiguration from: " + configFile.toString() );
 
         try
         {
             if ( configFile.exists() == false )
             {
-                logger.trace( "Failed to find config file: " + configFile.toString() );
+                LoggerEx.trace( "Failed to find config file: " + configFile.toString() );
 
                 configuration = ConstructorUtils.invokeConstructor( configurationClass );
 
@@ -249,33 +246,33 @@ public abstract class Application extends ApplicationContextAwareObject
                 Unmarshaller unmarshaller = requestContext.createUnmarshaller();
                 unmarshaller.setListener( unmarshallerListener );
 
-                logger.trace( "Found config file: " + configFile.toString() );
+                LoggerEx.trace( "Found config file: " + configFile.toString() );
                 configuration = ( ApplicationConfiguration ) unmarshaller.unmarshal( configFile );
             }
         }
         catch ( JAXBException e )
         {
-            logger.fatal( e.getMessage(), e );
+            LoggerEx.fatal( e.getMessage(), e );
             throw new IllegalStateException( e.getMessage(), e );
         }
         catch ( NoSuchMethodException e )
         {
-            logger.fatal( e.getMessage() );
+            LoggerEx.fatal( e.getMessage() );
             throw new IllegalStateException( e.getMessage(), e );
         }
         catch ( InvocationTargetException e )
         {
-            logger.fatal( e.getMessage() );
+            LoggerEx.fatal( e.getMessage() );
             throw new IllegalStateException( e.getMessage(), e );
         }
         catch ( InstantiationException e )
         {
-            logger.fatal( e.getMessage() );
+            LoggerEx.fatal( e.getMessage() );
             throw new IllegalStateException( e.getMessage(), e );
         }
         catch ( IllegalAccessException e )
         {
-            logger.fatal( e.getMessage() );
+            LoggerEx.fatal( e.getMessage() );
             throw new IllegalStateException( e.getMessage(), e );
         }
     }
@@ -285,7 +282,7 @@ public abstract class Application extends ApplicationContextAwareObject
         File metadataDirectory = new File( userDirectory, metaDataName );
         File configFile = new File( metadataDirectory, configurationName );
 
-        logger.trace( "Saving ApplicationConfiguration to: " + configFile.toString() );
+        LoggerEx.trace( "Saving ApplicationConfiguration to: " + configFile.toString() );
 
         try
         {
@@ -312,12 +309,12 @@ public abstract class Application extends ApplicationContextAwareObject
         }
         catch ( JAXBException e )
         {
-            logger.fatal( e.getMessage(), e );
+            LoggerEx.fatal( e.getMessage(), e );
             throw new IllegalStateException( e.getMessage(), e );
         }
         catch ( FileNotFoundException e )
         {
-            logger.fatal( e.getMessage(), e );
+            LoggerEx.fatal( e.getMessage(), e );
             throw new IllegalStateException( e.getMessage(), e );
         }
     }
@@ -335,7 +332,7 @@ public abstract class Application extends ApplicationContextAwareObject
 
     public final void processExit()
     {
-        logger.debug( "Processing Exit" );
+        LoggerEx.debug( "Processing Exit" );
         if ( terminateNow() == true )
         {
             System.exit( 0 );
@@ -359,7 +356,7 @@ public abstract class Application extends ApplicationContextAwareObject
                 }
             }
 
-            logger.debug( "Closing frames." );
+            LoggerEx.debug( "Closing frames." );
 
             processApplicationExit();
         }
@@ -375,7 +372,7 @@ public abstract class Application extends ApplicationContextAwareObject
         }
         else
         {
-            logger.error( "Cannot restart the application: No restarter specified." );
+            LoggerEx.error( "Cannot restart the application: No restarter specified." );
         }
     }
 

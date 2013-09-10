@@ -27,8 +27,11 @@ public class ViewMenu extends ApplicationFrameMenu
             new ArrayList<ApplicationFrameMenuComponent>();
 
     private ToggleStatusBarMenuItem toggleStatusBarMenuItem;
+
     private ToggleToolButtonsMenuItem toggleToolButtonsMenuItem;
+
     private ApplicationDockableFrameMenu applicationDockableFrameMenu;
+
     private ApplicationCommandBarMenu applicationCommandBarMenu;
 
     public ViewMenu( ApplicationFrame applicationFrame )

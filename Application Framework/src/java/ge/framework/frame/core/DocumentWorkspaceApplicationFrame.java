@@ -14,21 +14,21 @@ public interface DocumentWorkspaceApplicationFrame
 {
     public void openDocument( ApplicationDocumentComponent applicationDocumentComponent );
 
-    public  void openDocument( ApplicationDocumentComponent applicationDocumentComponent, boolean floating );
+    public void openDocument( ApplicationDocumentComponent applicationDocumentComponent, boolean floating );
 
-    public  void closeDocument( ApplicationDocumentComponent applicationDocumentComponent );
+    public void closeDocument( ApplicationDocumentComponent applicationDocumentComponent );
 
-    public  void closeAllDocuments();
+    public void closeAllDocuments();
 
-    public  void closeAllButThis( ApplicationDocumentComponent applicationDocumentComponent );
+    public void closeAllButThis( ApplicationDocumentComponent applicationDocumentComponent );
 
-    public  void closeCurrentDocument();
+    public void closeCurrentDocument();
 
-    public  void closeAllDocumentExceptCurrent();
+    public void closeAllDocumentExceptCurrent();
 
-    public  List<ApplicationDocumentComponent> getDocumentComponents();
+    public List<ApplicationDocumentComponent> getDocumentComponents();
 
-    public  void gotoNextDocument();
+    public void gotoNextDocument();
 
-    public  void gotoPreviousDocument();
+    public void gotoPreviousDocument();
 }

@@ -7,7 +7,7 @@ import ge.utils.message.enums.MessageLevel;
 import ge.utils.message.enums.MessageResult;
 import ge.utils.message.enums.MessageType;
 
-import java.awt.*;
+import java.awt.HeadlessException;
 import java.util.HashMap;
 import java.util.Map;
 

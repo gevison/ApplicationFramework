@@ -1,16 +1,9 @@
 package ge.framework.application;
 
-import com.jidesoft.plaf.LookAndFeelFactory;
 import ge.framework.application.core.Application;
-import ge.framework.application.core.utils.ApplicationRestarter;
-import ge.utils.VMInstance;
-import ge.utils.os.OS;
+import ge.utils.log.LoggerEx;
 import ge.utils.spring.context.ClasspathApplicationContext;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
-import javax.swing.*;
-import java.awt.*;
 import java.util.Arrays;
 
 /**
@@ -21,8 +14,6 @@ import java.util.Arrays;
  */
 public class ApplicationFramework
 {
-    private static Logger logger = LogManager.getLogger( ApplicationFramework.class );
-
     public static void main( String[] args )
     {
         ApplicationFramework.start( args );
@@ -41,7 +32,7 @@ public class ApplicationFramework
     public static void start( String applicationConfiguration,
                               String applicationBeanName, String[] args )
     {
-        logger.entry( applicationConfiguration, applicationBeanName, args );
+        LoggerEx.entry( applicationConfiguration, applicationBeanName, args );
         ClasspathApplicationContext classpathApplicationContext = ClasspathApplicationContext.getInstance(
                 applicationConfiguration );
 
@@ -49,7 +40,7 @@ public class ApplicationFramework
 
         if ( ( applicationBeanName != null ) && ( applicationBeanName.isEmpty() == false ) )
         {
-            logger.info("Getting application bean: "+applicationBeanName);
+            LoggerEx.info( "Getting application bean: " + applicationBeanName );
             application = classpathApplicationContext.getBean( applicationBeanName, Application.class );
         }
         else
@@ -58,17 +49,17 @@ public class ApplicationFramework
 
             if ( ( beanNamesForType == null ) || ( beanNamesForType.length == 0 ) )
             {
-                logger.fatal( "Failed to find a bean of type Application" );
+                LoggerEx.fatal( "Failed to find a bean of type Application" );
                 throw new IllegalStateException( "Failed to find a bean of type Application" );
             }
             else if ( beanNamesForType.length != 1 )
             {
-                logger.fatal( "Found multiple beans of type Application: " + Arrays.toString( beanNamesForType ) );
+                LoggerEx.fatal( "Found multiple beans of type Application: " + Arrays.toString( beanNamesForType ) );
                 throw new IllegalStateException( "Found multiple beans of type Application" );
             }
             else
             {
-                logger.info( "Getting application bean: " + beanNamesForType[ 0 ] );
+                LoggerEx.info( "Getting application bean: " + beanNamesForType[ 0 ] );
                 application = classpathApplicationContext.getBean( beanNamesForType[ 0 ], Application.class );
             }
         }

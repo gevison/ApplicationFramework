@@ -15,8 +15,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.springframework.util.Assert.notNull;
-
 /**
  * Created with IntelliJ IDEA.
  * User: evison_g

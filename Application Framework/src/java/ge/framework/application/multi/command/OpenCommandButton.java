@@ -35,7 +35,7 @@ public class OpenCommandButton extends JideSplitButton implements ActionListener
 
     private ApplicationFrame applicationFrame;
 
-    public OpenCommandButton(ApplicationFrame applicationFrame)
+    public OpenCommandButton( ApplicationFrame applicationFrame )
     {
         this.applicationFrame = applicationFrame;
         setPopupMenuCustomizer( this );
@@ -57,7 +57,7 @@ public class OpenCommandButton extends JideSplitButton implements ActionListener
     public void actionPerformed( ActionEvent e )
     {
         MultiFrameApplication application = ( MultiFrameApplication ) applicationFrame.getApplication();
-        application.processOpen(applicationFrame);
+        application.processOpen( applicationFrame );
     }
 
     @Override
@@ -88,7 +88,7 @@ public class OpenCommandButton extends JideSplitButton implements ActionListener
 
                 if ( otherRecentMenuItem == null )
                 {
-                    otherRecentMenuItem = new OtherRecentMenuItem(applicationFrame);
+                    otherRecentMenuItem = new OtherRecentMenuItem( applicationFrame );
                     otherRecentMenuItem.initialise();
                 }
 
@@ -98,7 +98,8 @@ public class OpenCommandButton extends JideSplitButton implements ActionListener
             {
                 for ( FrameInstanceDetailsObject frameInstanceDetailsObject : frameInstanceDetailsObjects )
                 {
-                    OpenRecentMenuItem menuItem = new OpenRecentMenuItem(applicationFrame, frameInstanceDetailsObject );
+                    OpenRecentMenuItem menuItem =
+                            new OpenRecentMenuItem( applicationFrame, frameInstanceDetailsObject );
                     menuItem.initialise();
                     add( menuItem );
                 }
@@ -110,7 +111,7 @@ public class OpenCommandButton extends JideSplitButton implements ActionListener
 
                 if ( clearRecentMenuItem == null )
                 {
-                    clearRecentMenuItem = new ClearRecentMenuItem(applicationFrame);
+                    clearRecentMenuItem = new ClearRecentMenuItem( applicationFrame );
                     clearRecentMenuItem.initialise();
                 }
 
@@ -120,7 +121,7 @@ public class OpenCommandButton extends JideSplitButton implements ActionListener
             {
                 if ( openMenuItem == null )
                 {
-                    openMenuItem = new OpenMenuItem(applicationFrame);
+                    openMenuItem = new OpenMenuItem( applicationFrame );
                     openMenuItem.initialise();
                 }
 
