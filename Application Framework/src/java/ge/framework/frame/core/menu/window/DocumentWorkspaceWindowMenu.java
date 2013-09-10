@@ -1,13 +1,10 @@
 package ge.framework.frame.core.menu.window;
 
 import ge.framework.frame.core.ApplicationFrame;
-import ge.framework.frame.core.menu.item.ToggleStatusBarMenuItem;
-import ge.framework.frame.core.menu.item.ToggleToolButtonsMenuItem;
+import ge.framework.frame.core.DocumentWorkspaceApplicationFrame;
 import ge.framework.frame.core.menu.utils.ApplicationFrameMenu;
 import ge.framework.frame.core.menu.utils.ApplicationFrameMenuComponent;
 import ge.framework.frame.core.menu.utils.ApplicationFrameMenuSeparator;
-import ge.framework.frame.core.menu.view.ApplicationCommandBarMenu;
-import ge.framework.frame.core.menu.view.ApplicationDockableFrameMenu;
 import ge.framework.frame.core.menu.window.item.CloseAllDocumentMenuItem;
 import ge.framework.frame.core.menu.window.item.CloseDocumentMenuItem;
 import ge.framework.frame.core.menu.window.item.CloseOthersDocumentMenuItem;
@@ -25,7 +22,7 @@ import java.util.List;
  * Time: 12:49
  * To change this template use File | Settings | File Templates.
  */
-public abstract class WindowMenu extends ApplicationFrameMenu
+public class DocumentWorkspaceWindowMenu extends ApplicationFrameMenu
 {
     private static final Resources resources =
             Resources.getInstance( "ge.framework.frame.core" );
@@ -44,40 +41,45 @@ public abstract class WindowMenu extends ApplicationFrameMenu
 
     private List<ApplicationFrameMenuComponent> additionalDocumentItems = new ArrayList<ApplicationFrameMenuComponent>(  );
 
-    public WindowMenu( ApplicationFrame applicationFrame )
+    public DocumentWorkspaceWindowMenu( DocumentWorkspaceApplicationFrame applicationFrame )
     {
-        super( applicationFrame, false );
+        super( ( ApplicationFrame ) applicationFrame, false );
     }
 
     @Override
     protected final void initialiseMenu()
     {
-        setText( resources.getResourceString( WindowMenu.class, "label" ) );
-        setStatusBarText( resources.getResourceString( WindowMenu.class, "status" ) );
-        setMnemonic( resources.getResourceCharacter( WindowMenu.class, "mnemonic" ) );
+        setText( resources.getResourceString( DocumentWorkspaceWindowMenu.class, "label" ) );
+        setStatusBarText( resources.getResourceString( DocumentWorkspaceWindowMenu.class, "status" ) );
+        setMnemonic( resources.getResourceCharacter( DocumentWorkspaceWindowMenu.class, "mnemonic" ) );
 
-        applicationDocumentMenu = new ApplicationDocumentMenu( applicationFrame );
+        DocumentWorkspaceApplicationFrame documentWorkspaceApplicationFrame =
+                ( DocumentWorkspaceApplicationFrame ) applicationFrame;
+
+        applicationDocumentMenu = new ApplicationDocumentMenu( documentWorkspaceApplicationFrame );
         applicationDocumentMenu.initialise();
 
-        nextDocumentMenuItem = new NextDocumentMenuItem( applicationFrame );
+        nextDocumentMenuItem = new NextDocumentMenuItem( documentWorkspaceApplicationFrame );
         nextDocumentMenuItem.initialise();
 
-        previousDocumentMenuItem = new PreviousDocumentMenuItem( applicationFrame );
+        previousDocumentMenuItem = new PreviousDocumentMenuItem( documentWorkspaceApplicationFrame );
         previousDocumentMenuItem.initialise();
 
-        closeDocumentMenuItem = new CloseDocumentMenuItem( applicationFrame );
+        closeDocumentMenuItem = new CloseDocumentMenuItem( documentWorkspaceApplicationFrame );
         closeDocumentMenuItem.initialise();
 
-        closeOthersDocumentMenuItem = new CloseOthersDocumentMenuItem( applicationFrame );
+        closeOthersDocumentMenuItem = new CloseOthersDocumentMenuItem( documentWorkspaceApplicationFrame );
         closeOthersDocumentMenuItem.initialise();
 
-        closeAllDocumentMenuItem = new CloseAllDocumentMenuItem( applicationFrame );
+        closeAllDocumentMenuItem = new CloseAllDocumentMenuItem( documentWorkspaceApplicationFrame );
         closeAllDocumentMenuItem.initialise();
 
         initialiseWindowMenu();
     }
 
-    protected abstract void initialiseWindowMenu();
+    protected void initialiseWindowMenu()
+    {
+    }
 
     @Override
     protected final void customizeMenu()
@@ -105,11 +107,14 @@ public abstract class WindowMenu extends ApplicationFrameMenu
         customizeWindowMenu();
     }
 
-    protected abstract void customizeWindowMenu();
+    protected void customizeWindowMenu()
+    {
+    }
 
     @Override
-    public final void update()
+    public void update()
     {
+
     }
 
     public void addAdditionalDocumentMenuComponent( ApplicationFrameMenuComponent applicationComponent )

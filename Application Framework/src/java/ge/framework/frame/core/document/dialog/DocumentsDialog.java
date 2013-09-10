@@ -7,6 +7,7 @@ import com.jidesoft.swing.PartialLineBorder;
 import com.jidesoft.swing.PartialSide;
 import ge.framework.application.core.Application;
 import ge.framework.frame.core.ApplicationFrame;
+import ge.framework.frame.core.DocumentWorkspaceApplicationFrame;
 import ge.framework.frame.core.document.ApplicationDocumentComponent;
 import ge.framework.frame.core.document.dialog.panel.DocumentPanel;
 import ge.utils.bundle.Resources;
@@ -19,6 +20,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -45,13 +47,13 @@ public class DocumentsDialog extends StandardDialog implements ActionListener
 
     private DocumentPanel documentPanel;
 
-    private ApplicationFrame applicationFrame;
+    private DocumentWorkspaceApplicationFrame applicationFrame;
 
     private ApplicationDocumentComponent documentComponent;
 
-    public DocumentsDialog( ApplicationFrame applicationFrame )
+    public DocumentsDialog( DocumentWorkspaceApplicationFrame applicationFrame )
     {
-        super( applicationFrame );
+        super( ( Frame ) applicationFrame );
         this.applicationFrame = applicationFrame;
 
         initializeDialog();
@@ -67,6 +69,8 @@ public class DocumentsDialog extends StandardDialog implements ActionListener
         setMinimumSize( new Dimension( 450, 500 ) );
 
         setTitle( resources.getResourceString( DocumentsDialog.class, "title" ) );
+
+        ApplicationFrame applicationFrame = ( ApplicationFrame ) this.applicationFrame;
 
         Application application = applicationFrame.getApplication();
 

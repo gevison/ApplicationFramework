@@ -7,7 +7,6 @@ import ge.framework.application.core.Application;
 import ge.framework.application.core.enums.CloseOrExitEnum;
 import ge.framework.frame.core.command.ApplicationCommandBarComponent;
 import ge.framework.frame.core.dockable.ApplicationDockableFrame;
-import ge.framework.frame.core.document.ApplicationDocumentComponent;
 import ge.framework.frame.core.manager.ApplicationDockableBarManager;
 import ge.framework.frame.core.manager.ApplicationDockingManager;
 import ge.framework.frame.core.persistence.ApplicationLayoutPersistenceManager;
@@ -20,6 +19,7 @@ import ge.utils.text.StringArgumentMessageFormat;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.WindowConstants;
@@ -79,6 +79,8 @@ public abstract class ApplicationFrame<APPLICATION extends Application> extends 
         initialiseApplicationFrame();
     }
 
+    protected abstract void initialiseApplicationFrame();
+
     @Override
     public void setTitle( String title )
     {
@@ -100,8 +102,6 @@ public abstract class ApplicationFrame<APPLICATION extends Application> extends 
 
         super.setTitle( resourceString );
     }
-
-    protected abstract void initialiseApplicationFrame();
 
     private void initialiseFrame()
     {
@@ -151,7 +151,7 @@ public abstract class ApplicationFrame<APPLICATION extends Application> extends 
         }
     }
 
-    private void removeBreadcrumbBar()
+    public void removeBreadcrumbBar()
     {
         if ( breadcrumbBarScrollPane != null )
         {
@@ -161,6 +161,16 @@ public abstract class ApplicationFrame<APPLICATION extends Application> extends 
 
             breadcrumbBarScrollPane = null;
         }
+    }
+
+    public void setWorkspaceComponent(JComponent workspaceComponent )
+    {
+        dockingManager.setWorkspaceComponent( workspaceComponent );
+    }
+
+    public void removeWorkspaceComponent()
+    {
+        dockingManager.removeWorkspaceComponent();
     }
 
     public void addFrame( ApplicationDockableFrame dockableFrame )
@@ -179,58 +189,8 @@ public abstract class ApplicationFrame<APPLICATION extends Application> extends 
         {
             return dockingManager.getDockingFrames();
         }
-        return null;
-    }
-
-    public void openDocument( ApplicationDocumentComponent applicationDocumentComponent )
-    {
-        dockingManager.openDocument( applicationDocumentComponent );
-    }
-
-    public void closeDocument( ApplicationDocumentComponent applicationDocumentComponent )
-    {
-        dockingManager.closeDocument( applicationDocumentComponent );
-    }
-
-    public void closeAllDocuments()
-    {
-        dockingManager.closeAll();
-    }
-
-    public void closeAllButThis(
-            ApplicationDocumentComponent applicationDocumentComponent )
-    {
-        dockingManager.closeAllButThis( applicationDocumentComponent );
-    }
-
-    public void closeCurrentDocument()
-    {
-        dockingManager.closeCurrentDocument();
-    }
-
-    public void closeAllDocumentExceptCurrent()
-    {
-        dockingManager.closeAllDocumentExceptCurrent();
-    }
-
-    public List<ApplicationDocumentComponent> getDocumentComponents()
-    {
-        if ( dockingManager != null )
-        {
-            return dockingManager.getDocumentComponents();
-        }
 
         return null;
-    }
-
-    public final void gotoNextDocument()
-    {
-        dockingManager.gotoNextDocument();
-    }
-
-    public final void gotoPreviousDocument()
-    {
-        dockingManager.gotoPreviousDocument();
     }
 
     public final void addDockableBar( ApplicationCommandBarComponent dockableBar )

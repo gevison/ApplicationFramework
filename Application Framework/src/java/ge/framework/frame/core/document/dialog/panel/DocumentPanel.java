@@ -6,8 +6,7 @@ import com.jidesoft.swing.JideScrollPane;
 import com.jidesoft.swing.PartialLineBorder;
 import com.jidesoft.swing.PartialSide;
 import com.jidesoft.swing.StyledLabel;
-import ge.framework.frame.core.ApplicationFrame;
-import ge.framework.frame.core.dockable.ApplicationDockableFrame;
+import ge.framework.frame.core.DocumentWorkspaceApplicationFrame;
 import ge.framework.frame.core.document.ApplicationDocumentComponent;
 import ge.utils.bundle.Resources;
 
@@ -17,7 +16,6 @@ import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import javax.swing.event.ListSelectionListener;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -39,9 +37,9 @@ public class DocumentPanel extends JPanel
 
     private DefaultListModel tableModel;
 
-    private ApplicationFrame applicationFrame;
+    private DocumentWorkspaceApplicationFrame applicationFrame;
 
-    public DocumentPanel( ApplicationFrame applicationFrame )
+    public DocumentPanel( DocumentWorkspaceApplicationFrame applicationFrame )
     {
         super( new BorderLayout() );
         this.applicationFrame = applicationFrame;

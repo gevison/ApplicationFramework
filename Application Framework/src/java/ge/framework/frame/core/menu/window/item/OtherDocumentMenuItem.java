@@ -1,12 +1,8 @@
 package ge.framework.frame.core.menu.window.item;
 
-import com.jidesoft.docking.DockingManager;
-import ge.framework.frame.core.ApplicationFrame;
-import ge.framework.frame.core.dockable.ApplicationDockableFrame;
-import ge.framework.frame.core.dockable.dialog.FramesDialog;
+import ge.framework.frame.core.DocumentWorkspaceApplicationFrame;
 import ge.framework.frame.core.document.ApplicationDocumentComponent;
 import ge.framework.frame.core.document.dialog.DocumentsDialog;
-import ge.framework.frame.core.menu.utils.ApplicationFrameMenuItem;
 import ge.utils.bundle.Resources;
 
 import java.awt.event.ActionEvent;
@@ -18,11 +14,11 @@ import java.awt.event.ActionEvent;
  * Time: 15:27
  * To change this template use File | Settings | File Templates.
  */
-public class OtherDocumentMenuItem extends ApplicationFrameMenuItem
+public class OtherDocumentMenuItem extends DocumentWorkspaceApplicationFrameMenuItem
 {
     private static Resources resources = Resources.getInstance( "ge.framework.frame.core" );
 
-    public OtherDocumentMenuItem( ApplicationFrame applicationFrame )
+    public OtherDocumentMenuItem( DocumentWorkspaceApplicationFrame applicationFrame )
     {
         super(applicationFrame);
     }
@@ -37,7 +33,7 @@ public class OtherDocumentMenuItem extends ApplicationFrameMenuItem
     public void actionPerformed( ActionEvent actionEvent )
     {
         DocumentsDialog documentsDialog =
-                new DocumentsDialog( applicationFrame );
+                new DocumentsDialog( ( DocumentWorkspaceApplicationFrame)applicationFrame );
 
         if ( documentsDialog.doModal() == true )
         {

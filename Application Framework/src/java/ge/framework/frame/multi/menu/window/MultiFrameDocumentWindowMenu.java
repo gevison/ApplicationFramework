@@ -3,7 +3,8 @@ package ge.framework.frame.multi.menu.window;
 import ge.framework.application.multi.MultiFrameApplication;
 import ge.framework.frame.core.ApplicationFrame;
 import ge.framework.frame.core.menu.utils.ApplicationFrameMenuSeparator;
-import ge.framework.frame.core.menu.window.WindowMenu;
+import ge.framework.frame.core.menu.window.DocumentWorkspaceWindowMenu;
+import ge.framework.frame.multi.DocumentMultiFrameApplicationFrame;
 import ge.framework.frame.multi.MultiFrameApplicationFrame;
 import ge.framework.frame.multi.menu.window.item.ApplicationWindowMenuItem;
 import ge.framework.frame.multi.menu.window.item.NextWindowMenuItem;
@@ -19,7 +20,7 @@ import java.util.Map;
  * Date: 01/08/13
  * Time: 15:33
  */
-public class MultiWindowMenu extends WindowMenu
+public class MultiFrameDocumentWindowMenu extends DocumentWorkspaceWindowMenu
 {
     private NextWindowMenuItem nextWindowMenuItem;
 
@@ -27,7 +28,7 @@ public class MultiWindowMenu extends WindowMenu
 
     private Map<MultiFrameApplicationFrame,ApplicationWindowMenuItem> applicationFrameMenuItems = null;
 
-    public MultiWindowMenu( MultiFrameApplicationFrame applicationFrame )
+    public MultiFrameDocumentWindowMenu( DocumentMultiFrameApplicationFrame applicationFrame )
     {
         super(applicationFrame);
     }
@@ -82,5 +83,11 @@ public class MultiWindowMenu extends WindowMenu
         {
             addMenuComponent( applicationFrameMenuItems.get( frame ) );
         }
+    }
+
+    @Override
+    public void update()
+    {
+
     }
 }

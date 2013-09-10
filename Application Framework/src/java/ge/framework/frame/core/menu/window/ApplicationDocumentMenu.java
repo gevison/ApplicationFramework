@@ -1,6 +1,7 @@
 package ge.framework.frame.core.menu.window;
 
 import ge.framework.frame.core.ApplicationFrame;
+import ge.framework.frame.core.DocumentWorkspaceApplicationFrame;
 import ge.framework.frame.core.document.ApplicationDocumentComponent;
 import ge.framework.frame.core.menu.utils.ApplicationFrameMenu;
 import ge.framework.frame.core.menu.utils.ApplicationFrameMenuSeparator;
@@ -28,9 +29,9 @@ public class ApplicationDocumentMenu extends ApplicationFrameMenu
 
     private OtherDocumentMenuItem otherDocumentMenuItem;
 
-    public ApplicationDocumentMenu( ApplicationFrame applicationFrame )
+    public ApplicationDocumentMenu( DocumentWorkspaceApplicationFrame applicationFrame )
     {
-        super( applicationFrame );
+        super( ( ApplicationFrame ) applicationFrame );
     }
 
     @Override
@@ -40,7 +41,7 @@ public class ApplicationDocumentMenu extends ApplicationFrameMenu
 
         documentMenuItems = new HashMap<ApplicationDocumentComponent, ApplicationDocumentMenuItem>(  );
 
-        otherDocumentMenuItem = new OtherDocumentMenuItem(applicationFrame);
+        otherDocumentMenuItem = new OtherDocumentMenuItem( ( DocumentWorkspaceApplicationFrame ) applicationFrame );
         otherDocumentMenuItem.initialise();
     }
 
@@ -50,7 +51,10 @@ public class ApplicationDocumentMenu extends ApplicationFrameMenu
         Map<ApplicationDocumentComponent,ApplicationDocumentMenuItem> currentMenuItems;
         currentMenuItems = new HashMap<ApplicationDocumentComponent, ApplicationDocumentMenuItem>(  );
 
-        List<ApplicationDocumentComponent> documents = applicationFrame.getDocumentComponents();
+        DocumentWorkspaceApplicationFrame documentWorkspaceApplicationFrame =
+                ( DocumentWorkspaceApplicationFrame ) applicationFrame;
+
+        List<ApplicationDocumentComponent> documents = documentWorkspaceApplicationFrame.getDocumentComponents();
 
         for ( ApplicationDocumentComponent document : documents )
         {
@@ -97,7 +101,11 @@ public class ApplicationDocumentMenu extends ApplicationFrameMenu
     @Override
     public void update()
     {
-        List<ApplicationDocumentComponent> documents = applicationFrame.getDocumentComponents();
+
+        DocumentWorkspaceApplicationFrame documentWorkspaceApplicationFrame =
+                ( DocumentWorkspaceApplicationFrame ) applicationFrame;
+
+        List<ApplicationDocumentComponent> documents = documentWorkspaceApplicationFrame.getDocumentComponents();
 
         if (( documents == null ) || (documents.isEmpty() == true ))
         {

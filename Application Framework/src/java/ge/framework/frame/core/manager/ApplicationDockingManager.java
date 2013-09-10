@@ -5,7 +5,6 @@ import com.jidesoft.docking.AutoHideContainer;
 import com.jidesoft.docking.DefaultDockingManager;
 import com.jidesoft.docking.DockContext;
 import com.jidesoft.docking.Workspace;
-import com.jidesoft.document.DocumentComponent;
 import com.jidesoft.swing.JideTabbedPane;
 import ge.framework.frame.core.ApplicationFrame;
 import ge.framework.frame.core.dockable.ApplicationDockableFrame;
@@ -14,9 +13,11 @@ import ge.framework.frame.core.document.ApplicationDocumentPane;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.swing.*;
-import java.awt.*;
-import java.util.*;
+import javax.swing.JComponent;
+import javax.swing.SwingConstants;
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,11 +26,11 @@ import java.util.List;
  * Date: 26/02/13
  * Time: 18:26
  */
-public class ApplicationDockingManager extends DefaultDockingManager
+public final class ApplicationDockingManager extends DefaultDockingManager
 {
     private static final Logger logger = LogManager.getLogger( ApplicationDockingManager.class );
 
-    private final ApplicationDocumentPane documentPane;
+    private JComponent workspaceComponent;
 
     public ApplicationDockingManager( ApplicationFrame applicationFrame,
                                       DefaultDockableBarManager dockableBarManager )
@@ -41,10 +42,32 @@ public class ApplicationDockingManager extends DefaultDockingManager
         logger.trace( "Initialising workspace." );
         Workspace dockingManagerWorkspace = getWorkspace();
         dockingManagerWorkspace.setAdjustOpacityOnFly( true );
+    }
 
-        logger.trace( "Initialising document pane." );
-        documentPane = new ApplicationDocumentPane();
-        dockingManagerWorkspace.add( documentPane, BorderLayout.CENTER );
+    public final void setWorkspaceComponent(JComponent workspaceComponent)
+    {
+        removeWorkspaceComponent();
+
+        this.workspaceComponent = workspaceComponent;
+
+        if ( this.workspaceComponent != null )
+        {
+            Workspace workspace = getWorkspace();
+
+            workspace.add( workspaceComponent, BorderLayout.CENTER );
+        }
+    }
+
+    public final void removeWorkspaceComponent()
+    {
+        if ( workspaceComponent != null )
+        {
+            Workspace workspace = getWorkspace();
+
+            workspace.remove( workspaceComponent );
+
+            workspaceComponent = null;
+        }
     }
 
     public final void addFrame( ApplicationDockableFrame dockableFrame )
@@ -62,51 +85,6 @@ public class ApplicationDockingManager extends DefaultDockingManager
         {
             logger.debug( "Removing dockable frame: " + dockableFrame.getKey() );
             super.removeFrame( dockableFrame.getKey() );
-        }
-    }
-
-    public void openDocument( ApplicationDocumentComponent applicationDocumentComponent )
-    {
-        openDocument( applicationDocumentComponent, false );
-    }
-
-    public void openDocument( ApplicationDocumentComponent applicationDocumentComponent, boolean floating )
-    {
-        documentPane.openDocument( applicationDocumentComponent, floating );
-    }
-
-    public void closeDocument( ApplicationDocumentComponent applicationDocumentComponent )
-    {
-        documentPane.closeDocument( applicationDocumentComponent );
-    }
-
-    public void closeAll()
-    {
-        documentPane.closeAll();
-    }
-
-    public void closeAllButThis( ApplicationDocumentComponent applicationDocumentComponent )
-    {
-        documentPane.closeAllButThis( applicationDocumentComponent );
-    }
-
-    public void closeCurrentDocument()
-    {
-        ApplicationDocumentComponent activeDocument = ( ApplicationDocumentComponent ) documentPane.getActiveDocument();
-
-        if ( activeDocument != null )
-        {
-            closeDocument( activeDocument );
-        }
-    }
-
-    public void closeAllDocumentExceptCurrent()
-    {
-        ApplicationDocumentComponent activeDocument = ( ApplicationDocumentComponent ) documentPane.getActiveDocument();
-
-        if ( activeDocument != null )
-        {
-            closeAllButThis( activeDocument );
         }
     }
 
@@ -187,28 +165,6 @@ public class ApplicationDockingManager extends DefaultDockingManager
         }
 
         return retVal;
-    }
-
-    public List<ApplicationDocumentComponent> getDocumentComponents()
-    {
-        List<ApplicationDocumentComponent> retVal = new ArrayList<ApplicationDocumentComponent>(  );
-
-        for ( int i = 0; i < documentPane.getDocumentCount(); i++ )
-        {
-            retVal.add( ( ApplicationDocumentComponent ) documentPane.getDocumentAt( i ) );
-        }
-
-        return retVal;
-    }
-
-    public void gotoNextDocument()
-    {
-        documentPane.nextDocument();
-    }
-
-    public void gotoPreviousDocument()
-    {
-        documentPane.prevDocument();
     }
 
     private class ApplicationTabbedPaneCustomizer implements TabbedPaneCustomizer

@@ -1,15 +1,15 @@
 package ge.framework.test.frame.single;
 
 import com.jidesoft.action.DockableBarContext;
-import ge.framework.application.core.Application;
 import ge.framework.application.core.menu.RestartApplicationMenuItem;
+import ge.framework.application.single.SingleFrameApplication;
 import ge.framework.frame.core.command.ApplicationCommandBar;
 import ge.framework.frame.core.command.ApplicationCommandMenuBar;
 import ge.framework.frame.core.menu.view.ViewMenu;
-import ge.framework.frame.single.SingleFrameApplicationFrame;
+import ge.framework.frame.core.menu.window.DocumentWorkspaceWindowMenu;
+import ge.framework.frame.single.DocumentSingleFrameApplicationFrame;
 import ge.framework.frame.single.command.SinglePropertiesCommandBar;
 import ge.framework.frame.single.menu.file.SingleFileMenu;
-import ge.framework.frame.single.menu.window.SingleWindowMenu;
 import ge.utils.bundle.Resources;
 
 import java.awt.HeadlessException;
@@ -20,20 +20,20 @@ import java.awt.HeadlessException;
  * Date: 26/07/13
  * Time: 17:26
  */
-public class TestSingleFrameApplicationFrame extends SingleFrameApplicationFrame
+public class TestSingleFrameApplicationFrame extends DocumentSingleFrameApplicationFrame
 {
     private static final Resources resources = Resources.getInstance( "ge.framework.test.frame.single" );
     private static int index = 0;
 
     private ApplicationCommandMenuBar commandMenuBar;
 
-    public TestSingleFrameApplicationFrame( Application application ) throws HeadlessException
+    public TestSingleFrameApplicationFrame( SingleFrameApplication application ) throws HeadlessException
     {
         super( application );
     }
 
     @Override
-    protected void initialiseApplicationFrame()
+    protected void initialiseDocumentWorkspaceApplicationFrame()
     {
         initialiseCommandMenuBar();
 
@@ -124,7 +124,7 @@ public class TestSingleFrameApplicationFrame extends SingleFrameApplicationFrame
         ViewMenu viewMenu = new ViewMenu( this );
         viewMenu.initialise();
         commandMenuBar.add( viewMenu );
-        SingleWindowMenu windowMenu = new SingleWindowMenu( this );
+        DocumentWorkspaceWindowMenu windowMenu = new DocumentWorkspaceWindowMenu( this );
         windowMenu.initialise();
         commandMenuBar.add( windowMenu );
 

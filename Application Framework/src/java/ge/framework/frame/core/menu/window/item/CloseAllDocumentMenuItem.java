@@ -1,8 +1,7 @@
 package ge.framework.frame.core.menu.window.item;
 
-import ge.framework.frame.core.ApplicationFrame;
+import ge.framework.frame.core.DocumentWorkspaceApplicationFrame;
 import ge.framework.frame.core.document.ApplicationDocumentComponent;
-import ge.framework.frame.core.menu.utils.ApplicationFrameMenuItem;
 import ge.utils.bundle.Resources;
 
 import java.awt.event.ActionEvent;
@@ -15,11 +14,11 @@ import java.util.List;
  * Time: 15:27
  * To change this template use File | Settings | File Templates.
  */
-public class CloseAllDocumentMenuItem extends ApplicationFrameMenuItem
+public class CloseAllDocumentMenuItem extends DocumentWorkspaceApplicationFrameMenuItem
 {
     private static Resources resources = Resources.getInstance( "ge.framework.frame.core" );
 
-    public CloseAllDocumentMenuItem( ApplicationFrame applicationFrame )
+    public CloseAllDocumentMenuItem( DocumentWorkspaceApplicationFrame applicationFrame )
     {
         super(applicationFrame);
     }
@@ -33,13 +32,19 @@ public class CloseAllDocumentMenuItem extends ApplicationFrameMenuItem
     @Override
     public void actionPerformed( ActionEvent actionEvent )
     {
-        applicationFrame.closeAllDocuments();
+        DocumentWorkspaceApplicationFrame documentWorkspaceApplicationFrame =
+                ( DocumentWorkspaceApplicationFrame ) applicationFrame;
+
+        documentWorkspaceApplicationFrame.closeAllDocuments();
     }
 
     @Override
     public void update()
     {
-        List<ApplicationDocumentComponent> documentComponents = applicationFrame.getDocumentComponents();
+        DocumentWorkspaceApplicationFrame documentWorkspaceApplicationFrame =
+                ( DocumentWorkspaceApplicationFrame ) applicationFrame;
+        List<ApplicationDocumentComponent> documentComponents =
+                documentWorkspaceApplicationFrame.getDocumentComponents();
 
         if ( documentComponents.size() < 1 )
         {

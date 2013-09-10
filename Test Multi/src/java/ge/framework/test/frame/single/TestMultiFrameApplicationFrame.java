@@ -4,11 +4,11 @@ import com.jidesoft.action.DockableBarContext;
 import ge.framework.application.multi.MultiFrameApplication;
 import ge.framework.frame.core.command.ApplicationCommandMenuBar;
 import ge.framework.frame.core.menu.view.ViewMenu;
-import ge.framework.frame.multi.MultiFrameApplicationFrame;
+import ge.framework.frame.multi.DocumentMultiFrameApplicationFrame;
 import ge.framework.frame.multi.command.FileCommandBar;
 import ge.framework.frame.multi.command.MultiPropertiesCommandBar;
 import ge.framework.frame.multi.menu.file.MultiFileMenu;
-import ge.framework.frame.multi.menu.window.MultiWindowMenu;
+import ge.framework.frame.multi.menu.window.MultiFrameDocumentWindowMenu;
 import ge.utils.bundle.Resources;
 import ge.utils.properties.PropertiesDialogPage;
 
@@ -21,7 +21,7 @@ import java.util.List;
  * Date: 01/08/13
  * Time: 14:28
  */
-public class TestMultiFrameApplicationFrame extends MultiFrameApplicationFrame
+public class TestMultiFrameApplicationFrame extends DocumentMultiFrameApplicationFrame
 {
     private static final Resources resources = Resources.getInstance( "ge.framework.test.frame.multi" );
 
@@ -34,7 +34,7 @@ public class TestMultiFrameApplicationFrame extends MultiFrameApplicationFrame
     }
 
     @Override
-    protected void initialiseApplicationFrame()
+    protected void initialiseDocumentWorkspaceApplicationFrame()
     {
         initialiseCommandMenuBar();
     }
@@ -71,7 +71,7 @@ public class TestMultiFrameApplicationFrame extends MultiFrameApplicationFrame
         ViewMenu viewMenu = new ViewMenu( this );
         viewMenu.initialise();
         commandMenuBar.add( viewMenu );
-        MultiWindowMenu windowMenu = new MultiWindowMenu( this );
+        MultiFrameDocumentWindowMenu windowMenu = new MultiFrameDocumentWindowMenu( this );
         windowMenu.initialise();
         commandMenuBar.add( windowMenu );
 
