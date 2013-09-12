@@ -1,4 +1,4 @@
-package ge.framework.test.frame.single.objects;
+package ge.framework.test.frame.multi.objects;
 
 import ge.framework.frame.multi.objects.FrameConfiguration;
 

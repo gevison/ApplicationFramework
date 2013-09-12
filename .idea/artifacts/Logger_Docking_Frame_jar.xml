@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact build-on-make="true" name="Logger Docking Frame:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Logger_Docking_Frame_jar</output-path>
+    <root id="root">
+      <element id="archive" name="LoggerDockingFrame.jar">
+        <element id="module-output" name="Logger Docking Frame" />
+      </element>
+    </root>
+  </artifact>
+</component>

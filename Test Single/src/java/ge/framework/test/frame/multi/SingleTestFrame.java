@@ -1,4 +1,4 @@
-package ge.framework.test.frame.single;
+package ge.framework.test.frame.multi;
 
 import com.jidesoft.swing.JideButton;
 import ge.framework.frame.core.dockable.ApplicationDockableFrame;

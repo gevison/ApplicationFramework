@@ -18,8 +18,8 @@
         <property name="name" value="Test Multi Application"/>
         <property name="description" value="Test Multi Application Desciption"/>
         <property name="frameName" value="Test Multi Frame"/>
-        <property name="frameClass" value="ge.framework.test.frame.single.TestMultiFrameApplicationFrame"/>
-        <property name="frameConfigurationClass" value="ge.framework.test.frame.single.objects.TestMultiFrameConfiguration"/>
+        <property name="frameClass" value="ge.framework.test.frame.multi.TestMultiFrameApplicationFrame"/>
+        <property name="frameConfigurationClass" value="ge.framework.test.frame.multi.objects.TestMultiFrameConfiguration"/>
         <property name="frameMetaDataName" value=".TestMulti"/>
         <property name="frameConfigurationName" value="TestMulti.xml"/>
     </bean>

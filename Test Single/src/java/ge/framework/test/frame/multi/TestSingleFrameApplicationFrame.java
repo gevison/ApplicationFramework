@@ -1,10 +1,11 @@
-package ge.framework.test.frame.single;
+package ge.framework.test.frame.multi;
 
 import com.jidesoft.action.DockableBarContext;
 import ge.framework.application.core.menu.RestartApplicationMenuItem;
 import ge.framework.application.single.SingleFrameApplication;
 import ge.framework.frame.core.command.ApplicationCommandBar;
 import ge.framework.frame.core.command.ApplicationCommandMenuBar;
+import ge.framework.frame.core.dockable.logger.LoggerFrame;
 import ge.framework.frame.core.menu.view.ViewMenu;
 import ge.framework.frame.core.menu.window.DocumentWorkspaceWindowMenu;
 import ge.framework.frame.single.DocumentSingleFrameApplicationFrame;
@@ -36,6 +37,8 @@ public class TestSingleFrameApplicationFrame extends DocumentSingleFrameApplicat
     protected void initialiseDocumentWorkspaceApplicationFrame()
     {
         initialiseCommandMenuBar();
+
+        addFrame( new LoggerFrame() );
 
         addFrame( new SingleTestFrame( "Frame " + ( index++ ) ) );
         addFrame( new SingleTestFrame( "Frame " + ( index++ ) ) );

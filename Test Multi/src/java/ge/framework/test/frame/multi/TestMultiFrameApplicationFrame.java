@@ -1,8 +1,9 @@
-package ge.framework.test.frame.single;
+package ge.framework.test.frame.multi;
 
 import com.jidesoft.action.DockableBarContext;
 import ge.framework.application.multi.MultiFrameApplication;
 import ge.framework.frame.core.command.ApplicationCommandMenuBar;
+import ge.framework.frame.core.dockable.logger.LoggerFrame;
 import ge.framework.frame.core.menu.view.ViewMenu;
 import ge.framework.frame.multi.DocumentMultiFrameApplicationFrame;
 import ge.framework.frame.multi.command.FileCommandBar;
@@ -37,6 +38,8 @@ public class TestMultiFrameApplicationFrame extends DocumentMultiFrameApplicatio
     protected void initialiseDocumentWorkspaceApplicationFrame()
     {
         initialiseCommandMenuBar();
+
+        addFrame(new LoggerFrame() );
     }
 
     @Override

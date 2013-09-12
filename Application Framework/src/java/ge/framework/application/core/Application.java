@@ -10,7 +10,6 @@ import ge.framework.frame.core.ApplicationFrame;
 import ge.framework.frame.single.SingleFrameApplicationFrame;
 import ge.utils.VMInstance;
 import ge.utils.log.LoggerEx;
-import ge.utils.message.MessageDialog;
 import ge.utils.message.enums.MessageResult;
 import ge.utils.os.OS;
 import ge.utils.properties.PropertiesDialogPage;
@@ -115,6 +114,7 @@ public abstract class Application extends ApplicationContextAwareObject
 
     public final void startup( String[] args )
     {
+        LoggerEx.entry( args );
         if ( applicationRestarterClass != null )
         {
             try
@@ -130,7 +130,6 @@ public abstract class Application extends ApplicationContextAwareObject
 
                     while ( VMInstance.isVmRunning( pid ) == true )
                     {
-                        MessageDialog messageDialog = new MessageDialog( "Restarting" );
                         try
                         {
                             Thread.sleep( 1000 );
@@ -189,6 +188,8 @@ public abstract class Application extends ApplicationContextAwareObject
         initialiseApplicationConfiguration();
 
         startupApplication();
+
+        LoggerEx.exit();
     }
 
     private void initialiseJide()

@@ -16,17 +16,23 @@ public class ApplicationFramework
 {
     public static void main( String[] args )
     {
+        LoggerEx.entry( args );
         ApplicationFramework.start( args );
+        LoggerEx.exit();
     }
 
     public static void start( String[] args )
     {
+        LoggerEx.entry( args );
         start( null, args );
+        LoggerEx.exit();
     }
 
     public static void start( String applicationBeanName, String[] args )
     {
+        LoggerEx.entry( applicationBeanName, args );
         start( "application.xml", applicationBeanName, args );
+        LoggerEx.exit();
     }
 
     public static void start( String applicationConfiguration,
@@ -65,5 +71,6 @@ public class ApplicationFramework
         }
 
         application.startup( args );
+        LoggerEx.exit();
     }
 }
