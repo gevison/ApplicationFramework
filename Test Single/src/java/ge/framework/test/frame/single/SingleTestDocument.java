@@ -1,4 +1,4 @@
-package ge.framework.test.frame.multi;
+package ge.framework.test.frame.single;
 
 import ge.framework.frame.core.document.ApplicationDocumentComponent;
 

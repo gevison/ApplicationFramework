@@ -1,4 +1,4 @@
-package ge.framework.test.frame.multi;
+package ge.framework.test.frame.single;
 
 import com.jidesoft.action.DockableBarContext;
 import ge.framework.application.core.menu.RestartApplicationMenuItem;

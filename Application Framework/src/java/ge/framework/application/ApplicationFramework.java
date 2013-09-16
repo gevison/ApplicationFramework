@@ -5,6 +5,7 @@ import ge.utils.log.LoggerEx;
 import ge.utils.os.OS;
 import ge.utils.spring.context.ClasspathApplicationContext;
 
+import java.awt.*;
 import java.util.Arrays;
 
 /**
@@ -74,6 +75,20 @@ public class ApplicationFramework
         if ( OS.isMac() == true )
         {
             System.setProperty( "com.apple.mrj.application.apple.menu.about.name", application.getName() );
+
+            com.apple.eawt.Application appleApplication = com.apple.eawt.Application.getApplication();
+
+            appleApplication.setDockIconImage( application.getMacImage() );
+
+            PopupMenu popupMenu = new PopupMenu(  );
+            popupMenu.add( new MenuItem(application.getName()) );
+            appleApplication.setDockMenu( popupMenu );
+            PopupMenu dockMenu = appleApplication.getDockMenu();
+
+
+            int itemCount = dockMenu.getItemCount();
+
+            LoggerEx.trace( itemCount );
         }
 
         application.startup( args );

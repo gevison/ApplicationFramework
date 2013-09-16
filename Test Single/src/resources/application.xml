@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="TestSingleApplication" class="ge.framework.test.application.single.TestSingleFrameApplication">
+    <bean id="TestSingleApplication" class="ge.framework.test.application.single.TestSingleFrameApplication" lazy-init="true">
         <property name="applicationRestarterClass" value="ge.framework.application.core.utils.JavaApplicationRestarter"/>
         <property name="allowMultipleApplications" value="false"/>
         <property name="configurationClass" value="ge.framework.test.application.single.objects.TestSingleApplicationConfiguration"/>
