@@ -2,6 +2,7 @@ package ge.framework.application;
 
 import ge.framework.application.core.Application;
 import ge.utils.log.LoggerEx;
+import ge.utils.os.OS;
 import ge.utils.spring.context.ClasspathApplicationContext;
 
 import java.util.Arrays;
@@ -68,6 +69,11 @@ public class ApplicationFramework
                 LoggerEx.info( "Getting application bean: " + beanNamesForType[ 0 ] );
                 application = classpathApplicationContext.getBean( beanNamesForType[ 0 ], Application.class );
             }
+        }
+
+        if ( OS.isMac() == true )
+        {
+            System.setProperty( "com.apple.mrj.application.apple.menu.about.name", application.getName() );
         }
 
         application.startup( args );
