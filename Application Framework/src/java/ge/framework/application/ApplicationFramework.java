@@ -1,6 +1,7 @@
 package ge.framework.application;
 
 import ge.framework.application.core.Application;
+import ge.framework.application.core.objects.ApplicationBean;
 import ge.utils.log.LoggerEx;
 import ge.utils.os.OS;
 import ge.utils.spring.context.ClasspathApplicationContext;
@@ -44,16 +45,16 @@ public class ApplicationFramework
         ClasspathApplicationContext classpathApplicationContext = ClasspathApplicationContext.getInstance(
                 applicationConfiguration );
 
-        Application application;
+        ApplicationBean applicationBean;
 
         if ( ( applicationBeanName != null ) && ( applicationBeanName.isEmpty() == false ) )
         {
             LoggerEx.info( "Getting application bean: " + applicationBeanName );
-            application = classpathApplicationContext.getBean( applicationBeanName, Application.class );
+            applicationBean = classpathApplicationContext.getBean( applicationBeanName, ApplicationBean.class );
         }
         else
         {
-            String[] beanNamesForType = classpathApplicationContext.getBeanNamesForType( Application.class );
+            String[] beanNamesForType = classpathApplicationContext.getBeanNamesForType( ApplicationBean.class );
 
             if ( ( beanNamesForType == null ) || ( beanNamesForType.length == 0 ) )
             {
@@ -68,28 +69,16 @@ public class ApplicationFramework
             else
             {
                 LoggerEx.info( "Getting application bean: " + beanNamesForType[ 0 ] );
-                application = classpathApplicationContext.getBean( beanNamesForType[ 0 ], Application.class );
+                applicationBean = classpathApplicationContext.getBean( beanNamesForType[ 0 ], ApplicationBean.class );
             }
         }
 
         if ( OS.isMac() == true )
         {
-            System.setProperty( "com.apple.mrj.application.apple.menu.about.name", application.getName() );
-
-            com.apple.eawt.Application appleApplication = com.apple.eawt.Application.getApplication();
-
-            appleApplication.setDockIconImage( application.getMacImage() );
-
-            PopupMenu popupMenu = new PopupMenu(  );
-            popupMenu.add( new MenuItem(application.getName()) );
-            appleApplication.setDockMenu( popupMenu );
-            PopupMenu dockMenu = appleApplication.getDockMenu();
-
-
-            int itemCount = dockMenu.getItemCount();
-
-            LoggerEx.trace( itemCount );
+            System.setProperty( "com.apple.mrj.application.apple.menu.about.name", applicationBean.getNameResource() );
         }
+
+        Application application =
 
         application.startup( args );
         LoggerEx.exit();

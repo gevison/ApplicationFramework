@@ -4,6 +4,7 @@ import com.jidesoft.plaf.LookAndFeelFactory;
 import ge.framework.application.core.dialog.ApplicationPropertiesDialog;
 import ge.framework.application.core.dialog.ExitDialog;
 import ge.framework.application.core.enums.CloseOrExitEnum;
+import ge.framework.application.core.objects.ApplicationBean;
 import ge.framework.application.core.objects.ApplicationConfiguration;
 import ge.framework.application.core.utils.ApplicationRestarter;
 import ge.framework.frame.core.ApplicationFrame;
@@ -43,7 +44,7 @@ import static org.springframework.util.Assert.notNull;
  * Date: 26/07/13
  * Time: 14:19
  */
-public abstract class Application extends ApplicationContextAwareObject
+public abstract class Application
 {
     protected static final File userDirectory = new File( System.getProperty( "user.home" ) );
 
@@ -85,32 +86,9 @@ public abstract class Application extends ApplicationContextAwareObject
 
     private boolean restarting;
 
-    @Override
-    protected void validateBeanObject()
+    public Application( ApplicationBean applicationBean )
     {
-        notNull( allowMultipleApplications );
-        hasLength( name );
-        notNull( smallImage );
-        notNull( smallIcon );
-        notNull( largeImage );
-        notNull( largeIcon );
-
-        if ( OS.isMac() == true )
-        {
-            notNull( macImage );
-            notNull( smallIcon );
-        }
-
-        hasLength( metaDataName );
-        hasLength( configurationName );
-        notNull( configurationClass );
-
-        notNull( frameClass );
-
-        validateApplicationObject();
     }
-
-    protected abstract void validateApplicationObject();
 
     public final void startup( String[] args )
     {
@@ -399,27 +377,9 @@ public abstract class Application extends ApplicationContextAwareObject
 
     public abstract ApplicationFrame discoverFocusedFrame();
 
-    public void setApplicationRestarterClass( Class<? extends ApplicationRestarter> applicationRestarterClass )
-    {
-        testInitialised();
-        this.applicationRestarterClass = applicationRestarterClass;
-    }
-
-    public final void setAllowMultipleApplications( Boolean allowMultipleApplications )
-    {
-        testInitialised();
-        this.allowMultipleApplications = allowMultipleApplications;
-    }
-
     public final String getName()
     {
         return name;
-    }
-
-    public final void setName( String name )
-    {
-        testInitialised();
-        this.name = name;
     }
 
     public final String getDescription()
@@ -427,21 +387,9 @@ public abstract class Application extends ApplicationContextAwareObject
         return description;
     }
 
-    public final void setDescription( String description )
-    {
-        testInitialised();
-        this.description = description;
-    }
-
     public final Image getSmallImage()
     {
         return smallImage;
-    }
-
-    public final void setSmallImage( Image smallImage )
-    {
-        testInitialised();
-        this.smallImage = smallImage;
     }
 
     public final Icon getSmallIcon()
@@ -449,21 +397,9 @@ public abstract class Application extends ApplicationContextAwareObject
         return smallIcon;
     }
 
-    public final void setSmallIcon( Icon smallIcon )
-    {
-        testInitialised();
-        this.smallIcon = smallIcon;
-    }
-
     public final Image getLargeImage()
     {
         return largeImage;
-    }
-
-    public final void setLargeImage( Image largeImage )
-    {
-        testInitialised();
-        this.largeImage = largeImage;
     }
 
     public final Icon getLargeIcon()
@@ -471,21 +407,9 @@ public abstract class Application extends ApplicationContextAwareObject
         return largeIcon;
     }
 
-    public final void setLargeIcon( Icon largeIcon )
-    {
-        testInitialised();
-        this.largeIcon = largeIcon;
-    }
-
     public final Icon getMacIcon()
     {
         return macIcon;
-    }
-
-    public final void setMacIcon( Icon macIcon )
-    {
-        testInitialised();
-        this.macIcon = macIcon;
     }
 
     public final Image getMacImage()
@@ -493,34 +417,9 @@ public abstract class Application extends ApplicationContextAwareObject
         return macImage;
     }
 
-    public final void setMacImage( Image macImage )
-    {
-        testInitialised();
-        this.macImage = macImage;
-    }
-
     public final String getMetaDataName()
     {
         return metaDataName;
-    }
-
-    public final void setMetaDataName( String metaDataName )
-    {
-        testInitialised();
-        this.metaDataName = metaDataName;
-    }
-
-    public final void setConfigurationName( String configurationName )
-    {
-        testInitialised();
-        this.configurationName = configurationName;
-    }
-
-    public final void setConfigurationClass(
-            Class<? extends ApplicationConfiguration> configurationClass )
-    {
-        testInitialised();
-        this.configurationClass = configurationClass;
     }
 
     public ApplicationConfiguration getConfiguration()
@@ -531,12 +430,6 @@ public abstract class Application extends ApplicationContextAwareObject
     public Class<? extends ApplicationFrame> getFrameClass()
     {
         return frameClass;
-    }
-
-    public void setFrameClass( Class<? extends SingleFrameApplicationFrame> frameClass )
-    {
-        testInitialised();
-        this.frameClass = frameClass;
     }
 
     public final UnmarshallerListener getUnmarshallerListener( Class aClass )
