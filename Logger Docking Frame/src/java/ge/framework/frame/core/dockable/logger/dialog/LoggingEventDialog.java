@@ -6,9 +6,9 @@ import com.jidesoft.swing.JideLabel;
 import com.jidesoft.swing.PartialEtchedBorder;
 import com.jidesoft.swing.PartialLineBorder;
 import com.jidesoft.swing.PartialSide;
-import ge.framework.application.core.Application;
-import ge.framework.application.core.dialog.ApplicationStandardDialog;
-import ge.framework.application.core.dialog.panel.ApplicationBannerPanel;
+import ge.framework.application.frame.core.dialog.ApplicationStandardDialog;
+import ge.framework.application.frame.core.dialog.panel.ApplicationBannerPanel;
+import ge.framework.application.frame.core.FrameApplication;
 import ge.framework.frame.core.ApplicationFrame;
 import ge.utils.bundle.Resources;
 import ge.utils.layout.SpringLayoutUtilities;
@@ -74,7 +74,7 @@ public class LoggingEventDialog extends ApplicationStandardDialog implements Act
 
     private JPanel dataPanel;
 
-    public LoggingEventDialog(ApplicationFrame applicationFrame, Application application, LoggingEvent logEvent ) throws HeadlessException
+    public LoggingEventDialog(ApplicationFrame applicationFrame, FrameApplication application, LoggingEvent logEvent ) throws HeadlessException
     {
         super(applicationFrame,application);
         this.logEvent = logEvent;

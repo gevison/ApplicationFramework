@@ -5,7 +5,7 @@ import com.jidesoft.dialog.StandardDialog;
 import com.jidesoft.swing.PartialEtchedBorder;
 import com.jidesoft.swing.PartialLineBorder;
 import com.jidesoft.swing.PartialSide;
-import ge.framework.application.core.Application;
+import ge.framework.application.frame.core.FrameApplication;
 import ge.framework.frame.core.ApplicationFrame;
 import ge.framework.frame.core.command.ApplicationCommandBarComponent;
 import ge.framework.frame.core.command.dialog.panel.CommandBarPanel;
@@ -67,7 +67,7 @@ public class CommandBarDialog extends StandardDialog implements ActionListener
         setSize( 450, 500 );
         setMinimumSize( new Dimension( 450, 500 ) );
 
-        Application application = applicationFrame.getApplication();
+        FrameApplication application = ( FrameApplication ) applicationFrame.getApplication();
 
         setIconImage( application.getSmallImage() );
         setTitle( resources.getResourceString( CommandBarDialog.class, "title" ) );

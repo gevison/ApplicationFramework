@@ -1,5 +1,6 @@
 package ge.framework.test;
 
+import ge.framework.application.core.objects.ApplicationBean;
 import ge.utils.os.OS;
 import ge.utils.spring.context.ClasspathApplicationContext;
 
@@ -17,8 +18,7 @@ public class AppleTest
         ClasspathApplicationContext classpathApplicationContext = ClasspathApplicationContext.getInstance(
                 "appleApplication.xml" );
 
-
-        SingleFrameApplicationBean singleFrameApplicationBean = classpathApplicationContext.getBean( "AppleApplication", SingleFrameApplicationBean.class );
+        ApplicationBean applicationBean = classpathApplicationContext.getBean( "AppleApplication", ApplicationBean.class );
 
         if ( OS.isMac() == true )
         {

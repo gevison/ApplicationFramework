@@ -1,6 +1,6 @@
 package ge.framework.frame.multi.menu.window.item;
 
-import ge.framework.application.multi.MultiFrameApplication;
+import ge.framework.application.frame.multi.MultiFrameApplication;
 import ge.framework.frame.core.ApplicationFrame;
 import ge.framework.frame.core.menu.utils.ApplicationFrameMenuItem;
 import ge.utils.bundle.Resources;

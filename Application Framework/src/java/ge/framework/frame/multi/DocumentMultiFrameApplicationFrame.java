@@ -1,6 +1,6 @@
 package ge.framework.frame.multi;
 
-import ge.framework.application.multi.MultiFrameApplication;
+import ge.framework.application.frame.multi.MultiFrameApplication;
 import ge.framework.frame.core.DocumentWorkspaceApplicationFrame;
 import ge.framework.frame.core.document.ApplicationDocumentComponent;
 import ge.framework.frame.core.document.ApplicationDocumentPane;

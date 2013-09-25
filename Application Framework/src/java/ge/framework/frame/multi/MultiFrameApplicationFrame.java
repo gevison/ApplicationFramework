@@ -1,6 +1,6 @@
 package ge.framework.frame.multi;
 
-import ge.framework.application.multi.MultiFrameApplication;
+import ge.framework.application.frame.multi.MultiFrameApplication;
 import ge.framework.frame.core.ApplicationFrame;
 import ge.framework.frame.multi.dialog.FramePropertiesDialog;
 import ge.framework.frame.multi.objects.FrameConfiguration;
@@ -202,7 +202,7 @@ public abstract class MultiFrameApplicationFrame extends ApplicationFrame<MultiF
         return application.getFrameConfigurationClass();
     }
 
-    @SuppressWarnings( "unchecked" )
+    @SuppressWarnings("unchecked")
     public final boolean shouldCreateFrameConfigurationMenu()
     {
         if ( isFrameConfigurationDialogAllow() == true )

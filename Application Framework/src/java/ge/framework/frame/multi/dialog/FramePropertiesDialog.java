@@ -1,6 +1,6 @@
 package ge.framework.frame.multi.dialog;
 
-import ge.framework.application.core.Application;
+import ge.framework.application.frame.core.FrameApplication;
 import ge.framework.frame.multi.MultiFrameApplicationFrame;
 import ge.framework.frame.multi.objects.FrameConfiguration;
 import ge.utils.bundle.Resources;
@@ -35,7 +35,7 @@ public class FramePropertiesDialog extends PropertiesDialog<FrameConfiguration>
         setSize( 700, 500 );
         setMinimumSize( new Dimension( 700, 500 ) );
 
-        Application application = applicationFrame.getApplication();
+        FrameApplication application = ( FrameApplication ) applicationFrame.getApplication();
 
         setIconImage( application.getSmallImage() );
         setTitle( getBannerTitle() );
@@ -64,7 +64,7 @@ public class FramePropertiesDialog extends PropertiesDialog<FrameConfiguration>
     @Override
     protected final ImageIcon getBannerIcon()
     {
-        Application application = applicationFrame.getApplication();
+        FrameApplication application = ( FrameApplication ) applicationFrame.getApplication();
         return ( ImageIcon ) application.getLargeIcon();
     }
 

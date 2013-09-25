@@ -3,21 +3,8 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="AppleApplication" class="ge.framework.test.SingleFrameApplicationBean">
-        <property name="resourceBundleName" value="ge.framework.test.application.single"/>
+    <bean id="AppleApplication" class="ge.framework.application.core.objects.ApplicationBean">
         <property name="applicationClassName" value="ge.framework.test.application.single.TestSingleFrameApplication"/>
-        <property name="applicationRestarterClassName" value="ge.framework.application.core.utils.JavaApplicationRestarter"/>
-        <property name="allowMultipleApplications" value="false"/>
-        <property name="configurationClassName" value="ge.framework.test.application.single.objects.TestSingleApplicationConfiguration"/>
-        <property name="configurationName" value="TestSingle.xml"/>
-        <property name="frameClassName" value="ge.framework.test.frame.single.TestSingleFrameApplicationFrame"/>
-        <property name="largeIconResourceName" value="Application.ico:2"/>
-        <property name="largeImageResourceName" value="Application.ico:2"/>
-        <property name="smallIconResourceName" value="Application.ico:4"/>
-        <property name="smallImageResourceName" value="Application.ico:4"/>
-        <property name="macIconResourceName" value="Application.ico:1"/>
-        <property name="macImageResourceName" value="Application.ico:1"/>
-        <property name="metaDataName" value=".TestSingle"/>
         <property name="name" value="Test Single Application"/>
         <property name="description" value="Test Single Application Description"/>
     </bean>

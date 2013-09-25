@@ -1,5 +1,6 @@
 package ge.framework.application.core.utils;
 
+import ge.utils.VMInstance;
 import ge.utils.log.LoggerEx;
 
 import java.util.Map;
@@ -10,18 +11,19 @@ import java.util.Map;
  * Date: 19/03/13
  * Time: 13:37
  */
-public abstract class ApplicationRestarter
+public final class ApplicationRestarter
 {
     public static final String MAIN = "main";
-
-    public static final String RESTART_PID = "ge.framework.application.restartPID";
 
     private String[] applicationArgs;
 
     private String mainClass;
 
-    protected ApplicationRestarter()
+    private ApplicationRestarterCommandDetails commandDetails;
+
+    public ApplicationRestarter( ApplicationRestarterCommandDetails commandDetails )
     {
+        this.commandDetails = commandDetails;
     }
 
     public void initialiseRestarter( String[] applicationArgs )
@@ -68,7 +70,7 @@ public abstract class ApplicationRestarter
         {
             LoggerEx.info( "Initiating restart" );
 
-            String[] command = getRestartCommand( mainClass, applicationArgs );
+            String[] command = commandDetails.getRestartCommand( mainClass, applicationArgs );
 
             if ( ( command != null ) && ( command.length != 0 ) )
             {
@@ -91,5 +93,24 @@ public abstract class ApplicationRestarter
         }
     }
 
-    public abstract String[] getRestartCommand( String mainClass, String[] applicationArguments );
+    public void holdStartup()
+    {
+        String pidString = System.getProperty( ApplicationRestarterCommandDetails.RESTART_PID );
+
+        if ( ( pidString != null ) && ( pidString.isEmpty() == false ) )
+        {
+            int pid = Integer.parseInt( pidString );
+
+            while ( VMInstance.isVmRunning( pid ) == true )
+            {
+                try
+                {
+                    Thread.sleep( 1000 );
+                }
+                catch ( InterruptedException e )
+                {
+                }
+            }
+        }
+    }
 }

@@ -1,8 +1,8 @@
 package ge.framework.test.frame.single;
 
 import com.jidesoft.action.DockableBarContext;
-import ge.framework.application.core.menu.RestartApplicationMenuItem;
-import ge.framework.application.single.SingleFrameApplication;
+import ge.framework.application.frame.core.menu.RestartApplicationMenuItem;
+import ge.framework.application.frame.single.SingleFrameApplication;
 import ge.framework.frame.core.command.ApplicationCommandBar;
 import ge.framework.frame.core.command.ApplicationCommandMenuBar;
 import ge.framework.frame.core.dockable.logger.LoggerFrame;
@@ -118,6 +118,7 @@ public class TestSingleFrameApplicationFrame extends DocumentSingleFrameApplicat
         commandMenuBar.setPaintBackground( false );
         commandMenuBar.setChevronAlwaysVisible( false );
 
+        commandMenuBar.setAutoscrolls( true );
         SingleFileMenu fileMenu = new SingleFileMenu( this );
         fileMenu.initialise();
         RestartApplicationMenuItem restartApplicationMenuItem = new RestartApplicationMenuItem( this );

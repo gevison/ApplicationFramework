@@ -11,7 +11,7 @@ import com.jidesoft.grid.TableColumnWidthKeeper;
 import com.jidesoft.grid.TableHeaderPopupMenuInstaller;
 import com.jidesoft.swing.JideMenu;
 import com.jidesoft.swing.JideScrollPane;
-import ge.framework.application.core.Application;
+import ge.framework.application.frame.core.FrameApplication;
 import ge.framework.frame.core.ApplicationFrame;
 import ge.framework.frame.core.dockable.ApplicationDockableFrame;
 import ge.framework.frame.core.dockable.logger.dialog.LoggingEventDialog;
@@ -312,7 +312,7 @@ public class LoggerFrame extends ApplicationDockableFrame implements ActionListe
                         if ( logCompilerEvent != null )
                         {
                             ApplicationFrame applicationFrame = getApplicationFrame();
-                            Application application = applicationFrame.getApplication();
+                            FrameApplication application = ( FrameApplication ) applicationFrame.getApplication();
                             LoggingEventDialog loggingEventDialog = new LoggingEventDialog(applicationFrame,application, logCompilerEvent );
 
                             loggingEventDialog.doModal();

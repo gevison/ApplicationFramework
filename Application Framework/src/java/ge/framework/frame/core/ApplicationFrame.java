@@ -5,6 +5,7 @@ import com.jidesoft.status.StatusBarItem;
 import com.jidesoft.swing.ContentContainer;
 import ge.framework.application.core.Application;
 import ge.framework.application.core.enums.CloseOrExitEnum;
+import ge.framework.application.frame.core.FrameApplication;
 import ge.framework.frame.core.command.ApplicationCommandBarComponent;
 import ge.framework.frame.core.dockable.ApplicationDockableFrame;
 import ge.framework.frame.core.manager.ApplicationDockableBarManager;
@@ -35,7 +36,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public abstract class ApplicationFrame<APPLICATION extends Application> extends JFrame
+public abstract class ApplicationFrame<APPLICATION extends FrameApplication> extends JFrame
 {
     private static final Resources resources =
             Resources.getInstance( "ge.framework.frame.core" );
@@ -354,7 +355,7 @@ public abstract class ApplicationFrame<APPLICATION extends Application> extends 
         applicationFrameWindowAdapter = null;
     }
 
-    public Application getApplication()
+    public APPLICATION getApplication()
     {
         return application;
     }

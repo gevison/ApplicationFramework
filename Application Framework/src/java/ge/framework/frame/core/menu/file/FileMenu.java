@@ -1,7 +1,7 @@
 package ge.framework.frame.core.menu.file;
 
-import ge.framework.application.core.menu.ApplicationPropertiesFrameMenuItem;
-import ge.framework.application.core.menu.ExitApplicationMenuItem;
+import ge.framework.application.frame.core.menu.ApplicationPropertiesFrameMenuItem;
+import ge.framework.application.frame.core.menu.ExitApplicationMenuItem;
 import ge.framework.frame.core.ApplicationFrame;
 import ge.framework.frame.core.menu.utils.ApplicationFrameMenu;
 import ge.framework.frame.core.menu.utils.ApplicationFrameMenuSeparator;
@@ -14,7 +14,7 @@ import ge.utils.bundle.Resources;
  * Time: 13:14
  * To change this template use File | Settings | File Templates.
  */
-public abstract class FileMenu extends ApplicationFrameMenu
+public abstract class FileMenu<FRAME extends ApplicationFrame> extends ApplicationFrameMenu<FRAME>
 {
     private static final Resources resources =
             Resources.getInstance( "ge.framework.frame.core" );
@@ -23,7 +23,7 @@ public abstract class FileMenu extends ApplicationFrameMenu
 
     private ExitApplicationMenuItem exitApplicationMenuItem;
 
-    public FileMenu( ApplicationFrame applicationFrame )
+    public FileMenu( FRAME applicationFrame )
     {
         super( applicationFrame, false );
     }

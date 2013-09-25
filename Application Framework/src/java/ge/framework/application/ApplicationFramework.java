@@ -5,8 +5,8 @@ import ge.framework.application.core.objects.ApplicationBean;
 import ge.utils.log.LoggerEx;
 import ge.utils.os.OS;
 import ge.utils.spring.context.ClasspathApplicationContext;
+import org.apache.commons.lang3.reflect.ConstructorUtils;
 
-import java.awt.*;
 import java.util.Arrays;
 
 /**
@@ -75,12 +75,24 @@ public class ApplicationFramework
 
         if ( OS.isMac() == true )
         {
-            System.setProperty( "com.apple.mrj.application.apple.menu.about.name", applicationBean.getNameResource() );
+            System.setProperty( "com.apple.mrj.application.apple.menu.about.name", applicationBean.getName() );
         }
 
-        Application application =
+        Class<? extends Application> applicationClass = applicationBean.getApplicationClass();
 
-        application.startup( args );
+        if ( applicationClass != null )
+        {
+            try
+            {
+                Application application = ConstructorUtils.invokeConstructor( applicationClass, applicationBean );
+                application.startup( args );
+            }
+            catch ( Exception e )
+            {
+                LoggerEx.fatal( "Failed to creat Application object.", e );
+            }
+        }
+
         LoggerEx.exit();
     }
 }

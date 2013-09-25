@@ -1,10 +1,9 @@
 package ge.framework.frame.multi.menu.file;
 
-import ge.framework.application.multi.MultiFrameApplication;
-import ge.framework.application.multi.menu.RecentlyOpenedMenu;
-import ge.framework.application.multi.menu.item.CloseMenuItem;
-import ge.framework.application.multi.menu.item.NewMenuItem;
-import ge.framework.application.multi.menu.item.OpenMenuItem;
+import ge.framework.application.frame.multi.menu.RecentlyOpenedMenu;
+import ge.framework.application.frame.multi.menu.item.CloseMenuItem;
+import ge.framework.application.frame.multi.menu.item.NewMenuItem;
+import ge.framework.application.frame.multi.menu.item.OpenMenuItem;
 import ge.framework.frame.core.menu.file.FileMenu;
 import ge.framework.frame.core.menu.utils.ApplicationFrameMenuComponent;
 import ge.framework.frame.multi.MultiFrameApplicationFrame;
@@ -19,7 +18,7 @@ import java.util.List;
  * Date: 01/08/13
  * Time: 15:31
  */
-public class MultiFileMenu extends FileMenu
+public class MultiFileMenu extends FileMenu<MultiFrameApplicationFrame>
 {
     private NewMenuItem newItem;
 
@@ -44,8 +43,6 @@ public class MultiFileMenu extends FileMenu
     @Override
     protected void initialiseFileMenu()
     {
-        MultiFrameApplication application = ( MultiFrameApplication ) applicationFrame.getApplication();
-
         newItem = new NewMenuItem( applicationFrame, true );
         newItem.initialise();
 
@@ -58,9 +55,7 @@ public class MultiFileMenu extends FileMenu
         closeMenuItem = new CloseMenuItem( applicationFrame );
         closeMenuItem.initialise();
 
-        MultiFrameApplicationFrame multiFrameApplicationFrame = ( MultiFrameApplicationFrame ) applicationFrame;
-
-        if ( multiFrameApplicationFrame.shouldCreateFrameConfigurationMenu() == true )
+        if ( applicationFrame.shouldCreateFrameConfigurationMenu() == true )
         {
             framePropertiesMenuItem = new FramePropertiesMenuItem( applicationFrame );
             framePropertiesMenuItem.initialise();

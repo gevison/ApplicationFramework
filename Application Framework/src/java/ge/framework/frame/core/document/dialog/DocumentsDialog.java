@@ -5,7 +5,7 @@ import com.jidesoft.dialog.StandardDialog;
 import com.jidesoft.swing.PartialEtchedBorder;
 import com.jidesoft.swing.PartialLineBorder;
 import com.jidesoft.swing.PartialSide;
-import ge.framework.application.core.Application;
+import ge.framework.application.frame.core.FrameApplication;
 import ge.framework.frame.core.ApplicationFrame;
 import ge.framework.frame.core.DocumentWorkspaceApplicationFrame;
 import ge.framework.frame.core.document.ApplicationDocumentComponent;
@@ -72,7 +72,7 @@ public class DocumentsDialog extends StandardDialog implements ActionListener
 
         ApplicationFrame applicationFrame = ( ApplicationFrame ) this.applicationFrame;
 
-        Application application = applicationFrame.getApplication();
+        FrameApplication application = ( FrameApplication ) applicationFrame.getApplication();
 
         setIconImage( application.getSmallImage() );
     }

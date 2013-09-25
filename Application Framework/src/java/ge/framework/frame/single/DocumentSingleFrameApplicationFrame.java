@@ -1,6 +1,6 @@
 package ge.framework.frame.single;
 
-import ge.framework.application.single.SingleFrameApplication;
+import ge.framework.application.frame.single.SingleFrameApplication;
 import ge.framework.frame.core.DocumentWorkspaceApplicationFrame;
 import ge.framework.frame.core.document.ApplicationDocumentComponent;
 import ge.framework.frame.core.document.ApplicationDocumentPane;

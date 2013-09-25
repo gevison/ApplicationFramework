@@ -8,19 +8,19 @@ import javax.swing.JPopupMenu;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class ApplicationFrameMenu extends StatusBarEnabledSpacerMenu implements ApplicationFrameMenuComponent,
+public abstract class ApplicationFrameMenu<FRAME extends ApplicationFrame> extends StatusBarEnabledSpacerMenu implements ApplicationFrameMenuComponent,
                                                                                          JideMenu.PopupMenuCustomizer
 {
     private List<ApplicationFrameMenuComponent> menuItems = new ArrayList<ApplicationFrameMenuComponent>();
 
-    protected ApplicationFrame applicationFrame;
+    protected FRAME applicationFrame;
 
-    public ApplicationFrameMenu( ApplicationFrame applicationFrame )
+    public ApplicationFrameMenu( FRAME applicationFrame )
     {
         this( applicationFrame, true );
     }
 
-    public ApplicationFrameMenu( ApplicationFrame applicationFrame, boolean useSpacer )
+    public ApplicationFrameMenu( FRAME applicationFrame, boolean useSpacer )
     {
         super( useSpacer );
         this.applicationFrame = applicationFrame;

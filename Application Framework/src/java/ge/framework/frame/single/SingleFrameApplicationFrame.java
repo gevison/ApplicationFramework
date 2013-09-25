@@ -1,8 +1,9 @@
 package ge.framework.frame.single;
 
 import ge.framework.application.core.Application;
-import ge.framework.application.single.SingleFrameApplication;
-import ge.framework.application.single.objects.SingleApplicationConfiguration;
+import ge.framework.application.frame.core.FrameApplication;
+import ge.framework.application.frame.single.SingleFrameApplication;
+import ge.framework.application.frame.single.objects.SingleFrameApplicationConfiguration;
 import ge.framework.frame.core.ApplicationFrame;
 
 import java.awt.HeadlessException;
@@ -16,7 +17,7 @@ import java.io.File;
  */
 public abstract class SingleFrameApplicationFrame extends ApplicationFrame
 {
-    public SingleFrameApplicationFrame( Application application ) throws HeadlessException
+    public SingleFrameApplicationFrame( FrameApplication application ) throws HeadlessException
     {
         super( application );
     }
@@ -35,8 +36,8 @@ public abstract class SingleFrameApplicationFrame extends ApplicationFrame
     protected boolean isStatusBarConfiguredVisible()
     {
         Application application = getApplication();
-        SingleApplicationConfiguration configuration =
-                ( SingleApplicationConfiguration ) application.getConfiguration();
+        SingleFrameApplicationConfiguration configuration =
+                ( SingleFrameApplicationConfiguration ) application.getConfiguration();
         return configuration.isStatusBarVisible();
     }
 
@@ -44,8 +45,8 @@ public abstract class SingleFrameApplicationFrame extends ApplicationFrame
     protected void setStatusBarConfiguredVisible( boolean statusBarVisible )
     {
         Application application = getApplication();
-        SingleApplicationConfiguration configuration =
-                ( SingleApplicationConfiguration ) application.getConfiguration();
+        SingleFrameApplicationConfiguration configuration =
+                ( SingleFrameApplicationConfiguration ) application.getConfiguration();
         configuration.setStatusBarVisible( statusBarVisible );
     }
 
@@ -53,8 +54,8 @@ public abstract class SingleFrameApplicationFrame extends ApplicationFrame
     protected boolean isToolButtonsConfiguredVisible()
     {
         Application application = getApplication();
-        SingleApplicationConfiguration configuration =
-                ( SingleApplicationConfiguration ) application.getConfiguration();
+        SingleFrameApplicationConfiguration configuration =
+                ( SingleFrameApplicationConfiguration ) application.getConfiguration();
         return configuration.isToolButtonsVisible();
     }
 
@@ -62,8 +63,8 @@ public abstract class SingleFrameApplicationFrame extends ApplicationFrame
     protected void setToolButtonsConfiguredVisible( boolean autoHideAreaVisible )
     {
         Application application = getApplication();
-        SingleApplicationConfiguration configuration =
-                ( SingleApplicationConfiguration ) application.getConfiguration();
+        SingleFrameApplicationConfiguration configuration =
+                ( SingleFrameApplicationConfiguration ) application.getConfiguration();
         configuration.setToolButtonsVisible( autoHideAreaVisible );
     }
 

@@ -12,13 +12,13 @@ import java.awt.event.ActionListener;
  * Date: 01/03/13
  * Time: 11:38
  */
-public abstract class ApplicationFrameMenuItem extends StatusBarEnabledSpacerMenuItem implements
+public abstract class ApplicationFrameMenuItem<FRAME extends ApplicationFrame> extends StatusBarEnabledSpacerMenuItem implements
                                                                                       ApplicationFrameMenuComponent,
                                                                                       ActionListener
 {
-    protected ApplicationFrame applicationFrame;
+    protected FRAME applicationFrame;
 
-    protected ApplicationFrameMenuItem( ApplicationFrame applicationFrame )
+    protected ApplicationFrameMenuItem( FRAME applicationFrame )
     {
         super();
         this.applicationFrame = applicationFrame;

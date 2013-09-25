@@ -1,42 +1,28 @@
 package ge.framework.application.core;
 
-import com.jidesoft.plaf.LookAndFeelFactory;
-import ge.framework.application.core.dialog.ApplicationPropertiesDialog;
-import ge.framework.application.core.dialog.ExitDialog;
 import ge.framework.application.core.enums.CloseOrExitEnum;
 import ge.framework.application.core.objects.ApplicationBean;
 import ge.framework.application.core.objects.ApplicationConfiguration;
 import ge.framework.application.core.utils.ApplicationRestarter;
-import ge.framework.frame.core.ApplicationFrame;
-import ge.framework.frame.single.SingleFrameApplicationFrame;
+import ge.framework.application.core.utils.ApplicationRestarterCommandDetails;
+import ge.framework.application.core.utils.Install4jApplicationRestarterCommandDetails;
+import ge.framework.application.core.utils.JavaApplicationRestarterCommandDetails;
 import ge.utils.VMInstance;
 import ge.utils.log.LoggerEx;
-import ge.utils.message.enums.MessageResult;
-import ge.utils.os.OS;
-import ge.utils.properties.PropertiesDialogPage;
-import ge.utils.spring.ApplicationContextAwareObject;
 import ge.utils.xml.bind.MarshallerListener;
 import ge.utils.xml.bind.TypedMarshallerListener;
 import ge.utils.xml.bind.TypedUnmarshallerListener;
 import ge.utils.xml.bind.UnmarshallerListener;
 import org.apache.commons.lang3.reflect.ConstructorUtils;
 
-import javax.swing.Icon;
-import javax.swing.UIManager;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-import java.awt.Color;
-import java.awt.Image;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.lang.reflect.InvocationTargetException;
-import java.util.List;
-
-import static org.springframework.util.Assert.hasLength;
-import static org.springframework.util.Assert.notNull;
 
 /**
  * Created with IntelliJ IDEA.
@@ -44,41 +30,15 @@ import static org.springframework.util.Assert.notNull;
  * Date: 26/07/13
  * Time: 14:19
  */
-public abstract class Application
+public abstract class Application<CONFIGURATION extends ApplicationConfiguration>
 {
     protected static final File userDirectory = new File( System.getProperty( "user.home" ) );
 
-    private Class<? extends ApplicationRestarter> applicationRestarterClass;
+    protected ApplicationBean applicationBean;
 
     private ApplicationRestarter applicationRestarter;
 
-    private Boolean allowMultipleApplications;
-
-    private String name;
-
-    private String description;
-
-    private Image smallImage;
-
-    private Icon smallIcon;
-
-    private Image largeImage;
-
-    private Icon largeIcon;
-
-    private Icon macIcon;
-
-    private Image macImage;
-
-    private String metaDataName;
-
-    private String configurationName;
-
-    private Class<? extends ApplicationConfiguration> configurationClass;
-
-    protected Class<? extends ApplicationFrame> frameClass;
-
-    private ApplicationConfiguration configuration;
+    protected CONFIGURATION configuration;
 
     private TypedMarshallerListener marshallerListener = new TypedMarshallerListener();
 
@@ -88,64 +48,36 @@ public abstract class Application
 
     public Application( ApplicationBean applicationBean )
     {
+        this.applicationBean = applicationBean;
     }
 
     public final void startup( String[] args )
     {
         LoggerEx.entry( args );
-        if ( applicationRestarterClass != null )
+
+        Class<? extends ApplicationRestarterCommandDetails> applicationRestarterCommandDetailsClass =
+                getApplicationRestarterCommandDetailsClass();
+
+        if ( applicationRestarterCommandDetailsClass != null )
         {
             try
             {
-                applicationRestarter = ConstructorUtils.invokeConstructor( applicationRestarterClass );
+                ApplicationRestarterCommandDetails applicationRestarterCommandDetails =
+                        ConstructorUtils.invokeConstructor( applicationRestarterCommandDetailsClass );
+
+                applicationRestarter = new ApplicationRestarter(applicationRestarterCommandDetails);
                 applicationRestarter.initialiseRestarter( args );
 
-                String pidString = System.getProperty( ApplicationRestarter.RESTART_PID );
-
-                if ( ( pidString != null ) && ( pidString.isEmpty() == false ) )
-                {
-                    int pid = Integer.parseInt( pidString );
-
-                    while ( VMInstance.isVmRunning( pid ) == true )
-                    {
-                        try
-                        {
-                            Thread.sleep( 1000 );
-                        }
-                        catch ( InterruptedException e )
-                        {
-                        }
-                    }
-                }
+                applicationRestarter.holdStartup();
             }
-            catch ( NoSuchMethodException e )
-            {
-                LoggerEx.fatal( e.getMessage(), e );
-                throw new IllegalStateException( e.getMessage(), e );
-            }
-            catch ( IllegalAccessException e )
-            {
-                LoggerEx.fatal( e.getMessage(), e );
-                throw new IllegalStateException( e.getMessage(), e );
-            }
-            catch ( InvocationTargetException e )
-            {
-                LoggerEx.fatal( e.getMessage(), e );
-                throw new IllegalStateException( e.getMessage(), e );
-            }
-            catch ( InstantiationException e )
-            {
-                LoggerEx.fatal( e.getMessage(), e );
-                throw new IllegalStateException( e.getMessage(), e );
-            }
-            catch ( NumberFormatException e )
+            catch ( Exception e )
             {
                 LoggerEx.fatal( e.getMessage(), e );
                 throw new IllegalStateException( e.getMessage(), e );
             }
         }
 
-        if ( allowMultipleApplications == false )
+        if ( getAllowMultipleApplications() == false )
         {
             if ( VMInstance.isVmUnique() == false )
             {
@@ -153,8 +85,6 @@ public abstract class Application
                 System.exit( -1 );
             }
         }
-
-        initialiseJide();
 
         unmarshallerListener = new TypedUnmarshallerListener();
         marshallerListener = new TypedMarshallerListener();
@@ -170,29 +100,20 @@ public abstract class Application
         LoggerEx.exit();
     }
 
-    private void initialiseJide()
+    protected abstract boolean getAllowMultipleApplications();
+
+    protected Class<? extends ApplicationRestarterCommandDetails> getApplicationRestarterCommandDetailsClass()
     {
-        LookAndFeelFactory.installDefaultLookAndFeelAndExtension();
+        String classPath = System.getProperty( "java.class.path" );
 
-        if ( OS.isWindows() == true )
+        if ( ( classPath != null ) && ( classPath.toLowerCase().contains( "i4jruntime.jar".toLowerCase() ) == true ) )
         {
-            LookAndFeelFactory.installJideExtension( LookAndFeelFactory.EXTENSION_STYLE_ECLIPSE3X );
+            return Install4jApplicationRestarterCommandDetails.class;
         }
-
-        UIManager.put( "DockableFrameTitlePane.showIcon", Boolean.TRUE );
-        UIManager.put( "JideTabbedPane.showIconOnTab", Boolean.TRUE );
-        UIManager.put( "DockableFrameTitlePane.titleBarComponent", Boolean.FALSE );
-        UIManager.put( "SidePane.alwaysShowTabText", Boolean.TRUE );
-
-        Color contentBackground = new Color( 240, 240, 240 );
-        Color workspaceBackground = new Color( 220, 220, 220 );
-
-        UIManager.put( "ContentContainer.background", contentBackground );
-
-        UIManager.put( "Workspace.background", workspaceBackground );
-
-        UIManager.put( "ButtonPanel.order", "ACO" );
-        UIManager.put( "ButtonPanel.oppositeOrder", "H" );
+        else
+        {
+            return JavaApplicationRestarterCommandDetails.class;
+        }
     }
 
     protected abstract void initialiseApplication( String[] args );
@@ -203,8 +124,8 @@ public abstract class Application
 
     private void loadApplicationConfiguration()
     {
-        File metadataDirectory = new File( userDirectory, metaDataName );
-        File configFile = new File( metadataDirectory, configurationName );
+        File metadataDirectory = new File( userDirectory, getApplicationMetaDataName() );
+        File configFile = new File( metadataDirectory, getApplicationConfigurationName() );
 
         LoggerEx.trace( "Loading ApplicationConfiguration from: " + configFile.toString() );
 
@@ -214,19 +135,21 @@ public abstract class Application
             {
                 LoggerEx.trace( "Failed to find config file: " + configFile.toString() );
 
-                configuration = ConstructorUtils.invokeConstructor( configurationClass );
+                configuration =
+                        ConstructorUtils
+                                .invokeConstructor( getApplicationConfigurationClass() );
 
                 saveApplicationConfiguration();
             }
             else
             {
-                JAXBContext requestContext = JAXBContext.newInstance( configurationClass );
+                JAXBContext requestContext = JAXBContext.newInstance( getApplicationConfigurationClass() );
 
                 Unmarshaller unmarshaller = requestContext.createUnmarshaller();
                 unmarshaller.setListener( unmarshallerListener );
 
                 LoggerEx.trace( "Found config file: " + configFile.toString() );
-                configuration = ( ApplicationConfiguration ) unmarshaller.unmarshal( configFile );
+                configuration = ( CONFIGURATION ) unmarshaller.unmarshal( configFile );
             }
         }
         catch ( JAXBException e )
@@ -258,8 +181,8 @@ public abstract class Application
 
     protected void saveApplicationConfiguration()
     {
-        File metadataDirectory = new File( userDirectory, metaDataName );
-        File configFile = new File( metadataDirectory, configurationName );
+        File metadataDirectory = new File( userDirectory, getApplicationMetaDataName() );
+        File configFile = new File( metadataDirectory, getApplicationConfigurationName() );
 
         LoggerEx.trace( "Saving ApplicationConfiguration to: " + configFile.toString() );
 
@@ -275,7 +198,7 @@ public abstract class Application
                 }
             }
 
-            JAXBContext requestContext = JAXBContext.newInstance( configurationClass );
+            JAXBContext requestContext = JAXBContext.newInstance( getApplicationConfigurationClass() );
 
             Marshaller marshaller = requestContext.createMarshaller();
             marshaller.setListener( marshallerListener );
@@ -298,48 +221,13 @@ public abstract class Application
         }
     }
 
-    public void processApplicationProperties()
-    {
-        ApplicationPropertiesDialog dialog = new ApplicationPropertiesDialog( this );
+    protected abstract String getApplicationMetaDataName();
 
-        dialog.doModal();
+    protected abstract String getApplicationConfigurationName();
 
-        saveApplicationConfiguration();
-    }
+    protected abstract Class<CONFIGURATION> getApplicationConfigurationClass();
 
-    public abstract List<PropertiesDialogPage> getApplicationConfigurationPages();
-
-    public final void processExit()
-    {
-        LoggerEx.debug( "Processing Exit" );
-        if ( terminateNow() == true )
-        {
-            System.exit( 0 );
-        }
-        else
-        {
-            if ( restarting == false )
-            {
-                if ( configuration.isAskBeforeExit() == true )
-                {
-                    ExitDialog exitDialog = new ExitDialog( this );
-
-                    MessageResult messageResult = exitDialog.doModal();
-
-                    configuration.setAskBeforeExit( !exitDialog.isCheckBoxSelected() );
-
-                    if ( messageResult == MessageResult.CANCEL )
-                    {
-                        return;
-                    }
-                }
-            }
-
-            LoggerEx.debug( "Closing frames." );
-
-            processApplicationExit();
-        }
-    }
+    public abstract void processExit();
 
     public final void processRestart()
     {
@@ -375,61 +263,19 @@ public abstract class Application
 
     public abstract CloseOrExitEnum closeOrExit();
 
-    public abstract ApplicationFrame discoverFocusedFrame();
-
     public final String getName()
     {
-        return name;
+        return applicationBean.getName();
     }
 
     public final String getDescription()
     {
-        return description;
-    }
-
-    public final Image getSmallImage()
-    {
-        return smallImage;
-    }
-
-    public final Icon getSmallIcon()
-    {
-        return smallIcon;
-    }
-
-    public final Image getLargeImage()
-    {
-        return largeImage;
-    }
-
-    public final Icon getLargeIcon()
-    {
-        return largeIcon;
-    }
-
-    public final Icon getMacIcon()
-    {
-        return macIcon;
-    }
-
-    public final Image getMacImage()
-    {
-        return macImage;
-    }
-
-    public final String getMetaDataName()
-    {
-        return metaDataName;
+        return applicationBean.getDescription();
     }
 
     public ApplicationConfiguration getConfiguration()
     {
         return configuration;
-    }
-
-    public Class<? extends ApplicationFrame> getFrameClass()
-    {
-        return frameClass;
     }
 
     public final UnmarshallerListener getUnmarshallerListener( Class aClass )

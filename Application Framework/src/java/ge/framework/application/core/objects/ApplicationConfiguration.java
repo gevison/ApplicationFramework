@@ -20,22 +20,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 @XmlAccessorOrder(XmlAccessOrder.ALPHABETICAL)
 public abstract class ApplicationConfiguration extends PropertyDialogObject
 {
-    public static final String ASK_BEFORE_EXIT = "askBeforeExit";
-
     private transient EventListenerList eventListenerList = new EventListenerList();
-
-    private boolean askBeforeExit = true;
-
-    public boolean isAskBeforeExit()
-    {
-        return askBeforeExit;
-    }
-
-    public void setAskBeforeExit( boolean askBeforeExit )
-    {
-        this.askBeforeExit = askBeforeExit;
-        fireApplicationConfigurationChangedEvent( ASK_BEFORE_EXIT );
-    }
 
     public void addApplicationConfigurationChangeListener( ApplicationConfigurationChangeListener listener )
     {

@@ -1,7 +1,7 @@
 package ge.framework.test.frame.multi;
 
 import com.jidesoft.action.DockableBarContext;
-import ge.framework.application.multi.MultiFrameApplication;
+import ge.framework.application.frame.multi.MultiFrameApplication;
 import ge.framework.frame.core.command.ApplicationCommandMenuBar;
 import ge.framework.frame.core.dockable.logger.LoggerFrame;
 import ge.framework.frame.core.menu.view.ViewMenu;

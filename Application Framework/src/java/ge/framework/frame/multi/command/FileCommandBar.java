@@ -1,10 +1,10 @@
 package ge.framework.frame.multi.command;
 
 import com.jidesoft.action.DockableBarContext;
-import ge.framework.application.multi.command.NewCommandButton;
-import ge.framework.application.multi.command.OpenCommandButton;
-import ge.framework.frame.core.ApplicationFrame;
+import ge.framework.application.frame.multi.command.NewCommandButton;
+import ge.framework.application.frame.multi.command.OpenCommandButton;
 import ge.framework.frame.core.command.ApplicationCommandBar;
+import ge.framework.frame.multi.MultiFrameApplicationFrame;
 import ge.utils.bundle.Resources;
 
 /**
@@ -22,7 +22,7 @@ public class FileCommandBar extends ApplicationCommandBar
 
     private OpenCommandButton openCommandButton;
 
-    public FileCommandBar( ApplicationFrame applicationFrame )
+    public FileCommandBar( MultiFrameApplicationFrame applicationFrame )
     {
         super( "fileCommandBar" );
 

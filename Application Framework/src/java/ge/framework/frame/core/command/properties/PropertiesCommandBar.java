@@ -1,7 +1,7 @@
 package ge.framework.frame.core.command.properties;
 
 import com.jidesoft.action.DockableBarContext;
-import ge.framework.application.core.command.ApplicationPropertiesCommandButton;
+import ge.framework.application.frame.core.command.ApplicationPropertiesCommandButton;
 import ge.framework.frame.core.ApplicationFrame;
 import ge.framework.frame.core.command.ApplicationCommandBar;
 import ge.utils.bundle.Resources;
