@@ -3,7 +3,7 @@
     <output-path>$PROJECT_DIR$/out/artifacts/Application_Framework_jar</output-path>
     <root id="root">
       <element id="archive" name="ApplicationFramework.jar">
-        <element id="module-output" name="Application Framework" />
+        <element id="module-output" name="Core Application Framework" />
       </element>
     </root>
   </artifact>

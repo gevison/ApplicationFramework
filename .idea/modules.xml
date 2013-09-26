@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Application Framework/Application Framework.iml" filepath="$PROJECT_DIR$/Application Framework/Application Framework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Core Application Framework/Core Application Framework.iml" filepath="$PROJECT_DIR$/Core Application Framework/Core Application Framework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Frame Application Framework/Frame Application Framework.iml" filepath="$PROJECT_DIR$/Frame Application Framework/Frame Application Framework.iml" />
       <module fileurl="file://$PROJECT_DIR$/Logger Docking Frame/Logger Docking Frame.iml" filepath="$PROJECT_DIR$/Logger Docking Frame/Logger Docking Frame.iml" />
       <module fileurl="file://$PROJECT_DIR$/Test Multi/Test Multi.iml" filepath="$PROJECT_DIR$/Test Multi/Test Multi.iml" />
       <module fileurl="file://$PROJECT_DIR$/Test Single/Test Single.iml" filepath="$PROJECT_DIR$/Test Single/Test Single.iml" />

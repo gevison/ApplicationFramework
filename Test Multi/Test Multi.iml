@@ -17,7 +17,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="Application Framework" exported="" />
+    <orderEntry type="module" module-name="Frame Application Framework" exported="" />
     <orderEntry type="module" module-name="Logger Docking Frame" exported="" />
   </component>
 </module>

@@ -89,7 +89,7 @@ public class ApplicationFramework
             }
             catch ( Exception e )
             {
-                LoggerEx.fatal( "Failed to creat Application object.", e );
+                LoggerEx.fatal( "Failed to create Application object.", e );
             }
         }
 
