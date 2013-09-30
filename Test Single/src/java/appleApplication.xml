@@ -5,7 +5,7 @@
 
     <bean id="AppleApplication" class="ge.framework.application.core.objects.ApplicationBean">
         <property name="applicationClassName" value="ge.framework.test.application.single.TestSingleFrameApplication"/>
-        <property name="name" value="Test Single Application"/>
+        <property name="displayName" value="Test Single Application"/>
         <property name="description" value="Test Single Application Description"/>
     </bean>
 </beans>

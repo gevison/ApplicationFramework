@@ -27,7 +27,7 @@ public class ApplicationBannerPanel extends BannerPanel
 
     private void initialise()
     {
-        setTitle( application.getName() );
+        setTitle( application.getDisplayName() );
         setTitleFont(
                 new Font( getTitleFont().getName(), getTitleFont().getStyle(),
                           getTitleFont().getSize() + 5 ) );

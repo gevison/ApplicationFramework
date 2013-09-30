@@ -65,7 +65,7 @@ public class RecentDialog extends ApplicationStandardDialog implements ActionLis
 
         setDefaultCloseOperation( DISPOSE_ON_CLOSE );
 
-        setTitle( application.getName() );
+        setTitle( application.getDisplayName() );
 
         setSize( 450, 500 );
         setMinimumSize( new Dimension( 450, 500 ) );

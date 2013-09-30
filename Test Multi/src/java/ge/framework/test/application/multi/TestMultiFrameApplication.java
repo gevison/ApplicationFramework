@@ -41,18 +41,6 @@ public class TestMultiFrameApplication extends MultiFrameApplication<TestMultiFr
     }
 
     @Override
-    protected String getApplicationMetaDataName()
-    {
-        return ".TestMultiApp";
-    }
-
-    @Override
-    protected String getApplicationConfigurationName()
-    {
-        return "TestMultiApp.xml";
-    }
-
-    @Override
     protected Class<TestMultiFrameApplicationConfiguration> getApplicationConfigurationClass()
     {
         return TestMultiFrameApplicationConfiguration.class;
@@ -122,18 +110,6 @@ public class TestMultiFrameApplication extends MultiFrameApplication<TestMultiFr
     public String getFrameName()
     {
         return "Test Multi Frame";
-    }
-
-    @Override
-    public String getFrameMetaDataName()
-    {
-        return ".TestMulti";
-    }
-
-    @Override
-    public String getFrameConfigurationName()
-    {
-        return "TestMulti.xml";
     }
 
     @Override

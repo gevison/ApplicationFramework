@@ -27,7 +27,7 @@ public class ApplicationProblemBannerPanel extends ProblemBannerPanel
 
     private void initialise()
     {
-        setTitle( application.getName() );
+        setTitle( application.getDisplayName() );
         setTitleFont(
                 new Font( getTitleFont().getName(), getTitleFont().getStyle(),
                           getTitleFont().getSize() + 5 ) );

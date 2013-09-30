@@ -5,6 +5,8 @@ import ge.utils.log.LoggerEx;
 import ge.utils.spring.ApplicationContextAwareObject;
 import org.apache.commons.lang3.ClassUtils;
 
+import static org.apache.commons.lang3.StringUtils.endsWithIgnoreCase;
+import static org.apache.commons.lang3.StringUtils.isAlphanumeric;
 import static org.springframework.util.Assert.hasLength;
 
 /**
@@ -18,6 +20,8 @@ public final class ApplicationBean extends ApplicationContextAwareObject
 {
     private String name;
 
+    private String displayName;
+
     private String description;
 
     private String applicationClassName;
@@ -27,6 +31,17 @@ public final class ApplicationBean extends ApplicationContextAwareObject
     {
         hasLength( name );
 
+        if ( isAlphanumeric( name ) == false )
+        {
+            throw new IllegalStateException( "name must be alphanumeric without spaces." );
+        }
+
+        if ( endsWithIgnoreCase( name, "app" ) == true )
+        {
+            throw new IllegalStateException( "name must not have the suffix App." );
+        }
+
+        hasLength( displayName );
         hasLength( applicationClassName );
     }
 
@@ -39,6 +54,17 @@ public final class ApplicationBean extends ApplicationContextAwareObject
     {
         testInitialised();
         this.name = name;
+    }
+
+    public String getDisplayName()
+    {
+        return displayName;
+    }
+
+    public void setDisplayName( String displayName )
+    {
+        testInitialised();
+        this.displayName = displayName;
     }
 
     public String getDescription()

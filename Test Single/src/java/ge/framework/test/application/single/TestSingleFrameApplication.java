@@ -99,18 +99,6 @@ public class TestSingleFrameApplication extends SingleFrameApplication<TestSingl
     }
 
     @Override
-    protected String getApplicationMetaDataName()
-    {
-        return ".TestSingle";
-    }
-
-    @Override
-    protected String getApplicationConfigurationName()
-    {
-        return "TestSingle.xml";
-    }
-
-    @Override
     protected Class<TestSingleFrameApplicationConfiguration> getApplicationConfigurationClass()
     {
         return TestSingleFrameApplicationConfiguration.class;

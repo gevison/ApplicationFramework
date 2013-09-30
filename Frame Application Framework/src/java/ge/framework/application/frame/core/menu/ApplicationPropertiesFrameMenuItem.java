@@ -17,7 +17,7 @@ import java.awt.event.ActionListener;
 public class ApplicationPropertiesFrameMenuItem extends ApplicationFrameMenuItem implements ActionListener
 {
     private static final Resources resources =
-            Resources.getInstance( "ge.framework.application.core" );
+            Resources.getInstance( "ge.framework.application.frame.core" );
 
     public ApplicationPropertiesFrameMenuItem( ApplicationFrame applicationFrame )
     {

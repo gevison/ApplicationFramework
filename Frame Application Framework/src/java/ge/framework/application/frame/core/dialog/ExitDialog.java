@@ -20,7 +20,7 @@ import java.util.Map;
 public class ExitDialog extends MessageDialog
 {
     private static final Resources resources =
-            Resources.getInstance( "ge.framework.application.core" );
+            Resources.getInstance( "ge.framework.application.frame.core" );
 
     private static String alternateCheckBoxText = resources.getResourceString( ExitDialog.class, "alternate",
                                                                                "checkbox" );

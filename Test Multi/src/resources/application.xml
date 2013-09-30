@@ -4,8 +4,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="TestMultiFrameApplication" class="ge.framework.application.core.objects.ApplicationBean">
+        <property name="name" value="TestMulti"/>
         <property name="applicationClassName" value="ge.framework.test.application.multi.TestMultiFrameApplication"/>
-        <property name="name" value="Test Multi Application"/>
+        <property name="displayName" value="Test Multi Application"/>
         <property name="description" value="Test Multi Application Desciption"/>
     </bean>
 </beans>

@@ -287,7 +287,7 @@ public abstract class MultiFrameApplicationFrame extends ApplicationFrame<MultiF
     {
         if ( frameInstanceDetailsObject == null )
         {
-            super.setTitle( application.getName() );
+            super.setTitle( application.getDisplayName() );
         }
         else
         {

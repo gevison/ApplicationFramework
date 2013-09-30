@@ -384,9 +384,15 @@ public abstract class MultiFrameApplication<FRAME extends MultiFrameApplicationF
 
     public abstract String getFrameName();
 
-    public abstract String getFrameMetaDataName();
+    public final String getFrameMetaDataName()
+    {
+        return "."+getName();
+    }
 
-    public abstract String getFrameConfigurationName();
+    public final String getFrameConfigurationName()
+    {
+        return getName()+".xml";
+    }
 
     public abstract Class<? extends FrameConfiguration> getFrameConfigurationClass();
 

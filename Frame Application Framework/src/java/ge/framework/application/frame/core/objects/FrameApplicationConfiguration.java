@@ -1,6 +1,6 @@
 package ge.framework.application.frame.core.objects;
 
-import ge.framework.application.core.objects.ApplicationConfiguration;
+import ge.framework.application.core.configuration.ApplicationConfiguration;
 
 /**
  * Created with IntelliJ IDEA.

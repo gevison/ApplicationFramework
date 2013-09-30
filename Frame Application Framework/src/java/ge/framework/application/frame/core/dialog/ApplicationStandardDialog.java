@@ -32,7 +32,7 @@ public abstract class ApplicationStandardDialog extends StandardDialog
     private void initialiseApplicationStandardDialog()
     {
         setIconImage( application.getSmallImage() );
-        setTitle( application.getName() );
+        setTitle( application.getDisplayName() );
 
         rootPane.registerKeyboardAction( new RootPaneDisposeActionListener(),
                                          KeyStroke.getKeyStroke( KeyEvent.VK_ESCAPE, 0 ),

@@ -87,7 +87,7 @@ public abstract class ApplicationFrame<APPLICATION extends FrameApplication> ext
     public void setTitle( String title )
     {
         Map<String, Object> arguments = new HashMap<String, Object>();
-        arguments.put( "applicationName", getApplication().getName() );
+        arguments.put( "applicationName", getApplication().getDisplayName() );
 
         String resourceString;
         if ( title == null )

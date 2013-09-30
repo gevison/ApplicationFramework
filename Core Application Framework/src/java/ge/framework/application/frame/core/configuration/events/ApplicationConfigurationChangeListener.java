@@ -1,4 +1,4 @@
-package ge.framework.application.core.objects.events;
+package ge.framework.application.core.configuration.events;
 
 import java.util.EventListener;
 

@@ -1,4 +1,4 @@
-package ge.framework.application.core.utils;
+package ge.framework.application.core.restarter;
 
 import ge.utils.VMInstance;
 import ge.utils.log.LoggerEx;

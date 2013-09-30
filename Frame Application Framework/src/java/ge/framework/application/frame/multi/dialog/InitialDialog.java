@@ -60,7 +60,7 @@ public class InitialDialog extends StandardDialog implements ListSelectionListen
 
         setDefaultCloseOperation( DISPOSE_ON_CLOSE );
 
-        setTitle( application.getName() );
+        setTitle( application.getDisplayName() );
         setIconImage( application.getSmallImage() );
 
         setSize( 700, 500 );

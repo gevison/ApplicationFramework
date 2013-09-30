@@ -2,11 +2,11 @@ package ge.framework.application.core;
 
 import ge.framework.application.core.enums.CloseOrExitEnum;
 import ge.framework.application.core.objects.ApplicationBean;
-import ge.framework.application.core.objects.ApplicationConfiguration;
-import ge.framework.application.core.utils.ApplicationRestarter;
-import ge.framework.application.core.utils.ApplicationRestarterCommandDetails;
-import ge.framework.application.core.utils.Install4jApplicationRestarterCommandDetails;
-import ge.framework.application.core.utils.JavaApplicationRestarterCommandDetails;
+import ge.framework.application.core.configuration.ApplicationConfiguration;
+import ge.framework.application.core.restarter.ApplicationRestarter;
+import ge.framework.application.core.restarter.ApplicationRestarterCommandDetails;
+import ge.framework.application.core.restarter.Install4jApplicationRestarterCommandDetails;
+import ge.framework.application.core.restarter.JavaApplicationRestarterCommandDetails;
 import ge.utils.VMInstance;
 import ge.utils.log.LoggerEx;
 import ge.utils.xml.bind.MarshallerListener;
@@ -53,7 +53,7 @@ public abstract class Application<CONFIGURATION extends ApplicationConfiguration
 
     public final void startup( String[] args )
     {
-        LoggerEx.entry( args );
+        LoggerEx.entry( ( Object ) args );
 
         Class<? extends ApplicationRestarterCommandDetails> applicationRestarterCommandDetailsClass =
                 getApplicationRestarterCommandDetailsClass();
@@ -221,9 +221,15 @@ public abstract class Application<CONFIGURATION extends ApplicationConfiguration
         }
     }
 
-    protected abstract String getApplicationMetaDataName();
+    protected final String getApplicationMetaDataName()
+    {
+        return "."+getName()+"App";
+    }
 
-    protected abstract String getApplicationConfigurationName();
+    protected final String getApplicationConfigurationName()
+    {
+        return getName()+"App.xml";
+    }
 
     protected abstract Class<CONFIGURATION> getApplicationConfigurationClass();
 
@@ -266,6 +272,11 @@ public abstract class Application<CONFIGURATION extends ApplicationConfiguration
     public final String getName()
     {
         return applicationBean.getName();
+    }
+
+    public final String getDisplayName()
+    {
+        return applicationBean.getDisplayName();
     }
 
     public final String getDescription()

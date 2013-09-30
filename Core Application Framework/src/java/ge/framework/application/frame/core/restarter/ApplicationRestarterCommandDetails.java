@@ -1,4 +1,4 @@
-package ge.framework.application.core.utils;
+package ge.framework.application.core.restarter;
 
 /**
  * Created with IntelliJ IDEA.

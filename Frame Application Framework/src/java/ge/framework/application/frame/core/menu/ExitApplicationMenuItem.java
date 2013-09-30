@@ -20,7 +20,7 @@ import java.awt.event.KeyEvent;
 public class ExitApplicationMenuItem extends ApplicationFrameMenuItem
 {
     private static final Resources resources =
-            Resources.getInstance( "ge.framework.application.core" );
+            Resources.getInstance( "ge.framework.application.frame.core" );
 
     public ExitApplicationMenuItem( ApplicationFrame applicationFrame )
     {

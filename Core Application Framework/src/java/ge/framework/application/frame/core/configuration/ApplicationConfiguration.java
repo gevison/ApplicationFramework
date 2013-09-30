@@ -1,7 +1,7 @@
-package ge.framework.application.core.objects;
+package ge.framework.application.core.configuration;
 
-import ge.framework.application.core.objects.events.ApplicationConfigurationChangeListener;
-import ge.framework.application.core.objects.events.ApplicationConfigurationChangedEvent;
+import ge.framework.application.core.configuration.events.ApplicationConfigurationChangeListener;
+import ge.framework.application.core.configuration.events.ApplicationConfigurationChangedEvent;
 import ge.utils.properties.object.PropertyDialogObject;
 
 import javax.swing.event.EventListenerList;

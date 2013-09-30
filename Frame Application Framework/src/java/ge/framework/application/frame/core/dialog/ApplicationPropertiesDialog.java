@@ -1,6 +1,6 @@
 package ge.framework.application.frame.core.dialog;
 
-import ge.framework.application.core.objects.ApplicationConfiguration;
+import ge.framework.application.core.configuration.ApplicationConfiguration;
 import ge.framework.application.frame.core.FrameApplication;
 import ge.utils.bundle.Resources;
 import ge.utils.properties.PropertiesDialog;
@@ -22,7 +22,7 @@ import java.util.Map;
 public class ApplicationPropertiesDialog extends PropertiesDialog<ApplicationConfiguration>
 {
     private static Resources resources = Resources.getInstance(
-            "ge.framework.application.core" );
+            "ge.framework.application.frame.core" );
 
     private final FrameApplication application;
 
@@ -42,7 +42,7 @@ public class ApplicationPropertiesDialog extends PropertiesDialog<ApplicationCon
 
         Map<String, Object> arguments = new HashMap<String, Object>();
 
-        arguments.put( "applicationName", application.getName() );
+        arguments.put( "applicationName", application.getDisplayName() );
 
         title = StringArgumentMessageFormat.format( title, arguments );
 
