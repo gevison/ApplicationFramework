@@ -24,7 +24,7 @@ import java.util.List;
  */
 public class TestMultiFrameApplicationFrame extends DocumentMultiFrameApplicationFrame
 {
-    private static final Resources resources = Resources.getInstance( "ge.framework.test.frame.multi" );
+    private static final Resources resources = Resources.getInstance( "ge.framework.test.application.multi" );
 
     private ApplicationCommandMenuBar commandMenuBar;
 

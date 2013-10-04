@@ -86,15 +86,7 @@ public abstract class MultiFrameApplication<FRAME extends MultiFrameApplicationF
     protected abstract List<PropertiesDialogPage> getMultiApplicationConfigurationPages();
 
     @Override
-    protected final void initialiseApplication( String[] args )
-    {
-        initialiseMultiApplication( args );
-    }
-
-    protected abstract void initialiseMultiApplication( String[] args );
-
-    @Override
-    protected final void startupFrameApplication()
+    protected final void startupVisibleApplication()
     {
         List<FrameInstanceDetailsObject> open = configuration.getOpen();
 

@@ -23,7 +23,7 @@ import java.awt.HeadlessException;
  */
 public class TestSingleFrameApplicationFrame extends DocumentSingleFrameApplicationFrame
 {
-    private static final Resources resources = Resources.getInstance( "ge.framework.test.frame.single" );
+    private static final Resources resources = Resources.getInstance( "ge.framework.test.application.single" );
     private static int index = 0;
 
     private ApplicationCommandMenuBar commandMenuBar;

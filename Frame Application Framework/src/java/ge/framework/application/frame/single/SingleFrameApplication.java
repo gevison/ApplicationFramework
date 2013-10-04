@@ -32,14 +32,6 @@ public abstract class SingleFrameApplication<FRAME extends SingleFrameApplicatio
     }
 
     @Override
-    protected final void initialiseApplication( String[] args )
-    {
-        initialiseSingleApplication( args );
-    }
-
-    protected abstract void initialiseSingleApplication( String[] args );
-
-    @Override
     protected final void initialiseApplicationConfiguration()
     {
         initialiseSingleApplicationConfiguration();
@@ -48,7 +40,7 @@ public abstract class SingleFrameApplication<FRAME extends SingleFrameApplicatio
     protected abstract void initialiseSingleApplicationConfiguration();
 
     @Override
-    protected void startupFrameApplication()
+    protected void startupVisibleApplication()
     {
         try
         {
