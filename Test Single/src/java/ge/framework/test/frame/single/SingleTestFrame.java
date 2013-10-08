@@ -1,7 +1,7 @@
 package ge.framework.test.frame.single;
 
 import com.jidesoft.swing.JideButton;
-import ge.framework.frame.core.dockable.ApplicationDockableFrame;
+import ge.framework.application.frame.core.dockable.ApplicationDockableFrame;
 import org.jdom2.Element;
 
 import java.awt.event.ActionEvent;

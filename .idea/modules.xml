@@ -9,7 +9,6 @@
       <module fileurl="file://$PROJECT_DIR$/Logger Docking Frame/Logger Docking Frame.iml" filepath="$PROJECT_DIR$/Logger Docking Frame/Logger Docking Frame.iml" />
       <module fileurl="file://$PROJECT_DIR$/Multi Frame Application Framework/Multi Frame Application Framework.iml" filepath="$PROJECT_DIR$/Multi Frame Application Framework/Multi Frame Application Framework.iml" />
       <module fileurl="file://$PROJECT_DIR$/Single Frame Application Framework/Single Frame Application Framework.iml" filepath="$PROJECT_DIR$/Single Frame Application Framework/Single Frame Application Framework.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Test Multi/Test Multi.iml" filepath="$PROJECT_DIR$/Test Multi/Test Multi.iml" />
       <module fileurl="file://$PROJECT_DIR$/Test Single/Test Single.iml" filepath="$PROJECT_DIR$/Test Single/Test Single.iml" />
       <module fileurl="file://$PROJECT_DIR$/Visible Application Framework/Visible Application Framework.iml" filepath="$PROJECT_DIR$/Visible Application Framework/Visible Application Framework.iml" />
     </modules>

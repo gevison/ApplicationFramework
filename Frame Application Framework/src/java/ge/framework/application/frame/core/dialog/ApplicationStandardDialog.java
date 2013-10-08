@@ -2,8 +2,8 @@ package ge.framework.application.frame.core.dialog;
 
 import com.jidesoft.dialog.StandardDialog;
 import ge.framework.application.frame.core.FrameApplication;
-import ge.framework.application.frame.multi.dialog.utils.RootPaneDisposeActionListener;
-import ge.framework.frame.core.ApplicationFrame;
+import ge.framework.application.frame.core.dialog.utils.RootPaneDisposeActionListener;
+import ge.framework.application.frame.core.ApplicationFrame;
 
 import javax.swing.JComponent;
 import javax.swing.KeyStroke;

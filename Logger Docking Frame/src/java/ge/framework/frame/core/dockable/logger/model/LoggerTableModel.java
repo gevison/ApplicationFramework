@@ -7,9 +7,6 @@ import org.apache.log4j.Level;
 import org.apache.log4j.spi.LocationInfo;
 import org.apache.log4j.spi.LoggingEvent;
 
-import javax.swing.event.EventListenerList;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import java.util.Date;
@@ -25,8 +22,6 @@ public class LoggerTableModel extends DefaultTableModel implements TableModel,
 {
     private static final Resources resources =
             Resources.getInstance( "ge.framework.frame.core.dockable.logger.resources" );
-
-    private EventListenerList eventListenerList = new EventListenerList();
 
     public LoggerTableModel()
     {
@@ -162,26 +157,5 @@ public class LoggerTableModel extends DefaultTableModel implements TableModel,
     @Override
     public void setValueAt( Object aValue, int rowIndex, int columnIndex )
     {
-    }
-
-    @Override
-    public void addTableModelListener( TableModelListener l )
-    {
-        eventListenerList.add( TableModelListener.class, l );
-    }
-
-    @Override
-    public void removeTableModelListener( TableModelListener l )
-    {
-        eventListenerList.remove( TableModelListener.class, l );
-    }
-
-    public void fireTableRowsInserted( int firstRow, int lastRow )
-    {
-        fireTableChanged( new TableModelEvent( this,
-                                               firstRow,
-                                               lastRow,
-                                               TableModelEvent.ALL_COLUMNS,
-                                               TableModelEvent.INSERT ) );
     }
 }

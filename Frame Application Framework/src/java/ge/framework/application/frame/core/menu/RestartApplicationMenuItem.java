@@ -1,8 +1,8 @@
 package ge.framework.application.frame.core.menu;
 
 import ge.framework.application.frame.core.FrameApplication;
-import ge.framework.frame.core.ApplicationFrame;
-import ge.framework.frame.core.menu.utils.ApplicationFrameMenuItem;
+import ge.framework.application.frame.core.ApplicationFrame;
+import ge.framework.application.frame.core.menu.utils.ApplicationFrameMenuItem;
 import ge.utils.bundle.Resources;
 
 import java.awt.GraphicsConfiguration;

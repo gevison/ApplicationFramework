@@ -2,7 +2,7 @@ package ge.framework.application.frame.core.command;
 
 import com.jidesoft.swing.JideButton;
 import ge.framework.application.frame.core.FrameApplication;
-import ge.framework.frame.core.ApplicationFrame;
+import ge.framework.application.frame.core.ApplicationFrame;
 import ge.utils.bundle.Resources;
 
 import java.awt.event.ActionEvent;

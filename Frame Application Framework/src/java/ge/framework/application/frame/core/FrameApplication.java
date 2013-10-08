@@ -5,7 +5,6 @@ import ge.framework.application.frame.core.dialog.ApplicationPropertiesDialog;
 import ge.framework.application.frame.core.dialog.ExitDialog;
 import ge.framework.application.frame.core.objects.FrameApplicationConfiguration;
 import ge.framework.application.visible.VisibleApplication;
-import ge.framework.frame.core.ApplicationFrame;
 import ge.utils.log.LoggerEx;
 import ge.utils.message.enums.MessageResult;
 import ge.utils.properties.PropertiesDialogPage;
@@ -31,7 +30,7 @@ public abstract class FrameApplication<FRAME extends ApplicationFrame, CONFIGURA
         LoggerEx.debug( "Processing Exit" );
         if ( terminateNow() == true )
         {
-            System.exit( 0 );
+            return;
         }
         else
         {

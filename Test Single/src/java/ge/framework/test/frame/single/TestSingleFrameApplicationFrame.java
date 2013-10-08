@@ -2,15 +2,15 @@ package ge.framework.test.frame.single;
 
 import com.jidesoft.action.DockableBarContext;
 import ge.framework.application.frame.core.menu.RestartApplicationMenuItem;
+import ge.framework.application.frame.single.DocumentSingleFrameApplicationFrame;
 import ge.framework.application.frame.single.SingleFrameApplication;
-import ge.framework.frame.core.command.ApplicationCommandBar;
-import ge.framework.frame.core.command.ApplicationCommandMenuBar;
+import ge.framework.application.frame.single.command.SinglePropertiesCommandBar;
+import ge.framework.application.frame.single.menu.file.SingleFileMenu;
+import ge.framework.application.frame.core.command.ApplicationCommandBar;
+import ge.framework.application.frame.core.command.ApplicationCommandMenuBar;
 import ge.framework.frame.core.dockable.logger.LoggerFrame;
-import ge.framework.frame.core.menu.view.ViewMenu;
-import ge.framework.frame.core.menu.window.DocumentWorkspaceWindowMenu;
-import ge.framework.frame.single.DocumentSingleFrameApplicationFrame;
-import ge.framework.frame.single.command.SinglePropertiesCommandBar;
-import ge.framework.frame.single.menu.file.SingleFileMenu;
+import ge.framework.application.frame.core.menu.view.ViewMenu;
+import ge.framework.application.frame.core.menu.window.DocumentWorkspaceWindowMenu;
 import ge.utils.bundle.Resources;
 
 import java.awt.HeadlessException;

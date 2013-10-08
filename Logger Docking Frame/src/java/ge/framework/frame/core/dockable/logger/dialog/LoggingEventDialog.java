@@ -9,7 +9,7 @@ import com.jidesoft.swing.PartialSide;
 import ge.framework.application.frame.core.dialog.ApplicationStandardDialog;
 import ge.framework.application.frame.core.dialog.panel.ApplicationBannerPanel;
 import ge.framework.application.frame.core.FrameApplication;
-import ge.framework.frame.core.ApplicationFrame;
+import ge.framework.application.frame.core.ApplicationFrame;
 import ge.utils.bundle.Resources;
 import ge.utils.layout.SpringLayoutUtilities;
 import ge.utils.text.StringArgumentMessageFormat;

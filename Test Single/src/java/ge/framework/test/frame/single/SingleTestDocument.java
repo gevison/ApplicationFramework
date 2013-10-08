@@ -1,6 +1,6 @@
 package ge.framework.test.frame.single;
 
-import ge.framework.frame.core.document.ApplicationDocumentComponent;
+import ge.framework.application.frame.core.document.ApplicationDocumentComponent;
 
 /**
  * Created with IntelliJ IDEA.

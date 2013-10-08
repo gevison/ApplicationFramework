@@ -82,7 +82,7 @@ public abstract class Application<CONFIGURATION extends ApplicationConfiguration
             if ( VMInstance.isVmUnique() == false )
             {
                 LoggerEx.fatal( "Another instance of this app already exists." );
-                System.exit( -1 );
+                return;
             }
         }
 
@@ -96,6 +96,18 @@ public abstract class Application<CONFIGURATION extends ApplicationConfiguration
         initialiseApplicationConfiguration();
 
         startupApplication();
+
+        while ( applicationRunning() )
+        {
+            try
+            {
+                Thread.sleep( 1000 );
+            }
+            catch ( InterruptedException e )
+            {
+                // ignore
+            }
+        }
 
         LoggerEx.exit();
     }
@@ -121,6 +133,8 @@ public abstract class Application<CONFIGURATION extends ApplicationConfiguration
     protected abstract void initialiseApplicationConfiguration();
 
     protected abstract void startupApplication();
+
+    protected abstract boolean applicationRunning();
 
     private void loadApplicationConfiguration()
     {
