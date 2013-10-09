@@ -1,15 +1,13 @@
 package ge.framework.test.application.multi;
 
-import com.jidesoft.action.DockableBarContext;
-import ge.framework.application.frame.multi.MultiFrameApplication;
-import ge.framework.application.frame.core.command.ApplicationCommandMenuBar;
-import ge.framework.frame.core.dockable.logger.LoggerFrame;
 import ge.framework.application.frame.core.menu.view.ViewMenu;
 import ge.framework.application.frame.multi.DocumentMultiFrameApplicationFrame;
+import ge.framework.application.frame.multi.MultiFrameApplication;
 import ge.framework.application.frame.multi.command.FileCommandBar;
 import ge.framework.application.frame.multi.command.MultiPropertiesCommandBar;
 import ge.framework.application.frame.multi.menu.file.MultiFileMenu;
 import ge.framework.application.frame.multi.menu.window.MultiFrameDocumentWindowMenu;
+import ge.framework.frame.core.dockable.logger.LoggerFrame;
 import ge.utils.bundle.Resources;
 import ge.utils.properties.PropertiesDialogPage;
 
@@ -25,8 +23,6 @@ import java.util.List;
 public class TestMultiFrameApplicationFrame extends DocumentMultiFrameApplicationFrame
 {
     private static final Resources resources = Resources.getInstance( "ge.framework.test.application.multi" );
-
-    private ApplicationCommandMenuBar commandMenuBar;
 
     public TestMultiFrameApplicationFrame( MultiFrameApplication application )
             throws HeadlessException
@@ -56,29 +52,18 @@ public class TestMultiFrameApplicationFrame extends DocumentMultiFrameApplicatio
 
     private void initialiseCommandMenuBar()
     {
-        commandMenuBar = new ApplicationCommandMenuBar( "menuBar" );
-        commandMenuBar.setTitle( resources.getResourceString( TestMultiFrameApplicationFrame.class, "menuBar", "title" ) );
-        commandMenuBar.setInitSide( DockableBarContext.DOCK_SIDE_NORTH );
-        commandMenuBar.setRearrangable( false );
-        commandMenuBar.setFloatable( false );
-        commandMenuBar.setHidable( false );
-        commandMenuBar.setAllowedDockSides( DockableBarContext.DOCK_SIDE_NORTH );
-        commandMenuBar.setInitIndex( 0 );
-        commandMenuBar.setStretch( true );
-        commandMenuBar.setPaintBackground( false );
-        commandMenuBar.setChevronAlwaysVisible( false );
-
         MultiFileMenu fileMenu = new MultiFileMenu( this );
         fileMenu.initialise();
-        commandMenuBar.add( fileMenu );
+        addMenu( fileMenu );
+
         ViewMenu viewMenu = new ViewMenu( this );
         viewMenu.initialise();
-        commandMenuBar.add( viewMenu );
+        addMenu( viewMenu );
+
         MultiFrameDocumentWindowMenu windowMenu = new MultiFrameDocumentWindowMenu( this );
         windowMenu.initialise();
-        commandMenuBar.add( windowMenu );
+        addMenu( windowMenu );
 
-        addDockableBar( commandMenuBar );
         FileCommandBar fileCommandBar = new FileCommandBar( this );
         addDockableBar( fileCommandBar );
         MultiPropertiesCommandBar propertiesCommandBar = new MultiPropertiesCommandBar( this );

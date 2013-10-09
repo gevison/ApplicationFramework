@@ -36,6 +36,7 @@ public abstract class PropertiesCommandBar extends ApplicationCommandBar
         setFloatable( true );
         setHidable( true );
         setInitIndex( 1 );
+        setInitSubindex( 1 );
         setChevronAlwaysVisible( false );
         setStretch( false );
 

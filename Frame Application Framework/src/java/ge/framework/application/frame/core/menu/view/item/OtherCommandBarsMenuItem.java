@@ -2,7 +2,7 @@ package ge.framework.application.frame.core.menu.view.item;
 
 import com.jidesoft.action.DockableBarManager;
 import ge.framework.application.frame.core.ApplicationFrame;
-import ge.framework.application.frame.core.command.ApplicationCommandBarComponent;
+import ge.framework.application.frame.core.command.ApplicationCommandBar;
 import ge.framework.application.frame.core.command.dialog.CommandBarDialog;
 import ge.framework.application.frame.core.menu.utils.ApplicationFrameMenuItem;
 import ge.utils.bundle.Resources;
@@ -39,11 +39,11 @@ public class OtherCommandBarsMenuItem extends ApplicationFrameMenuItem
 
         if ( commandBarDialog.doModal() == true )
         {
-            List<ApplicationCommandBarComponent> selectedValues = commandBarDialog.getSelectedValues();
+            List<ApplicationCommandBar> selectedValues = commandBarDialog.getSelectedValues();
 
-            List<ApplicationCommandBarComponent> applicationCommandBarComponents = applicationFrame.getCommandBars();
+            List<ApplicationCommandBar> applicationCommandBarComponents = applicationFrame.getCommandBars();
 
-            for ( ApplicationCommandBarComponent applicationCommandBarComponent : applicationCommandBarComponents )
+            for ( ApplicationCommandBar applicationCommandBarComponent : applicationCommandBarComponents )
             {
                 DockableBarManager dockableBarManager = applicationCommandBarComponent.getDockableBarManager();
 

@@ -35,6 +35,7 @@ public class FileCommandBar extends ApplicationCommandBar
         setFloatable( true );
         setHidable( true );
         setInitIndex( 1 );
+        setInitSubindex( 0 );
         setChevronAlwaysVisible( false );
         setStretch( false );
 

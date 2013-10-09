@@ -80,6 +80,7 @@ public class ApplicationFramework
         if ( OS.isMac() == true )
         {
             System.setProperty( "com.apple.mrj.application.apple.menu.about.name", applicationBean.getDisplayName() );
+            System.setProperty( "apple.laf.useScreenMenuBar", "true" );
         }
 
         Class<? extends Application> applicationClass = applicationBean.getApplicationClass();

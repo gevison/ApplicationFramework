@@ -67,6 +67,15 @@ public abstract class SingleFrameApplication<FRAME extends SingleFrameApplicatio
     }
 
     @Override
+    protected boolean applicationRunning()
+    {
+        if ( applicationFrame != null )
+            return true;
+        else
+            return false;
+    }
+
+    @Override
     protected final void processApplicationShutdown()
     {
         applicationFrame = null;

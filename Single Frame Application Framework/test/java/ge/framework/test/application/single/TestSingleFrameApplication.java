@@ -3,7 +3,6 @@ package ge.framework.test.application.single;
 import ge.framework.application.core.objects.ApplicationBean;
 import ge.framework.application.frame.single.SingleFrameApplication;
 import ge.framework.test.application.single.objects.TestSingleFrameApplicationConfiguration;
-import ge.framework.test.frame.single.TestSingleFrameApplicationFrame;
 import ge.utils.properties.PropertiesDialogPage;
 
 import java.util.List;

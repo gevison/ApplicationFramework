@@ -5,9 +5,9 @@ import com.jidesoft.dialog.StandardDialog;
 import com.jidesoft.swing.PartialEtchedBorder;
 import com.jidesoft.swing.PartialLineBorder;
 import com.jidesoft.swing.PartialSide;
-import ge.framework.application.frame.core.FrameApplication;
 import ge.framework.application.frame.core.ApplicationFrame;
-import ge.framework.application.frame.core.command.ApplicationCommandBarComponent;
+import ge.framework.application.frame.core.FrameApplication;
+import ge.framework.application.frame.core.command.ApplicationCommandBar;
 import ge.framework.application.frame.core.command.dialog.panel.CommandBarPanel;
 import ge.utils.bundle.Resources;
 
@@ -48,7 +48,7 @@ public class CommandBarDialog extends StandardDialog implements ActionListener
 
     private CommandBarPanel commandBarPanel;
 
-    private List<ApplicationCommandBarComponent> selectedValues;
+    private List<ApplicationCommandBar> selectedValues;
 
     public CommandBarDialog( ApplicationFrame applicationFrame )
     {
@@ -160,7 +160,7 @@ public class CommandBarDialog extends StandardDialog implements ActionListener
         }
     }
 
-    public List<ApplicationCommandBarComponent> getSelectedValues()
+    public List<ApplicationCommandBar> getSelectedValues()
     {
         return selectedValues;
     }

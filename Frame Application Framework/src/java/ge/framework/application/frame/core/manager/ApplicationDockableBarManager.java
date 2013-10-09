@@ -3,7 +3,7 @@ package ge.framework.application.frame.core.manager;
 import com.jidesoft.action.DefaultDockableBarManager;
 import com.jidesoft.action.DockableBar;
 import ge.framework.application.frame.core.ApplicationFrame;
-import ge.framework.application.frame.core.command.ApplicationCommandBarComponent;
+import ge.framework.application.frame.core.command.ApplicationCommandBar;
 
 import java.awt.Container;
 import java.util.ArrayList;
@@ -23,27 +23,30 @@ public class ApplicationDockableBarManager extends DefaultDockableBarManager
         super( applicationFrame, container );
     }
 
-    public void addDockableBar( ApplicationCommandBarComponent dockableBar )
+    public void addDockableBar( ApplicationCommandBar dockableBar )
     {
-        super.addDockableBar( ( DockableBar ) dockableBar );
+        super.addDockableBar( dockableBar );
     }
 
-    public void removeDockableBar( ApplicationCommandBarComponent dockableBar )
+    public void removeDockableBar( ApplicationCommandBar dockableBar )
     {
         super.removeDockableBar( dockableBar.getKey() );
     }
 
-    public List<ApplicationCommandBarComponent> getCommandBars()
+    public List<ApplicationCommandBar> getCommandBars()
     {
         Collection<DockableBar> dockableBars = getAllDockableBars();
 
-        List<ApplicationCommandBarComponent> retVal = new ArrayList<ApplicationCommandBarComponent>();
+        List<ApplicationCommandBar> retVal = new ArrayList<ApplicationCommandBar>();
 
         if ( ( dockableBars != null ) && ( dockableBars.isEmpty() == false ) )
         {
             for ( DockableBar dockableBar : dockableBars )
             {
-                retVal.add( ( ApplicationCommandBarComponent ) dockableBar );
+                if ( dockableBar instanceof ApplicationCommandBar )
+                {
+                    retVal.add( ( ApplicationCommandBar ) dockableBar );
+                }
             }
         }
         return retVal;

@@ -1,7 +1,7 @@
 package ge.framework.application.frame.core.menu.view;
 
 import ge.framework.application.frame.core.ApplicationFrame;
-import ge.framework.application.frame.core.command.ApplicationCommandBarComponent;
+import ge.framework.application.frame.core.command.ApplicationCommandBar;
 import ge.framework.application.frame.core.menu.utils.ApplicationFrameMenu;
 import ge.framework.application.frame.core.menu.utils.ApplicationFrameMenuSeparator;
 import ge.framework.application.frame.core.menu.view.item.ApplicationCommandBarMenuItem;
@@ -24,7 +24,7 @@ public class ApplicationCommandBarMenu extends ApplicationFrameMenu
 {
     private static final Resources resources = Resources.getInstance( "ge.framework.frame.core" );
 
-    private Map<ApplicationCommandBarComponent, ApplicationCommandBarMenuItem> frameMenuItems = null;
+    private Map<ApplicationCommandBar, ApplicationCommandBarMenuItem> frameMenuItems = null;
 
     private OtherCommandBarsMenuItem otherMenuItem;
 
@@ -38,7 +38,7 @@ public class ApplicationCommandBarMenu extends ApplicationFrameMenu
     {
         setText( resources.getResourceString( ApplicationCommandBarMenu.class, "title" ) );
 
-        frameMenuItems = new HashMap<ApplicationCommandBarComponent, ApplicationCommandBarMenuItem>();
+        frameMenuItems = new HashMap<ApplicationCommandBar, ApplicationCommandBarMenuItem>();
 
         otherMenuItem = new OtherCommandBarsMenuItem( applicationFrame );
         otherMenuItem.initialise();
@@ -47,12 +47,12 @@ public class ApplicationCommandBarMenu extends ApplicationFrameMenu
     @Override
     protected void customizeMenu()
     {
-        Map<ApplicationCommandBarComponent, ApplicationCommandBarMenuItem> currentMenuItems;
-        currentMenuItems = new HashMap<ApplicationCommandBarComponent, ApplicationCommandBarMenuItem>();
+        Map<ApplicationCommandBar, ApplicationCommandBarMenuItem> currentMenuItems;
+        currentMenuItems = new HashMap<ApplicationCommandBar, ApplicationCommandBarMenuItem>();
 
-        List<ApplicationCommandBarComponent> commandBars = applicationFrame.getCommandBars();
+        List<ApplicationCommandBar> commandBars = applicationFrame.getCommandBars();
 
-        for ( ApplicationCommandBarComponent commandBar : commandBars )
+        for ( ApplicationCommandBar commandBar : commandBars )
         {
             ApplicationCommandBarMenuItem menuItem;
 
@@ -72,7 +72,7 @@ public class ApplicationCommandBarMenu extends ApplicationFrameMenu
         frameMenuItems.clear();
         frameMenuItems = currentMenuItems;
 
-        List<ApplicationCommandBarComponent> onMenu;
+        List<ApplicationCommandBar> onMenu;
 
         if ( commandBars.size() < 15 )
         {
@@ -83,7 +83,7 @@ public class ApplicationCommandBarMenu extends ApplicationFrameMenu
             onMenu = commandBars.subList( 0, 10 );
         }
 
-        for ( ApplicationCommandBarComponent commandBar : onMenu )
+        for ( ApplicationCommandBar commandBar : onMenu )
         {
             addMenuComponent( frameMenuItems.get( commandBar ) );
         }
@@ -98,7 +98,7 @@ public class ApplicationCommandBarMenu extends ApplicationFrameMenu
     @Override
     public void update()
     {
-        List<ApplicationCommandBarComponent> commandBars = applicationFrame.getCommandBars();
+        List<ApplicationCommandBar> commandBars = applicationFrame.getCommandBars();
 
         if ( ( commandBars == null ) || ( commandBars.isEmpty() == true ) )
         {

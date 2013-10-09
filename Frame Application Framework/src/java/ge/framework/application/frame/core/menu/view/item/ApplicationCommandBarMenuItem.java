@@ -2,7 +2,7 @@ package ge.framework.application.frame.core.menu.view.item;
 
 import com.jidesoft.action.DockableBarManager;
 import ge.framework.application.frame.core.ApplicationFrame;
-import ge.framework.application.frame.core.command.ApplicationCommandBarComponent;
+import ge.framework.application.frame.core.command.ApplicationCommandBar;
 import ge.framework.application.frame.core.menu.utils.ApplicationFrameCheckboxMenuItem;
 
 import java.awt.event.ActionEvent;
@@ -16,10 +16,10 @@ import java.awt.event.ActionEvent;
  */
 public class ApplicationCommandBarMenuItem extends ApplicationFrameCheckboxMenuItem
 {
-    private ApplicationCommandBarComponent applicationCommandBarComponent;
+    private ApplicationCommandBar applicationCommandBarComponent;
 
     public ApplicationCommandBarMenuItem( ApplicationFrame applicationFrame,
-                                          ApplicationCommandBarComponent applicationCommandBarComponent )
+                                          ApplicationCommandBar applicationCommandBarComponent )
     {
         super( applicationFrame );
         this.applicationCommandBarComponent = applicationCommandBarComponent;

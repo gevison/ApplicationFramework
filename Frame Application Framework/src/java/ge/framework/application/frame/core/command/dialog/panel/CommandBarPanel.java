@@ -7,7 +7,7 @@ import com.jidesoft.swing.JideScrollPane;
 import com.jidesoft.swing.PartialLineBorder;
 import com.jidesoft.swing.PartialSide;
 import com.jidesoft.swing.StyledLabel;
-import ge.framework.application.frame.core.command.ApplicationCommandBarComponent;
+import ge.framework.application.frame.core.command.ApplicationCommandBar;
 import ge.utils.bundle.Resources;
 
 import javax.swing.DefaultListModel;
@@ -60,8 +60,8 @@ public class CommandBarPanel extends JPanel
             @Override
             public boolean isCheckBoxEnabled( int index )
             {
-                ApplicationCommandBarComponent applicationCommandBarComponent =
-                        ( ApplicationCommandBarComponent ) tableModel.elementAt( index );
+                ApplicationCommandBar applicationCommandBarComponent =
+                        ( ApplicationCommandBar ) tableModel.elementAt( index );
 
                 DockableBarManager dockableBarManager = applicationCommandBarComponent.getDockableBarManager();
 
@@ -103,14 +103,14 @@ public class CommandBarPanel extends JPanel
         setBorder( new EmptyBorder( 10, 10, 10, 5 ) );
     }
 
-    public void setCommandBarComponents( List<ApplicationCommandBarComponent> commandBarComponents )
+    public void setCommandBarComponents( List<ApplicationCommandBar> commandBarComponents )
     {
         tableModel.removeAllElements();
         List<Integer> selected = new ArrayList<Integer>();
 
         for ( int i = 0; i < commandBarComponents.size(); i++ )
         {
-            ApplicationCommandBarComponent applicationCommandBarComponent = commandBarComponents.get( i );
+            ApplicationCommandBar applicationCommandBarComponent = commandBarComponents.get( i );
             tableModel.addElement( applicationCommandBarComponent );
 
             if ( applicationCommandBarComponent.isHidden() == false )
@@ -129,9 +129,9 @@ public class CommandBarPanel extends JPanel
         list.setCheckBoxListSelectedIndices( indexs );
     }
 
-    public List<ApplicationCommandBarComponent> getSelectedValues()
+    public List<ApplicationCommandBar> getSelectedValues()
     {
-        List<ApplicationCommandBarComponent> retVal = new ArrayList<ApplicationCommandBarComponent>();
+        List<ApplicationCommandBar> retVal = new ArrayList<ApplicationCommandBar>();
 
         Object[] checkBoxListSelectedValues =
                 list.getCheckBoxListSelectedValues();
@@ -140,7 +140,7 @@ public class CommandBarPanel extends JPanel
         {
             for ( Object checkBoxListSelectedValue : checkBoxListSelectedValues )
             {
-                retVal.add( ( ApplicationCommandBarComponent ) checkBoxListSelectedValue );
+                retVal.add( ( ApplicationCommandBar ) checkBoxListSelectedValue );
             }
         }
 
@@ -153,9 +153,9 @@ public class CommandBarPanel extends JPanel
         protected void customizeStyledLabel( JList table, Object value, int index, boolean isSelected,
                                              boolean hasFocus )
         {
-            if ( value instanceof ApplicationCommandBarComponent )
+            if ( value instanceof ApplicationCommandBar )
             {
-                ApplicationCommandBarComponent component = ( ApplicationCommandBarComponent ) value;
+                ApplicationCommandBar component = ( ApplicationCommandBar ) value;
 
                 String label = component.getTitle();
 

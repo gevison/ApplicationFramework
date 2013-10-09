@@ -1,4 +1,0 @@
-Manifest-Version: 1.0
-Class-Path: ApplicationFramework.jar LoggerDockingFrame.jar
-Main-Class: ge.framework.application.ApplicationFramework
-

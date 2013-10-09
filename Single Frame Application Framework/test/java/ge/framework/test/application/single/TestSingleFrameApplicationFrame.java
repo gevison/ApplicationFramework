@@ -1,16 +1,16 @@
-package ge.framework.test.frame.single;
+package ge.framework.test.application.single;
 
-import com.jidesoft.action.DockableBarContext;
+import ge.framework.application.frame.core.command.ApplicationCommandBar;
 import ge.framework.application.frame.core.menu.RestartApplicationMenuItem;
+import ge.framework.application.frame.core.menu.view.ViewMenu;
+import ge.framework.application.frame.core.menu.window.DocumentWorkspaceWindowMenu;
 import ge.framework.application.frame.single.DocumentSingleFrameApplicationFrame;
 import ge.framework.application.frame.single.SingleFrameApplication;
 import ge.framework.application.frame.single.command.SinglePropertiesCommandBar;
 import ge.framework.application.frame.single.menu.file.SingleFileMenu;
-import ge.framework.application.frame.core.command.ApplicationCommandBar;
-import ge.framework.application.frame.core.command.ApplicationCommandMenuBar;
 import ge.framework.frame.core.dockable.logger.LoggerFrame;
-import ge.framework.application.frame.core.menu.view.ViewMenu;
-import ge.framework.application.frame.core.menu.window.DocumentWorkspaceWindowMenu;
+import ge.framework.test.application.single.docking.SingleTestFrame;
+import ge.framework.test.application.single.document.SingleTestDocument;
 import ge.utils.bundle.Resources;
 
 import java.awt.HeadlessException;
@@ -25,8 +25,6 @@ public class TestSingleFrameApplicationFrame extends DocumentSingleFrameApplicat
 {
     private static final Resources resources = Resources.getInstance( "ge.framework.test.application.single" );
     private static int index = 0;
-
-    private ApplicationCommandMenuBar commandMenuBar;
 
     public TestSingleFrameApplicationFrame( SingleFrameApplication application ) throws HeadlessException
     {
@@ -106,33 +104,21 @@ public class TestSingleFrameApplicationFrame extends DocumentSingleFrameApplicat
 
     private void initialiseCommandMenuBar()
     {
-        commandMenuBar = new ApplicationCommandMenuBar( "menuBar" );
-        commandMenuBar.setTitle( resources.getResourceString( TestSingleFrameApplicationFrame.class, "menuBar", "title" ) );
-        commandMenuBar.setInitSide( DockableBarContext.DOCK_SIDE_NORTH );
-        commandMenuBar.setRearrangable( false );
-        commandMenuBar.setFloatable( false );
-        commandMenuBar.setHidable( false );
-        commandMenuBar.setAllowedDockSides( DockableBarContext.DOCK_SIDE_NORTH );
-        commandMenuBar.setInitIndex( 0 );
-        commandMenuBar.setStretch( true );
-        commandMenuBar.setPaintBackground( false );
-        commandMenuBar.setChevronAlwaysVisible( false );
-
-        commandMenuBar.setAutoscrolls( true );
         SingleFileMenu fileMenu = new SingleFileMenu( this );
         fileMenu.initialise();
         RestartApplicationMenuItem restartApplicationMenuItem = new RestartApplicationMenuItem( this );
         restartApplicationMenuItem.initialise();
         fileMenu.addPostPropertiesMenuComponent( restartApplicationMenuItem );
-        commandMenuBar.add( fileMenu );
+        addMenu( fileMenu );
+
         ViewMenu viewMenu = new ViewMenu( this );
         viewMenu.initialise();
-        commandMenuBar.add( viewMenu );
+        addMenu( viewMenu );
+
         DocumentWorkspaceWindowMenu windowMenu = new DocumentWorkspaceWindowMenu( this );
         windowMenu.initialise();
-        commandMenuBar.add( windowMenu );
+        addMenu( windowMenu );
 
-        addDockableBar( commandMenuBar );
         SinglePropertiesCommandBar dockableBar = new SinglePropertiesCommandBar( this );
         dockableBar.initialise();
         addDockableBar( dockableBar );
