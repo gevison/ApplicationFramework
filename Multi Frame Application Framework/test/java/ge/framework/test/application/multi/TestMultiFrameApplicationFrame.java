@@ -35,7 +35,7 @@ public class TestMultiFrameApplicationFrame extends DocumentMultiFrameApplicatio
     {
         initialiseCommandMenuBar();
 
-        addFrame(new LoggerFrame() );
+//        addFrame(new LoggerFrame() );
     }
 
     @Override
