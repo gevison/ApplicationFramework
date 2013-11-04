@@ -303,6 +303,8 @@ public abstract class Application<CONFIGURATION extends ApplicationConfiguration
         return configuration;
     }
 
+    public abstract void processApplicationProperties();
+
     public final UnmarshallerListener getUnmarshallerListener( Class aClass )
     {
         return unmarshallerListener.getListener( aClass );

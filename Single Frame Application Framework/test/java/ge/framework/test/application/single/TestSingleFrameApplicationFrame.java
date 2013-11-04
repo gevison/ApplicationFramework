@@ -36,7 +36,7 @@ public class TestSingleFrameApplicationFrame extends DocumentSingleFrameApplicat
     {
         initialiseCommandMenuBar();
 
-        addFrame( new LoggerFrame() );
+//        addFrame( new LoggerFrame() );
 
         addFrame( new SingleTestFrame( "Frame " + ( index++ ) ) );
         addFrame( new SingleTestFrame( "Frame " + ( index++ ) ) );

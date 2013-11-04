@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="Apple Extension">
+    <output-path>$PROJECT_DIR$/out/artifacts/Apple_Extension</output-path>
+    <root id="archive" name="AppleExtension.jar">
+      <element id="module-output" name="Apple Extension" />
+    </root>
+  </artifact>
+</component>

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Apple Extension/Apple Extension.iml" filepath="$PROJECT_DIR$/Apple Extension/Apple Extension.iml" />
       <module fileurl="file://$PROJECT_DIR$/Console Application Framework/Console Application Framework.iml" filepath="$PROJECT_DIR$/Console Application Framework/Console Application Framework.iml" />
       <module fileurl="file://$PROJECT_DIR$/Core Application Framework/Core Application Framework.iml" filepath="$PROJECT_DIR$/Core Application Framework/Core Application Framework.iml" />
       <module fileurl="file://$PROJECT_DIR$/Dialog Application Framework/Dialog Application Framework.iml" filepath="$PROJECT_DIR$/Dialog Application Framework/Dialog Application Framework.iml" />

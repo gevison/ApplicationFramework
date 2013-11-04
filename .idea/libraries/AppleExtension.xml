@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="AppleExtension">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/out/artifacts/Apple_Extension/AppleExtension.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/Apple Extension/src/java" />
+    </SOURCES>
+  </library>
+</component>

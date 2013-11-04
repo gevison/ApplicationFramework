@@ -6,11 +6,14 @@ import ge.framework.application.core.configuration.ApplicationConfiguration;
 import ge.framework.application.core.objects.ApplicationBean;
 import ge.utils.bundle.Resources;
 import ge.utils.os.OS;
+import org.apache.commons.lang3.ClassUtils;
+import org.apache.commons.lang3.reflect.MethodUtils;
 
 import javax.swing.Icon;
 import javax.swing.UIManager;
 import java.awt.Color;
 import java.awt.Image;
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * Created with IntelliJ IDEA.
@@ -59,6 +62,28 @@ public abstract class VisibleApplication<CONFIGURATION extends ApplicationConfig
         {
             macImage = resources.getResourceImage( getClass(), "icon", "mac" );
             macIcon = resources.getResourceIcon( getClass(), "icon", "mac" );
+
+            try
+            {
+                Class appleExtensionClass = ClassUtils.getClass( "ge.framework.application.apple.AppleExtension" );
+                MethodUtils.invokeStaticMethod( appleExtensionClass, "initialiseAppleApplication", new Object[]{this}, new Class[]{Application.class} );
+            }
+            catch ( ClassNotFoundException e )
+            {
+                e.printStackTrace();
+            }
+            catch ( InvocationTargetException e )
+            {
+                e.printStackTrace();
+            }
+            catch ( NoSuchMethodException e )
+            {
+                e.printStackTrace();
+            }
+            catch ( IllegalAccessException e )
+            {
+                e.printStackTrace();
+            }
         }
 
         startupVisibleApplication();
