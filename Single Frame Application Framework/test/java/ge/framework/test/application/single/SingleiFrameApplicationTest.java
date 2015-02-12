@@ -1,7 +1,7 @@
 package ge.framework.test.application.single;
 
 import ge.framework.application.ApplicationFramework;
-import org.junit.Test;
+//import org.junit.Test;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,7 +11,7 @@ import org.junit.Test;
  */
 public class SingleiFrameApplicationTest
 {
-    @Test
+//    @Test
     public void test()
     {
         ApplicationFramework.main( new String[]{} );

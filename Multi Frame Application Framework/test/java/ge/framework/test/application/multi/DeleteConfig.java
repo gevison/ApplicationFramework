@@ -5,7 +5,7 @@ import ge.framework.application.core.objects.ApplicationBean;
 import ge.utils.os.OS;
 import ge.utils.spring.context.ClasspathApplicationContext;
 import org.apache.commons.io.FileUtils;
-import org.junit.Test;
+//import org.junit.Test;
 
 import java.io.File;
 import java.util.Arrays;
@@ -20,7 +20,7 @@ import static org.apache.commons.lang3.reflect.ConstructorUtils.invokeConstructo
  */
 public class DeleteConfig
 {
-    @Test
+//    @Test
     public void delete()
     {
 
